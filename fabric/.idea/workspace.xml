@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0c15ebec-e1bc-418d-8e70-a5ac5db45dfb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/fabric.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/cryptogen" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/fabric-ca-client" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/ledgerutil" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/configtx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/core.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/orderer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/CHAINCODE_AS_A_SERVICE_TUTORIAL.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg3/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg3/addOrg3.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg3/ccp-generate.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg3/ccp-template.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg3/ccp-template.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg3/configtx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg3/docker/docker-compose-ca-org3.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg3/docker/docker-compose-couch-org3.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg3/docker/docker-compose-org3.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/fabric-ca-server-config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/registerEnroll.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg3/org3-crypto.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg4/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg4/addOrg4.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg4/ccp-generate.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg4/ccp-template.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg4/ccp-template.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg4/configtx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg4/docker/docker-compose-ca-org4.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg4/docker/docker-compose-couch-org4.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg4/docker/docker-compose-org4.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/fabric-ca-server-config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/registerEnroll.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg4/org4-crypto.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg4/quer.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg5/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg5/addOrg5.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg5/ccp-generate.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg5/ccp-template.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg5/ccp-template.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg5/configtx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg5/docker/docker-compose-ca-org5.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg5/docker/docker-compose-couch-org5.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg5/docker/docker-compose-org5.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/fabric-ca-server-config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/registerEnroll.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg5/org5-crypto.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg5/quer.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg6/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg6/addOrg6.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg6/ccp-generate.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg6/ccp-template.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg6/ccp-template.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg6/configtx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg6/docker/docker-compose-ca-org6.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg6/docker/docker-compose-couch-org6.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg6/docker/docker-compose-org6.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/fabric-ca-server-config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/registerEnroll.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg6/org6-crypto.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/addOrg6/quer.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/bft-config/configtx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/compose/compose-bft-test-net.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/compose/compose-ca.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/compose/compose-couch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/compose/compose-test-net.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/compose/docker/docker-compose-bft-test-net.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/compose/docker/docker-compose-ca.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/compose/docker/docker-compose-couch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/compose/docker/docker-compose-test-net.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/compose/docker/peercfg/core.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/compose/podman/peercfg/core.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/compose/podman/podman-compose-ca.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/compose/podman/podman-compose-couch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/compose/podman/podman-compose-test-net.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/configtx/configtx.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/docker/docker-compose-ca.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/docker/docker-compose-couch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/docker/docker-compose-test-net.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/monitordocker.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/network.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/network.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/ccp-generate.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/ccp-template.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/ccp-template.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/cfssl/admin-csr-template.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/cfssl/ca-orderer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/cfssl/ca-peer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/cfssl/cert-signing-config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/cfssl/client-csr-template.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/cfssl/orderer-csr-template.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/cfssl/peer-csr-template.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/cfssl/registerEnroll.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/cryptogen/crypto-config-orderer.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/cryptogen/crypto-config-org1.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/cryptogen/crypto-config-org2.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/organizations/fabric-ca/registerEnroll.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/prometheus-grafana/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/prometheus-grafana/docker-compose.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/prometheus-grafana/grafana/config.monitoring" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/prometheus-grafana/grafana/provisioning/dashboards/dashboard.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/prometheus-grafana/grafana/provisioning/dashboards/hlf-performances.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/prometheus-grafana/grafana/provisioning/datasources/datasource.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/prometheus-grafana/grafana_db/grafana.db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/prometheus-grafana/prometheus/prometheus.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/add_new_orderer_to_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/ccutils.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/configUpdate.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/createChannel.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/deployCC.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/deployCCAAS.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/deployCC_2org.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/envVar.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/orderer.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/orderer2.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/orderer3.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/orderer4.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/org3-scripts/joinChannel.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/org3-scripts/updateChannelConfig.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/org4-scripts/joinChannel.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/org4-scripts/updateChannelConfig.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/org5-scripts/joinChannel.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/org5-scripts/updateChannelConfig.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/org6-scripts/joinChannel.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/org6-scripts/updateChannelConfig.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/packageCC.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/pkgcc.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/setAnchorPeer.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/scripts/utils.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/setOrgEnv.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-network/start.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/chaincode/Config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/chaincode/client/EnrollAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/chaincode/client/RegisterUserHyperledger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/chaincode/user/CAEnrollment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/chaincode/user/HyperledgerUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/chaincode/util/ConnectionParamsUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/chaincode/util/WalletUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/service/HyperledgerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/client.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servers/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../servers/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/controllers/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servers/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../servers/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2hyeY8Qe1gLvPCB1CJihpUNLr0n" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/thekidends/blockchain/Supply-Chain/fabric&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
+    <layout>
+      <window_info id="Bookmarks" show_stripe_button="false" side_tool="true" />
+      <window_info id="Merge Requests" show_stripe_button="false" />
+      <window_info id="Commit_Guest" show_stripe_button="false" />
+      <window_info id="Pull Requests" show_stripe_button="false" />
+      <window_info id="Learn" show_stripe_button="false" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.15657553" />
+      <window_info active="true" id="Commit" order="1" visible="true" weight="0.37597656" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TypeScript" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Profiler" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" show_stripe_button="false" />
+      <window_info anchor="bottom" id="File Transfer" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Find" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="0" visible="true" weight="0.12561274" />
+      <window_info anchor="bottom" id="Problems" order="1" />
+      <window_info anchor="bottom" id="Problems View" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="3" weight="0.3302696" />
+      <window_info anchor="bottom" id="Services" order="4" />
+      <window_info anchor="right" id="Endpoints" show_stripe_button="false" />
+      <window_info anchor="right" id="Coverage" show_stripe_button="false" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Notifications" order="0" weight="0.25" />
+      <window_info anchor="right" id="AIAssistant" order="1" weight="0.25" />
+      <window_info anchor="right" id="Database" order="2" weight="0.25" />
+      <window_info anchor="right" id="Gradle" order="3" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.69" />
+        <option value="bundled-js-predefined-1d06a55b98c1-2e7d6887c066-JavaScript-IU-241.15989.69" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0c15ebec-e1bc-418d-8e70-a5ac5db45dfb" name="Changes" comment="" />
+      <created>1718570788670</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718570788670</updated>
+      <workItem from="1718570789883" duration="2315000" />
+      <workItem from="1718620704341" duration="8237000" />
+      <workItem from="1719317785871" duration="8581000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
