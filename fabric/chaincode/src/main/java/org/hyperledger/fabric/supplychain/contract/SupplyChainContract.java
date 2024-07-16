@@ -7,6 +7,7 @@ import org.hyperledger.fabric.contract.annotation.*;
 import org.hyperledger.fabric.shim.ChaincodeException;
 import org.hyperledger.fabric.shim.ChaincodeStub;
 import org.hyperledger.fabric.shim.ledger.CompositeKey;
+import org.hyperledger.fabric.supplychain.entity.Product;
 import org.hyperledger.fabric.supplychain.entity.ProductLicense;
 import org.hyperledger.fabric.supplychain.enumeration.ContractErrors;
 import org.hyperledger.fabric.supplychain.enumeration.RequestStatus;
@@ -108,7 +109,6 @@ public class SupplyChainContract implements ContractInterface {
         String dateModified = jsonObject.getString("dateModified");
         String requestType = RequestType.PRODUCT_LICENSE;
         String requestStatus = RequestStatus.PENDING;
-        String companyId = jsonObject.getString("companyId");
         String productId = jsonObject.getString("productId");
         String details = jsonObject.getString("details");
 
@@ -123,7 +123,6 @@ public class SupplyChainContract implements ContractInterface {
                 dateModified,
                 requestType,
                 requestStatus,
-                companyId,
                 productId,
                 details
         );
@@ -167,4 +166,86 @@ public class SupplyChainContract implements ContractInterface {
             throw new ChaincodeException(errorMessage, ContractErrors.REQUEST_NOT_FOUND);
         }
     }
+
+    @Transaction(intent = Transaction.TYPE.SUBMIT)
+    public String setProductLicenseStatus(Context ctx, String jsonString) {
+        JSONObject jsonObject = new JSONObject(jsonString);
+        String requestId = jsonObject.getString("requestId");
+        String requestStatus = jsonObject.getString("requestStatus");
+
+        CompositeKey compositeKey = ctx.getStub().createCompositeKey(ProductLicense.class.getSimpleName(), requestId);
+        String dbKey = compositeKey.toString();
+
+        byte [] result = ctx.getStub().getState(dbKey);
+
+        if (result.length > 0) {
+            System.out.println(new String(result, UTF_8));
+
+            ProductLicense productLicense = genson.deserialize(result, ProductLicense.class);
+            productLicense.setRequestStatus(requestStatus);
+
+            System.out.println("Product License: " + productLicense);
+            String productLicenseStr = genson.serialize(productLicense);
+            ctx.getStub().putStringState(dbKey, productLicenseStr);
+            return productLicenseStr;
+        } else {
+            String errorMessage = String.format("Product license %s does not exist.", requestId);
+            System.out.println(errorMessage);
+            throw new ChaincodeException(errorMessage, ContractErrors.REQUEST_NOT_FOUND);
+        }
+    }
+
+    @Transaction(intent = Transaction.TYPE.SUBMIT)
+    public String addProduct(Context ctx, String jsonStr) {
+        JSONObject jsonObject = new JSONObject(jsonStr);
+
+        String productId = ctx.getStub().getTxId();
+        String productName = jsonObject.getString("productName");
+        String licenseID = jsonObject.getString("licenseID");
+        String creatorId = jsonObject.getString("creatorId");
+        String dateCreated = jsonObject.getString("dateCreated");
+        String details = jsonObject.getString("details");
+
+        CompositeKey compositeKey = ctx.getStub().createCompositeKey(Product.class.getSimpleName(), productId);
+        String dbKey = compositeKey.toString();
+
+        Product product = new Product (
+                productId,
+                productName,
+                licenseID,
+                creatorId,
+                dateCreated,
+                details
+        );
+
+        String productStr = genson.serialize(product);
+        ctx.getStub().putStringState(dbKey, productStr);
+        return productStr;
+    }
+
+    @Transaction(intent = Transaction.TYPE.EVALUATE)
+    public String getProduct(Context ctx, String jsonStr) {
+        JSONObject jsonObject = new JSONObject(jsonStr);
+        String productId = jsonObject.getString("productId");
+
+        CompositeKey compositeKey = ctx.getStub().createCompositeKey(Product.class.getSimpleName(), productId);
+        String dbKey = compositeKey.toString();
+
+        byte [] result = ctx.getStub().getState(dbKey);
+
+        if (result.length > 0) {
+            System.out.println(new String(result, UTF_8));
+
+            Product product = genson.deserialize(result, Product.class);
+
+            System.out.println("getProduct: " + product);
+            String productStr = genson.serialize(product);
+            return productStr;
+        } else {
+            String errorMessage = String.format("Product %s does not exist.", productId);
+            System.out.println(errorMessage);
+            throw new ChaincodeException(errorMessage, ContractErrors.REQUEST_NOT_FOUND);
+        }
+    }
+
 }

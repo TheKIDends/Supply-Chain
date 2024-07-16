@@ -4,6 +4,7 @@ import com.blockchain.supplychain.chaincode.Config;
 import com.blockchain.supplychain.chaincode.client.RegisterUserHyperledger;
 import com.blockchain.supplychain.chaincode.util.ConnectionParamsUtil;
 import com.blockchain.supplychain.chaincode.util.WalletUtil;
+import com.blockchain.supplychain.entity.Product;
 import com.blockchain.supplychain.entity.ProductLicense;
 import com.blockchain.supplychain.model.User;
 import com.owlike.genson.Genson;
@@ -108,7 +109,7 @@ public class HyperledgerService {
 
             String appointmentRequestStr = new String(result);
             productLicense = genson.deserialize(appointmentRequestStr, ProductLicense.class);
-            LOG.info("result: " + productLicense);
+            LOG.info("sendProductLicense: " + productLicense);
         } catch (Exception e) {
             formatExceptionMessage(e);
         }
@@ -118,10 +119,10 @@ public class HyperledgerService {
     public ProductLicense getProductLicense(User user, String requestId) throws Exception {
         ProductLicense productLicense = new ProductLicense();
         try {
-            Contract contract = getContract(user);
-
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("requestId", requestId);
+
+            Contract contract = getContract(user);
 
             byte[] result = contract.evaluateTransaction(
                     "getProductLicense",
@@ -131,10 +132,78 @@ public class HyperledgerService {
             String productLicenseStr = new String(result);
             productLicense = genson.deserialize(productLicenseStr, ProductLicense.class);
 
-            LOG.info("productLicense: " + productLicense);
+            LOG.info("getProductLicense: " + productLicense);
         } catch (Exception e) {
             formatExceptionMessage(e);
         }
         return productLicense;
+    }
+
+    public ProductLicense setProductLicenseStatus(User user, String requestId, String requestStatus) throws Exception {
+        ProductLicense productLicense = new ProductLicense();
+        try {
+            Contract contract = getContract(user);
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("requestId", requestId);
+            jsonObject.put("requestStatus", requestStatus);
+
+            byte[] result = contract.submitTransaction(
+                    "setProductLicenseStatus",
+                    jsonObject.toString()
+            );
+
+            String productLicenseStr = new String(result);
+            productLicense = genson.deserialize(productLicenseStr, ProductLicense.class);
+
+            LOG.info("setProductLicenseStatus: " + productLicense);
+        } catch (Exception e) {
+            formatExceptionMessage(e);
+        }
+        return productLicense;
+    }
+
+    public Product addProduct(User user, JSONObject jsonObject) throws Exception {
+        Product product = null;
+        try {
+            Contract contract = getContract(user);
+
+            byte[] result = contract.submitTransaction(
+                    "addProduct",
+                    jsonObject.toString()
+            );
+
+            String appointmentRequestStr = new String(result);
+            product = genson.deserialize(appointmentRequestStr, Product.class);
+
+            LOG.info("addProduct: " + product);
+        } catch (Exception e) {
+            formatExceptionMessage(e);
+        }
+        return product;
+    }
+
+    public Product getProduct(User user, String productId) throws Exception {
+        Product product = new Product();
+        try {
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("productId", productId);
+
+            Contract contract = getContract(user);
+
+            byte[] result = contract.evaluateTransaction(
+                    "getProduct",
+                    jsonObject.toString()
+            );
+
+            String productStr = new String(result);
+            product = genson.deserialize(productStr, Product.class);
+
+            LOG.info("getProduct: " + product);
+        } catch (Exception e) {
+            formatExceptionMessage(e);
+        }
+        return product;
     }
 }

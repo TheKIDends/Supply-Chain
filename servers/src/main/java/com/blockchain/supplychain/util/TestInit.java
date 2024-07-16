@@ -2,7 +2,9 @@ package com.blockchain.supplychain.util;
 
 import com.blockchain.supplychain.chaincode.Config;
 import com.blockchain.supplychain.chaincode.client.RegisterUserHyperledger;
+import com.blockchain.supplychain.entity.Product;
 import com.blockchain.supplychain.entity.ProductLicense;
+import com.blockchain.supplychain.enumeration.RequestStatus;
 import com.blockchain.supplychain.model.Company;
 import com.blockchain.supplychain.repository.CompanyRepository;
 import com.blockchain.supplychain.repository.UserRepository;
@@ -61,10 +63,48 @@ public class TestInit implements CommandLineRunner {
             System.out.println(exception);
         }
 
-        sendProductLicense();
-        getProductLicense();
+//        addProduct();
+        getProduct();
+//        sendProductLicense();
+//        getProductLicense();
+//        setProductLicenseStatus();
 
         LOG.info("TEST INIT IS FINISHED");
+    }
+
+    private void addProduct() {
+        String userId = company1.getId();
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("productName", "123");
+        jsonObject.put("licenseID", "123");
+        jsonObject.put("creatorId", userId);
+        jsonObject.put("dateCreated", "123");
+        jsonObject.put("details", "123");
+
+        try {
+            Product product = hyperledgerService.addProduct(
+                    company1,
+                    jsonObject
+            );
+            System.out.println("product: " + product);
+
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
+    }
+
+    private void getProduct() {
+        try {
+            Product product = hyperledgerService.getProduct(
+                    company1,
+                    "4460bd9f23aefca5c96cb011437bbdf6a5e61db94dad1d27a9b3d75947146f0a"
+            );
+
+            System.out.println("getProduct: " + product);
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
     }
 
     private void sendProductLicense() {
@@ -75,14 +115,14 @@ public class TestInit implements CommandLineRunner {
         jsonObject.put("recipientId", "abc");
         jsonObject.put("dateCreated", "abc");
         jsonObject.put("dateModified", "abc");
-        jsonObject.put("companyId", "abc");
         jsonObject.put("productId", "abc");
         jsonObject.put("details", "abc");
 
         try {
             ProductLicense productLicense = hyperledgerService.sendProductLicense(
                     company1,
-                    jsonObject);
+                    jsonObject
+            );
             System.out.println("productLicense: " + productLicense);
 
         } catch (Exception exception) {
@@ -98,6 +138,20 @@ public class TestInit implements CommandLineRunner {
             );
 
             System.out.println("productLicense: " + productLicense);
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
+    }
+
+    private void setProductLicenseStatus() {
+        try {
+            ProductLicense productLicense = hyperledgerService.setProductLicenseStatus(
+                    company1,
+                    "dd5298d3f430c21acf4f18a85e94da15fdeb6ea7c4aecedc36b5f3d7440847fc",
+                    RequestStatus.ACCEPTED
+            );
+
+            System.out.println("setProductLicenseStatus: " + productLicense);
         } catch (Exception exception) {
             System.out.println(exception);
         }

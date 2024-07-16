@@ -12,10 +12,6 @@ import org.hyperledger.fabric.supplychain.enumeration.RequestType;
 @DataType()
 public class ProductLicense extends Request {
     @Property()
-    @JsonProperty("companyId")
-    private String companyId;
-
-    @Property()
     @JsonProperty("productId")
     private String productId;
 
@@ -24,14 +20,14 @@ public class ProductLicense extends Request {
     private String details;
 
     public ProductLicense() {
+        super();
         this.requestType = RequestType.PRODUCT_LICENSE;
         this.entityName = ProductLicense.class.getSimpleName();
     }
 
     @Builder
-    public ProductLicense(String requestId, String senderId, String recipientId, String dateCreated, String dateModified, String requestType, String requestStatus, String companyId, String productId, String details) {
+    public ProductLicense(String requestId, String senderId, String recipientId, String dateCreated, String dateModified, String requestType, String requestStatus, String productId, String details) {
         super(requestId, senderId, recipientId, dateCreated, dateModified, requestType, requestStatus, ProductLicense.class.getSimpleName());
-        this.companyId = companyId;
         this.productId = productId;
         this.details = details;
     }
