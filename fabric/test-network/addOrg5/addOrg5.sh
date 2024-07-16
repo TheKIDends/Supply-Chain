@@ -110,6 +110,7 @@ function generateOrg5Definition() {
   set -x
   configtxgen -printOrg Org5MSP > ../organizations/peerOrganizations/org5.example.com/org5.json
   res=$?
+
   { set +x; } 2>/dev/null
   if [ $res -ne 0 ]; then
     fatalln "Failed to generate Org5 organization definition..."
@@ -119,9 +120,9 @@ function generateOrg5Definition() {
 function Org5Up () {
   # start org5 nodes
   if [ "${DATABASE}" == "couchdb" ]; then
-    docker-compose -f $COMPOSE_FILE_ORG5 -f $COMPOSE_FILE_COUCH_ORG5 up -d 2>&1
+    docker-compose -f $COMPOSE_FILE_Org5 -f $COMPOSE_FILE_COUCH_Org5 up -d 2>&1
   else
-    docker-compose -f $COMPOSE_FILE_ORG5 up -d 2>&1
+    docker-compose -f $COMPOSE_FILE_Org5 up -d 2>&1
   fi
   if [ $? -ne 0 ]; then
     fatalln "ERROR !!!! Unable to start Org5 network"
@@ -173,15 +174,15 @@ CLI_TIMEOUT=10
 #default for delay
 CLI_DELAY=3
 # channel name defaults to "mychannel"
-CHANNEL_NAME="supplychain"
+CHANNEL_NAME="mychannel"
 # use this as the docker compose couch file
-COMPOSE_FILE_COUCH_ORG5=docker/docker-compose-couch-org5.yaml
+COMPOSE_FILE_COUCH_Org5=docker/docker-compose-couch-org5.yaml
 # use this as the default docker-compose yaml definition
-COMPOSE_FILE_ORG5=docker/docker-compose-org5.yaml
+COMPOSE_FILE_Org5=docker/docker-compose-org5.yaml
 # certificate authorities compose file
 COMPOSE_FILE_CA_Org5=docker/docker-compose-ca-org5.yaml
 # database
-DATABASE="couchdb"
+DATABASE="leveldb"
 
 # Parse commandline args
 

@@ -181,7 +181,7 @@ COMPOSE_FILE_ORG3=docker/docker-compose-org3.yaml
 # certificate authorities compose file
 COMPOSE_FILE_CA_ORG3=docker/docker-compose-ca-org3.yaml
 # database
-DATABASE="couchdb"
+DATABASE="leveldb"
 
 # Parse commandline args
 

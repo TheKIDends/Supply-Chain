@@ -61,7 +61,7 @@ setGlobals() {
     export CORE_PEER_LOCALMSPID="Org6MSP"
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_ORG6_CA
     export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/org6.example.com/users/Admin@org6.example.com/msp
-    export CORE_PEER_ADDRESS=localhost:15054
+    export CORE_PEER_ADDRESS=localhost:17051
   else
     errorln "ORG Unknown"
   fi
@@ -92,7 +92,7 @@ setGlobalsCLI() {
   elif [ $USING_ORG -eq 5 ]; then
     export CORE_PEER_ADDRESS=peer0.org5.example.com:15051
   elif [ $USING_ORG -eq 6 ]; then
-    export CORE_PEER_ADDRESS=peer0.org6.example.com:15054
+    export CORE_PEER_ADDRESS=peer0.org6.example.com:17051
   else
     errorln "ORG Unknown"
   fi

@@ -315,7 +315,7 @@ MAX_RETRY=8
 # default for delay between commands
 CLI_DELAY=3
 # channel name defaults to "mychannel"
-CHANNEL_NAME="supplychain"
+CHANNEL_NAME="mychannel"
 # chaincode name defaults to "NA"
 CC_NAME="NA"
 # chaincode path defaults to "NA"
@@ -332,25 +332,20 @@ COMPOSE_FILE_BASE=docker/docker-compose-test-net.yaml
 COMPOSE_FILE_COUCH=docker/docker-compose-couch.yaml
 # certificate authorities compose file
 COMPOSE_FILE_CA=docker/docker-compose-ca.yaml
-
 # use this as the docker compose couch file for org3
 COMPOSE_FILE_COUCH_ORG3=addOrg3/docker/docker-compose-couch-org3.yaml
 # use this as the default docker-compose yaml definition for org3
 COMPOSE_FILE_ORG3=addOrg3/docker/docker-compose-org3.yaml
-
 # use this as the docker compose couch file for org4
 COMPOSE_FILE_COUCH_ORG4=addOrg4/docker/docker-compose-couch-org4.yaml
 # use this as the default docker-compose yaml definition for org4
 COMPOSE_FILE_ORG4=addOrg4/docker/docker-compose-org4.yaml
-
 # use this as the docker compose couch file for org5
 COMPOSE_FILE_COUCH_ORG5=addOrg5/docker/docker-compose-couch-org5.yaml
 # use this as the default docker-compose yaml definition for org5
 COMPOSE_FILE_ORG5=addOrg5/docker/docker-compose-org5.yaml
-
-# use this as the docker compose couch file for org6
+# use this as the default docker-compose yaml definition for org5
 COMPOSE_FILE_COUCH_ORG6=addOrg6/docker/docker-compose-couch-org6.yaml
-# use this as the default docker-compose yaml definition for org6
 COMPOSE_FILE_ORG6=addOrg6/docker/docker-compose-org6.yaml
 
 #
@@ -361,7 +356,7 @@ CC_VERSION="1.0"
 # Chaincode definition sequence
 CC_SEQUENCE=1
 # default database
-DATABASE="couchdb"
+DATABASE="leveldb"
 
 # Parse commandline args
 
