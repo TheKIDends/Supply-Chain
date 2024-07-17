@@ -35,7 +35,7 @@ public class Config {
     public static final String ORG6_AFFILIATION = "";
     public static final String ORG6 = "org6";
 
-    public static final String COMPANY_ORG = "org1";
+    public static final String BUSINESS_ORG = "org1";
 
     public static final String CHANNEL_NAME = "supplychain";
 

@@ -7,11 +7,13 @@ import org.hyperledger.fabric.contract.annotation.*;
 import org.hyperledger.fabric.shim.ChaincodeException;
 import org.hyperledger.fabric.shim.ChaincodeStub;
 import org.hyperledger.fabric.shim.ledger.CompositeKey;
+import org.hyperledger.fabric.supplychain.entity.Item;
 import org.hyperledger.fabric.supplychain.entity.Product;
 import org.hyperledger.fabric.supplychain.entity.ProductLicense;
 import org.hyperledger.fabric.supplychain.enumeration.ContractErrors;
 import org.hyperledger.fabric.supplychain.enumeration.RequestStatus;
 import org.hyperledger.fabric.supplychain.enumeration.RequestType;
+import org.hyperledger.fabric.supplychain.util.Util;
 import org.json.JSONObject;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -61,7 +63,7 @@ public class SupplyChainContract implements ContractInterface {
         } catch (Exception e) {
             String errorMessage = "Error during method ctx.getClientIdentity.getAttributeValue()";
             System.out.println(errorMessage);
-            throw new ChaincodeException(errorMessage, ContractErrors.UNAUTHORIZED_EDIT_ACCESS);
+            throw new ChaincodeException(errorMessage, ContractErrors.UNAUTHORIZED);
         }
     }
 
@@ -89,12 +91,12 @@ public class SupplyChainContract implements ContractInterface {
         } catch (Exception e) {
             String errorMessage = "Error during method ctx.getClientIdentity.getAttributeValue(...)";
             System.out.println(errorMessage);
-            throw new ChaincodeException(errorMessage, ContractErrors.UNAUTHORIZED_EDIT_ACCESS);
+            throw new ChaincodeException(errorMessage, ContractErrors.UNAUTHORIZED);
         }
         if (!userIdentityId.equals(userIdentityInDb)) {
             String errorMessage = String.format("Error during method: %s , identified user does not have write rights", methodName);
             System.out.println(errorMessage);
-            throw new ChaincodeException(errorMessage, ContractErrors.UNAUTHORIZED_EDIT_ACCESS);
+            throw new ChaincodeException(errorMessage, ContractErrors.UNAUTHORIZED);
         }
     }
 
@@ -105,15 +107,35 @@ public class SupplyChainContract implements ContractInterface {
         String requestId = ctx.getStub().getTxId();
         String senderId = jsonObject.getString("senderId");
         String recipientId = jsonObject.getString("recipientId");
-        String dateCreated = jsonObject.getString("dateCreated");
-        String dateModified = jsonObject.getString("dateModified");
+        String dateCreated = Util.getCurrentTime();
+        String dateModified = dateCreated;
         String requestType = RequestType.PRODUCT_LICENSE;
         String requestStatus = RequestStatus.PENDING;
         String productId = jsonObject.getString("productId");
         String details = jsonObject.getString("details");
 
-        CompositeKey compositeKey = ctx.getStub().createCompositeKey(ProductLicense.class.getSimpleName(), requestId);
-        String dbKey = compositeKey.toString();
+        CompositeKey productCompositeKey = ctx.getStub().createCompositeKey(Product.class.getSimpleName(), productId);
+        String productDBKey = productCompositeKey.toString();
+
+        byte [] result = ctx.getStub().getState(productDBKey);
+
+        if (result.length > 0) {
+            System.out.println(new String(result, UTF_8));
+
+            Product product = genson.deserialize(result, Product.class);
+            product.setLicenseID(requestId);
+
+            String productStr = genson.serialize(product);
+            ctx.getStub().putStringState(productDBKey, productStr);
+
+        } else {
+            String errorMessage = String.format("Product license %s does not exist.", requestId);
+            System.out.println(errorMessage);
+            throw new ChaincodeException(errorMessage, ContractErrors.REQUEST_NOT_FOUND);
+        }
+
+        CompositeKey licenseCompositeKey = ctx.getStub().createCompositeKey(ProductLicense.class.getSimpleName(), requestId);
+        String licenseDBKey = licenseCompositeKey.toString();
 
         ProductLicense productLicense = new ProductLicense (
                 requestId,
@@ -128,7 +150,7 @@ public class SupplyChainContract implements ContractInterface {
         );
 
         String productLicenseStr = genson.serialize(productLicense);
-        ctx.getStub().putStringState(dbKey, productLicenseStr);
+        ctx.getStub().putStringState(licenseDBKey, productLicenseStr);
         return productLicenseStr;
     }
 
@@ -146,17 +168,7 @@ public class SupplyChainContract implements ContractInterface {
             System.out.println(new String(result, UTF_8));
 
             ProductLicense productLicense = genson.deserialize(result, ProductLicense.class);
-//            try {
-//                authorizeRequest(ctx, viewRequest.getSenderId(), "getViewRequest(validate senderId)");
-//            }
-//            catch (ChaincodeException chaincodeException) {
-//                try {
-//                    authorizeRequest(ctx, viewRequest.getRecipientId(), "getViewRequest(validate recipientId)");
-//                }
-//                catch (ChaincodeException ce) {
-//                    throw ce;
-//                }
-//            }
+
             System.out.println("Product License: " + productLicense);
             String productLicenseStr = genson.serialize(productLicense);
             return productLicenseStr;
@@ -183,6 +195,7 @@ public class SupplyChainContract implements ContractInterface {
 
             ProductLicense productLicense = genson.deserialize(result, ProductLicense.class);
             productLicense.setRequestStatus(requestStatus);
+            productLicense.setDateModified(Util.getCurrentTime());
 
             System.out.println("Product License: " + productLicense);
             String productLicenseStr = genson.serialize(productLicense);
@@ -201,9 +214,9 @@ public class SupplyChainContract implements ContractInterface {
 
         String productId = ctx.getStub().getTxId();
         String productName = jsonObject.getString("productName");
-        String licenseID = jsonObject.getString("licenseID");
+        String licenseID = null;
         String creatorId = jsonObject.getString("creatorId");
-        String dateCreated = jsonObject.getString("dateCreated");
+        String dateCreated = Util.getCurrentTime();
         String details = jsonObject.getString("details");
 
         CompositeKey compositeKey = ctx.getStub().createCompositeKey(Product.class.getSimpleName(), productId);
@@ -244,8 +257,49 @@ public class SupplyChainContract implements ContractInterface {
         } else {
             String errorMessage = String.format("Product %s does not exist.", productId);
             System.out.println(errorMessage);
-            throw new ChaincodeException(errorMessage, ContractErrors.REQUEST_NOT_FOUND);
+            throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_NOT_FOUND);
         }
+    }
+
+    @Transaction(intent = Transaction.TYPE.SUBMIT)
+    public String addItem(Context ctx, String jsonStr) {
+        JSONObject jsonObject = new JSONObject(jsonStr);
+        String itemId = ctx.getStub().getTxId();
+        String productId = jsonObject.getString("productId");
+        String productionDate = Util.getCurrentTime();
+        String expirationDate = jsonObject.getString("expirationDate");
+        String creatorId = jsonObject.getString("creatorId");
+        String ownerId = jsonObject.getString("ownerId");
+        String itemStatus = jsonObject.getString("itemStatus");
+        String details = jsonObject.getString("details");
+
+        CompositeKey productCompositeKey = ctx.getStub().createCompositeKey(Product.class.getSimpleName(), productId);
+        String productDBKey = productCompositeKey.toString();
+
+        byte [] result = ctx.getStub().getState(productDBKey);
+        if (result.length == 0) {
+            String errorMessage = String.format("Product %s does not exist.", productId);
+            System.out.println(errorMessage);
+            throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_NOT_FOUND);
+        }
+
+        CompositeKey itemCompositeKey = ctx.getStub().createCompositeKey(Item.class.getSimpleName(), itemId);
+        String itemDBKey = itemCompositeKey.toString();
+
+        Item item = new Item (
+                itemId,
+                productId,
+                productionDate,
+                expirationDate,
+                creatorId,
+                ownerId,
+                itemStatus,
+                details
+        );
+
+        String itemStr = genson.serialize(item);
+        ctx.getStub().putStringState(itemDBKey, itemStr);
+        return itemStr;
     }
 
 }

@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 @Setter
 @SuperBuilder
 @NoArgsConstructor
-public class Company extends User {
+public class Business extends User {
     private String address;
     private String phoneNumber;
     private String businessLicenseNumber;
@@ -23,7 +23,7 @@ public class Company extends User {
         return address;
     }
 
-    public Company setAddress(String address) {
+    public Business setAddress(String address) {
         this.address = address;
         return this;
     }
@@ -32,7 +32,7 @@ public class Company extends User {
         return phoneNumber;
     }
 
-    public Company setPhoneNumber(String phoneNumber) {
+    public Business setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
@@ -41,7 +41,7 @@ public class Company extends User {
         return businessLicenseNumber;
     }
 
-    public Company setBusinessLicenseNumber(String businessLicenseNumber) {
+    public Business setBusinessLicenseNumber(String businessLicenseNumber) {
         this.businessLicenseNumber = businessLicenseNumber;
         return this;
     }
@@ -50,7 +50,7 @@ public class Company extends User {
         return directorName;
     }
 
-    public Company setDirectorName(String directorName) {
+    public Business setDirectorName(String directorName) {
         this.directorName = directorName;
         return this;
     }
@@ -59,7 +59,7 @@ public class Company extends User {
         return directorIDNumber;
     }
 
-    public Company setDirectorIDNumber(String directorIDNumber) {
+    public Business setDirectorIDNumber(String directorIDNumber) {
         this.directorIDNumber = directorIDNumber;
         return this;
     }

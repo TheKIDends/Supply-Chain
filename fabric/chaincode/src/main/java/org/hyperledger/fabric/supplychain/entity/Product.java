@@ -38,7 +38,9 @@ public class Product {
     }
 
     @Builder
-    public Product(String productId, String productName, String licenseID, String creatorId, String dateCreated, String details) {
+    public Product(String productId, String productName, String licenseID,
+                   String creatorId, String dateCreated, String details
+    ) {
         this.productId = productId;
         this.productName = productName;
         this.licenseID = licenseID;

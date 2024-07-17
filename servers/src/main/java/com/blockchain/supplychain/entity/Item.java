@@ -1,0 +1,53 @@
+package com.blockchain.supplychain.entity;
+
+import com.owlike.genson.annotation.JsonProperty;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+public class Item {
+    @JsonProperty("itemId")
+    private String productId;
+
+    @JsonProperty("productId")
+    private String productName;
+
+    @JsonProperty("productionDate")
+    private String productionDate;
+
+    @JsonProperty("expirationDate")
+    private String expirationDate;
+
+    @JsonProperty("creatorId")
+    private String creatorId;
+
+    @JsonProperty("ownerId")
+    private String ownerId;
+
+    @JsonProperty("itemStatus")
+    private String itemStatus;
+
+    @JsonProperty("details")
+    private String details;
+
+    public Item() {
+    }
+
+    @Builder
+    public Item(String productId, String productName, String productionDate, String expirationDate,
+                String creatorId, String ownerId, String itemStatus, String details
+    ) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productionDate = productionDate;
+        this.expirationDate = expirationDate;
+        this.creatorId = creatorId;
+        this.ownerId = ownerId;
+        this.itemStatus = itemStatus;
+        this.details = details;
+    }
+}

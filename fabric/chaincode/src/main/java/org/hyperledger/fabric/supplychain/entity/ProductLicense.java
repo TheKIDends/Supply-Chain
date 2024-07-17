@@ -26,8 +26,12 @@ public class ProductLicense extends Request {
     }
 
     @Builder
-    public ProductLicense(String requestId, String senderId, String recipientId, String dateCreated, String dateModified, String requestType, String requestStatus, String productId, String details) {
-        super(requestId, senderId, recipientId, dateCreated, dateModified, requestType, requestStatus, ProductLicense.class.getSimpleName());
+    public ProductLicense(String requestId, String senderId, String recipientId,
+                          String dateCreated, String dateModified, String requestType,
+                          String requestStatus, String productId, String details
+    ) {
+        super(requestId, senderId, recipientId, dateCreated, dateModified, requestType,
+                requestStatus, ProductLicense.class.getSimpleName());
         this.productId = productId;
         this.details = details;
     }

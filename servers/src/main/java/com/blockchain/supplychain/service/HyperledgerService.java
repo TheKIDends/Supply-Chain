@@ -4,6 +4,7 @@ import com.blockchain.supplychain.chaincode.Config;
 import com.blockchain.supplychain.chaincode.client.RegisterUserHyperledger;
 import com.blockchain.supplychain.chaincode.util.ConnectionParamsUtil;
 import com.blockchain.supplychain.chaincode.util.WalletUtil;
+import com.blockchain.supplychain.entity.Item;
 import com.blockchain.supplychain.entity.Product;
 import com.blockchain.supplychain.entity.ProductLicense;
 import com.blockchain.supplychain.model.User;
@@ -173,8 +174,8 @@ public class HyperledgerService {
                     jsonObject.toString()
             );
 
-            String appointmentRequestStr = new String(result);
-            product = genson.deserialize(appointmentRequestStr, Product.class);
+            String productStr = new String(result);
+            product = genson.deserialize(productStr, Product.class);
 
             LOG.info("addProduct: " + product);
         } catch (Exception e) {
@@ -205,5 +206,25 @@ public class HyperledgerService {
             formatExceptionMessage(e);
         }
         return product;
+    }
+
+    public Item addItem(User user, JSONObject jsonObject) throws Exception {
+        Item item = null;
+        try {
+            Contract contract = getContract(user);
+
+            byte[] result = contract.submitTransaction(
+                    "addItem",
+                    jsonObject.toString()
+            );
+
+            String itemStr = new String(result);
+            item = genson.deserialize(itemStr, Item.class);
+
+            LOG.info("addItem: " + item);
+        } catch (Exception e) {
+            formatExceptionMessage(e);
+        }
+        return item;
     }
 }
