@@ -11,10 +11,16 @@ import lombok.ToString;
 @ToString
 public class Item {
     @JsonProperty("itemId")
-    private String productId;
+    private String itemId;
 
     @JsonProperty("productId")
-    private String productName;
+    private String productId;
+
+    @JsonProperty("itemType")
+    private String itemType;
+
+    @JsonProperty("containerId")
+    private String containerId;
 
     @JsonProperty("productionDate")
     private String productionDate;
@@ -38,11 +44,13 @@ public class Item {
     }
 
     @Builder
-    public Item(String productId, String productName, String productionDate, String expirationDate,
-                String creatorId, String ownerId, String itemStatus, String details
+    public Item(String itemId, String productId, String itemType, String containerId, String productionDate,
+                String expirationDate, String creatorId, String ownerId, String itemStatus, String details
     ) {
+        this.itemId = itemId;
         this.productId = productId;
-        this.productName = productName;
+        this.itemType = itemType;
+        this.containerId = containerId;
         this.productionDate = productionDate;
         this.expirationDate = expirationDate;
         this.creatorId = creatorId;

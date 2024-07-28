@@ -117,12 +117,9 @@ public class HyperledgerService {
         return productLicense;
     }
 
-    public ProductLicense getProductLicense(User user, String requestId) throws Exception {
+    public ProductLicense getProductLicense(User user, JSONObject jsonObject) throws Exception {
         ProductLicense productLicense = new ProductLicense();
         try {
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("requestId", requestId);
-
             Contract contract = getContract(user);
 
             byte[] result = contract.evaluateTransaction(
@@ -140,14 +137,10 @@ public class HyperledgerService {
         return productLicense;
     }
 
-    public ProductLicense setProductLicenseStatus(User user, String requestId, String requestStatus) throws Exception {
+    public ProductLicense setProductLicenseStatus(User user, JSONObject jsonObject) throws Exception {
         ProductLicense productLicense = new ProductLicense();
         try {
             Contract contract = getContract(user);
-
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("requestId", requestId);
-            jsonObject.put("requestStatus", requestStatus);
 
             byte[] result = contract.submitTransaction(
                     "setProductLicenseStatus",
@@ -184,12 +177,9 @@ public class HyperledgerService {
         return product;
     }
 
-    public Product getProduct(User user, String productId) throws Exception {
+    public Product getProduct(User user, JSONObject jsonObject ) throws Exception {
         Product product = new Product();
         try {
-
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("productId", productId);
 
             Contract contract = getContract(user);
 
@@ -222,6 +212,66 @@ public class HyperledgerService {
             item = genson.deserialize(itemStr, Item.class);
 
             LOG.info("addItem: " + item);
+        } catch (Exception e) {
+            formatExceptionMessage(e);
+        }
+        return item;
+    }
+
+    public Item setContainerIdForItem(User user, JSONObject jsonObject) throws Exception {
+        Item item = new Item();
+        try {
+            Contract contract = getContract(user);
+
+            byte[] result = contract.submitTransaction(
+                    "setContainerIdForItem",
+                    jsonObject.toString()
+            );
+
+            String itemStr = new String(result);
+            item = genson.deserialize(itemStr, Item.class);
+
+            LOG.info("setContainerIdForItem: " + item);
+        } catch (Exception e) {
+            formatExceptionMessage(e);
+        }
+        return item;
+    }
+
+    public Item removeContainerIdForItem(User user, JSONObject jsonObject) throws Exception {
+        Item item = new Item();
+        try {
+            Contract contract = getContract(user);
+
+            byte[] result = contract.submitTransaction(
+                    "removeContainerIdForItem",
+                    jsonObject.toString()
+            );
+
+            String itemStr = new String(result);
+            item = genson.deserialize(itemStr, Item.class);
+
+            LOG.info("removeContainerIdForItem: " + item);
+        } catch (Exception e) {
+            formatExceptionMessage(e);
+        }
+        return item;
+    }
+
+    public Item getItem(User user, JSONObject jsonObject) throws Exception {
+        Item item = new Item();
+        try {
+            Contract contract = getContract(user);
+
+            byte[] result = contract.submitTransaction(
+                    "getItem",
+                    jsonObject.toString()
+            );
+
+            String itemStr = new String(result);
+            item = genson.deserialize(itemStr, Item.class);
+
+            LOG.info("getItem: " + item);
         } catch (Exception e) {
             formatExceptionMessage(e);
         }

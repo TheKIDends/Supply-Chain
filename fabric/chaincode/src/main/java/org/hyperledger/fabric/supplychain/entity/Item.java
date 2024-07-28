@@ -22,6 +22,14 @@ public class Item {
     private String productId;
 
     @Property()
+    @JsonProperty("itemType")
+    private String itemType;
+
+    @Property()
+    @JsonProperty("containerId")
+    private String containerId;
+
+    @Property()
     @JsonProperty("productionDate")
     private String productionDate;
 
@@ -49,11 +57,13 @@ public class Item {
     }
 
     @Builder
-    public Item(String itemId, String productId, String productionDate, String expirationDate,
-                String creatorId, String ownerId, String itemStatus, String details
+    public Item(String itemId, String productId, String itemType, String containerId, String productionDate,
+                String expirationDate, String creatorId, String ownerId, String itemStatus, String details
     ) {
         this.itemId = itemId;
         this.productId = productId;
+        this.itemType = itemType;
+        this.containerId = containerId;
         this.productionDate = productionDate;
         this.expirationDate = expirationDate;
         this.creatorId = creatorId;

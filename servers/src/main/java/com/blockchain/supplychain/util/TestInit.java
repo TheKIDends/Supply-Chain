@@ -5,6 +5,7 @@ import com.blockchain.supplychain.chaincode.client.RegisterUserHyperledger;
 import com.blockchain.supplychain.entity.Item;
 import com.blockchain.supplychain.entity.Product;
 import com.blockchain.supplychain.entity.ProductLicense;
+import com.blockchain.supplychain.enumeration.ItemType;
 import com.blockchain.supplychain.enumeration.RequestStatus;
 import com.blockchain.supplychain.model.Business;
 import com.blockchain.supplychain.repository.BusinessRepository;
@@ -64,13 +65,21 @@ public class TestInit implements CommandLineRunner {
         }
 
 //        addProduct();
-//
-        addItem();
 //        getProduct();
 //        sendProductLicense();
 //        getProductLicense();
 //        setProductLicenseStatus();
 
+//        addItem();
+//        addItem();
+//        addItem();
+
+//        setContainerIdForItem();
+
+//        removeContainerIdForItem();
+
+
+        getItem();
         LOG.info("TEST INIT IS FINISHED");
     }
 
@@ -78,13 +87,15 @@ public class TestInit implements CommandLineRunner {
         String userId = business1.getId();
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("productId", "b4591ec063506241353b55cea6e0ffab6b05d1e829b49a4a2e774221c28d925e");
+        jsonObject.put("productId", "3c4c0149937c00ade0d2a4a86e1cf079555092c0a0dfb077aab43c9af6adccd1");
+        jsonObject.put("itemType", ItemType.CONTAINER);
+        jsonObject.put("containerId", JSONObject.NULL);
+        jsonObject.put("productionDate", TimeUtils.getCurrentTimeStrInVietNam());
         jsonObject.put("expirationDate", "30/7/2025");
         jsonObject.put("creatorId", userId);
         jsonObject.put("ownerId", userId);
         jsonObject.put("itemStatus", "abc");
         jsonObject.put("details", "Dưa hấu không hạt");
-
 
         try {
             Item item = hyperledgerService.addItem(
@@ -102,8 +113,9 @@ public class TestInit implements CommandLineRunner {
         String userId = business1.getId();
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("productName", "Dưa hấu");
+        jsonObject.put("productName", "Dưa hấu 3");
         jsonObject.put("creatorId", userId);
+        jsonObject.put("dateCreated", TimeUtils.getCurrentTimeStrInVietNam());
         jsonObject.put("details", "Dưa hấu không hạt");
 
         try {
@@ -119,10 +131,13 @@ public class TestInit implements CommandLineRunner {
     }
 
     private void getProduct() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("productId", "3c4c0149937c00ade0d2a4a86e1cf079555092c0a0dfb077aab43c9af6adccd1");
+
         try {
             Product product = hyperledgerService.getProduct(
                     business1,
-                    "4460bd9f23aefca5c96cb011437bbdf6a5e61db94dad1d27a9b3d75947146f0a"
+                    jsonObject
             );
 
             System.out.println("getProduct: " + product);
@@ -137,7 +152,8 @@ public class TestInit implements CommandLineRunner {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("senderId", userId);
         jsonObject.put("recipientId", "abcfff");
-        jsonObject.put("productId", "b4591ec063506241353b55cea6e0ffab6b05d1e829b49a4a2e774221c28d925e");
+        jsonObject.put("dateCreated", TimeUtils.getCurrentTimeStrInVietNam());
+        jsonObject.put("productId", "3c4c0149937c00ade0d2a4a86e1cf079555092c0a0dfb077aab43c9af6adccd1");
         jsonObject.put("details", "Chi tiết");
 
         try {
@@ -153,10 +169,13 @@ public class TestInit implements CommandLineRunner {
     }
 
     private void getProductLicense() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("requestId", "67bd9f0e2a2b48712e7e9a2b6cbb925be00fbad0a7d6f7464510cee866f59c5d");
+
         try {
             ProductLicense productLicense = hyperledgerService.getProductLicense(
                     business1,
-                    "3c9702759fae251355fa04c6a231ad3b38ab85473a44101ca71abbfa6e3bfaed"
+                    jsonObject
             );
 
             System.out.println("productLicense: " + productLicense);
@@ -165,15 +184,68 @@ public class TestInit implements CommandLineRunner {
         }
     }
 
+    private void getItem() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("itemId", "52ebe1adf46ee44e36c49f5df34aba875dc59a1054113e397a37b023b305d205");
+
+        try {
+            Item item = hyperledgerService.getItem(
+                    business1,
+                    jsonObject
+            );
+
+            System.out.println("getItem: " + item);
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
+    }
+
     private void setProductLicenseStatus() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("requestId", "67bd9f0e2a2b48712e7e9a2b6cbb925be00fbad0a7d6f7464510cee866f59c5d");
+        jsonObject.put("requestStatus", RequestStatus.ACCEPTED);
+        jsonObject.put("dateModified", TimeUtils.getCurrentTimeStrInVietNam());
+
         try {
             ProductLicense productLicense = hyperledgerService.setProductLicenseStatus(
                     business1,
-                    "c501fbbb516e1c0fb0a5f41ff1a4d98e7a868e869867a4951213b15b7023f5ff",
-                    RequestStatus.ACCEPTED
+                    jsonObject
             );
 
             System.out.println("setProductLicenseStatus: " + productLicense);
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
+    }
+
+    private void setContainerIdForItem() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("itemId", "52ebe1adf46ee44e36c49f5df34aba875dc59a1054113e397a37b023b305d205");
+        jsonObject.put("containerId", "d27b6bc058244874556530497afbbf02850f6085f011c491e094064f760bf2a6");
+
+        try {
+            Item item = hyperledgerService.setContainerIdForItem(
+                    business1,
+                    jsonObject
+            );
+
+            System.out.println("setContainerIdForItem: " + item);
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
+    }
+
+    private void removeContainerIdForItem() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("itemId", "52ebe1adf46ee44e36c49f5df34aba875dc59a1054113e397a37b023b305d205");
+
+        try {
+            Item item = hyperledgerService.removeContainerIdForItem(
+                    business1,
+                    jsonObject
+            );
+
+            System.out.println("removeContainerIdForItem: " + item);
         } catch (Exception exception) {
             System.out.println(exception);
         }
