@@ -12,18 +12,18 @@ import org.hyperledger.fabric.contract.annotation.Property;
 @Setter
 @ToString
 @DataType()
-public class Item {
+public class ProductItem {
     @Property()
-    @JsonProperty("itemId")
-    private String itemId;
+    @JsonProperty("productItemId")
+    private String productItemId;
 
     @Property()
     @JsonProperty("productId")
     private String productId;
 
     @Property()
-    @JsonProperty("itemType")
-    private String itemType;
+    @JsonProperty("productItemType")
+    private String productItemType;
 
     @Property()
     @JsonProperty("containerId")
@@ -46,29 +46,30 @@ public class Item {
     private String ownerId;
 
     @Property()
-    @JsonProperty("itemStatus")
-    private String itemStatus;
+    @JsonProperty("status")
+    private String status;
 
     @Property()
     @JsonProperty("details")
     private String details;
 
-    public Item() {
+    public ProductItem() {
     }
 
     @Builder
-    public Item(String itemId, String productId, String itemType, String containerId, String productionDate,
-                String expirationDate, String creatorId, String ownerId, String itemStatus, String details
+    public ProductItem(String productItemId, String productId, String productItemType, String containerId,
+                       String productionDate, String expirationDate, String creatorId, String ownerId, String status,
+                       String details
     ) {
-        this.itemId = itemId;
+        this.productItemId = productItemId;
         this.productId = productId;
-        this.itemType = itemType;
+        this.productItemType = productItemType;
         this.containerId = containerId;
         this.productionDate = productionDate;
         this.expirationDate = expirationDate;
         this.creatorId = creatorId;
         this.ownerId = ownerId;
-        this.itemStatus = itemStatus;
+        this.status = status;
         this.details = details;
     }
 }

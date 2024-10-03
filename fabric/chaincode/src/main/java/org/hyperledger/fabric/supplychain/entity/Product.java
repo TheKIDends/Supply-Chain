@@ -31,6 +31,10 @@ public class Product {
     private String dateCreated;
 
     @Property()
+    @JsonProperty("price")
+    private String price;
+
+    @Property()
     @JsonProperty("details")
     private String details;
 
@@ -39,13 +43,14 @@ public class Product {
 
     @Builder
     public Product(String productId, String productName, String licenseID,
-                   String creatorId, String dateCreated, String details
+                   String creatorId, String dateCreated, String price, String details
     ) {
         this.productId = productId;
         this.productName = productName;
         this.licenseID = licenseID;
         this.creatorId = creatorId;
         this.dateCreated = dateCreated;
+        this.price = price;
         this.details = details;
     }
 }

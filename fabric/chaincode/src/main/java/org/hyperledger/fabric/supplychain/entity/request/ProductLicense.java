@@ -1,4 +1,4 @@
-package org.hyperledger.fabric.supplychain.entity;
+package org.hyperledger.fabric.supplychain.entity.request;
 
 import com.owlike.genson.annotation.JsonProperty;
 import lombok.*;
@@ -26,11 +26,10 @@ public class ProductLicense extends Request {
     }
 
     @Builder
-    public ProductLicense(String requestId, String senderId, String recipientId,
-                          String dateCreated, String dateModified, String requestType,
-                          String requestStatus, String productId, String details
+    public ProductLicense(String requestId, String senderId, String recipientId, String dateCreated,
+                          String dateModified, String requestStatus, String productId, String details
     ) {
-        super(requestId, senderId, recipientId, dateCreated, dateModified, requestType,
+        super(requestId, senderId, recipientId, dateCreated, dateModified, RequestType.PRODUCT_LICENSE,
                 requestStatus, ProductLicense.class.getSimpleName());
         this.productId = productId;
         this.details = details;

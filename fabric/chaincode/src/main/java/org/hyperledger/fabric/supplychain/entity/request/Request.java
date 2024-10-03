@@ -1,4 +1,4 @@
-package org.hyperledger.fabric.supplychain.entity;
+package org.hyperledger.fabric.supplychain.entity.request;
 
 import lombok.*;
 
@@ -46,7 +46,9 @@ public abstract class Request {
     public Request() {
     }
 
-    public Request(String requestId, String senderId, String recipientId, String dateCreated, String dateModified, String requestType, String requestStatus, String entityName) {
+    public Request(String requestId, String senderId, String recipientId, String dateCreated, String dateModified,
+                   String requestType, String requestStatus, String entityName)
+    {
         this.requestId = requestId;
         this.senderId = senderId;
         this.recipientId = recipientId;
