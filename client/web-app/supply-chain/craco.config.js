@@ -4,7 +4,8 @@ module.exports = {
     webpack: {
         alias: {
             '@': path.resolve(__dirname, 'src/'),
-            '@Utils': path.resolve(__dirname, 'src/utils'),
+            '@Utils': path.resolve(__dirname, 'src/util'),
+            '@Const': path.resolve(__dirname, 'src/util/const.js'),
         }
     },
 };
