@@ -1,14 +1,14 @@
 package com.supplychain.productservice.command.data;
 
 import com.owlike.genson.annotation.JsonProperty;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
 @ToString
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductItem {
     @JsonProperty("itemId")
     private String itemId;
@@ -39,23 +39,4 @@ public class ProductItem {
 
     @JsonProperty("details")
     private String details;
-
-    public ProductItem() {
-    }
-
-    @Builder
-    public ProductItem(String itemId, String productId, String itemType, String containerId, String productionDate,
-                       String expirationDate, String creatorId, String ownerId, String itemStatus, String details
-    ) {
-        this.itemId = itemId;
-        this.productId = productId;
-        this.itemType = itemType;
-        this.containerId = containerId;
-        this.productionDate = productionDate;
-        this.expirationDate = expirationDate;
-        this.creatorId = creatorId;
-        this.ownerId = ownerId;
-        this.itemStatus = itemStatus;
-        this.details = details;
-    }
 }
