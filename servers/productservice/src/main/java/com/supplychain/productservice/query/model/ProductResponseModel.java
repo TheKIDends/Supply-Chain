@@ -1,4 +1,4 @@
-package com.supplychain.productservice.command.model;
+package com.supplychain.productservice.query.model;
 
 import lombok.*;
 
@@ -8,8 +8,10 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductRequestModel {
+public class ProductResponseModel {
+    private String productId;
     private String productName;
+    private String licenseID;
     private String creatorId;
     private String dateCreated;
     private String details;
