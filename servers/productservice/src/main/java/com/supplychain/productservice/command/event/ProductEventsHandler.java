@@ -13,7 +13,6 @@ public class ProductEventsHandler {
     @Autowired
     private ProductRepository productRepository;
 
-
     @EventHandler
     public void on(ProductCreatedEvent event) {
         Product product = new Product();

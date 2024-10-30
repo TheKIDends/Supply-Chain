@@ -18,7 +18,7 @@ public class ProductCommandController {
     @Autowired
     private CommandGateway commandGateway;
 
-    @PostMapping
+    @PostMapping("${endpoint.business.add-product}")
     public String addProduct(@RequestBody ProductRequestModel model) {
         CreateProductCommand command =
                 new CreateProductCommand(UUID.randomUUID().toString(), model.getProductName(), null,

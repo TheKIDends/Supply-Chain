@@ -1,13 +1,14 @@
 package com.supplychain.productservice.command.command;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Getter
 @Setter
 @ToString
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreateProductCommand {
 
     @TargetAggregateIdentifier
@@ -19,15 +20,5 @@ public class CreateProductCommand {
     private String dateCreated;
     private String details;
 
-    public CreateProductCommand() {
-    }
 
-    public CreateProductCommand(String productId, String productName, String licenseID, String creatorId, String dateCreated, String details) {
-        this.productId = productId;
-        this.productName = productName;
-        this.licenseID = licenseID;
-        this.creatorId = creatorId;
-        this.dateCreated = dateCreated;
-        this.details = details;
-    }
 }
