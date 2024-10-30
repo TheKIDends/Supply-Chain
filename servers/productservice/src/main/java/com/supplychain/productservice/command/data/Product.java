@@ -1,6 +1,9 @@
 package com.supplychain.productservice.command.data;
 
 import com.owlike.genson.annotation.JsonProperty;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
 
 @Getter
@@ -9,7 +12,10 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "products")
 public class Product {
+    @Id
     @JsonProperty("productId")
     private String productId;
 
