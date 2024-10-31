@@ -1,0 +1,51 @@
+#spring.application.name=apigateway
+#server.port=8080
+#
+## Gateway routes configuration for productservice
+#spring.cloud.gateway.routes[0].id=productservice
+#spring.cloud.gateway.routes[0].uri=http://192.168.0.106:9000
+#spring.cloud.gateway.routes[0].predicates[0]=Path=/api/product/**
+#
+## Default filters configuration
+#spring.cloud.gateway.default-filters[0]=DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+#
+## Global CORS configuration
+#spring.cloud.gateway.globalcors.corsConfigurations.[/**].allowedOrigins=*
+#spring.cloud.gateway.globalcors.corsConfigurations.[/**].allowedMethods=*
+#spring.cloud.gateway.globalcors.corsConfigurations.[/**].allowedHeaders=*
+server:
+  port: 8000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.0.106:8761/eureka
+
+logging:
+  file:
+    path: ./logs/
+  level:
+    org.springframework: DEBUG
+    org.springframework.cloud.gateway: TRACE
+
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: productservice
+          uri: http://192.168.0.106:9000
+          predicates:
+            - Path=/api/product/**
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+
+
