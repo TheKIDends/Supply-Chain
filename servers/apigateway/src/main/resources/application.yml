@@ -21,14 +21,6 @@ eureka:
     service-url:
       defaultZone: http://192.168.0.106:8761/eureka
 
-logging:
-  file:
-    path: ./logs/
-  level:
-    org.springframework: DEBUG
-    org.springframework.cloud.gateway: TRACE
-
-
 spring:
   application:
     name: api-gateway
