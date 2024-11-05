@@ -1,6 +1,6 @@
-package com.supplychain.userservice.command.model;
+package com.supplychain.userservice.model;
 
-import com.supplychain.userservice.command.data.User;
+import com.supplychain.userservice.data.User;
 import lombok.*;
 
 @Data

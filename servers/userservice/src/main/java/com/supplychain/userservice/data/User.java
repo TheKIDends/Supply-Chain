@@ -1,4 +1,4 @@
-package com.supplychain.userservice.command.data;
+package com.supplychain.userservice.data;
 
 import lombok.*;
 import jakarta.persistence.Table;

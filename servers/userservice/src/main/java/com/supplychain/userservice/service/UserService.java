@@ -1,11 +1,11 @@
-package com.supplychain.userservice.command.service;
+package com.supplychain.userservice.service;
 
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.supplychain.userservice.command.data.User;
-import com.supplychain.userservice.command.model.UserDTO;
-import com.supplychain.userservice.command.repository.UserRepository;
+import com.supplychain.userservice.data.User;
+import com.supplychain.userservice.model.UserDTO;
+import com.supplychain.userservice.repository.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

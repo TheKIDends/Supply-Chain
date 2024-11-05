@@ -1,6 +1,6 @@
-package com.supplychain.userservice.command.repository;
+package com.supplychain.userservice.repository;
 
-import com.supplychain.userservice.command.data.User;
+import com.supplychain.userservice.data.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

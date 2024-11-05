@@ -1,8 +1,8 @@
-package com.supplychain.userservice.command.controller;
+package com.supplychain.userservice.controller;
 
-import com.supplychain.userservice.command.data.User;
-import com.supplychain.userservice.command.model.UserDTO;
-import com.supplychain.userservice.command.service.UserService;
+import com.supplychain.userservice.data.User;
+import com.supplychain.userservice.model.UserDTO;
+import com.supplychain.userservice.service.UserService;
 import com.supplychain.userservice.enumeration.UserRole;
 import com.supplychain.userservice.enumeration.Designation;
 import org.springframework.beans.factory.annotation.Autowired;
