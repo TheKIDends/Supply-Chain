@@ -5,60 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c15ebec-e1bc-418d-8e70-a5ac5db45dfb" name="Changes" comment="Update chaincode scripts">
-      <change afterPath="$PROJECT_DIR$/chaincode/build/classes/java/main/org/hyperledger/fabric/supplychain/enumeration/ItemType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chaincode/build/classes/java/main/org/hyperledger/fabric/supplychain/util/TimeUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chaincode/build/tmp/compileJava/compileTransaction/stash-dir/ContractErrors.class.uniqueId1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chaincode/build/tmp/compileJava/compileTransaction/stash-dir/SupplyChainContract.class.uniqueId0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chaincode/src/main/java/org/hyperledger/fabric/supplychain/enumeration/ItemType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/enumeration/ItemType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/util/TimeUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chaincode/src/main/java/org/hyperledger/fabric/supplychain/entity/PurchaseRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chaincode/build/classes/java/main/org/hyperledger/fabric/supplychain/contract/SupplyChainContract.class" beforeDir="false" afterPath="$PROJECT_DIR$/chaincode/build/classes/java/main/org/hyperledger/fabric/supplychain/contract/SupplyChainContract.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chaincode/build/classes/java/main/org/hyperledger/fabric/supplychain/entity/Item$ItemBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/chaincode/build/classes/java/main/org/hyperledger/fabric/supplychain/entity/Item$ItemBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chaincode/build/classes/java/main/org/hyperledger/fabric/supplychain/entity/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/chaincode/build/classes/java/main/org/hyperledger/fabric/supplychain/entity/Item.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chaincode/build/classes/java/main/org/hyperledger/fabric/supplychain/enumeration/ContractErrors.class" beforeDir="false" afterPath="$PROJECT_DIR$/chaincode/build/classes/java/main/org/hyperledger/fabric/supplychain/enumeration/ContractErrors.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chaincode/build/classes/java/main/org/hyperledger/fabric/supplychain/util/Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/chaincode/build/install/chaincode/lib/chaincode-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/chaincode/build/install/chaincode/lib/chaincode-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chaincode/build/libs/chaincode-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/chaincode/build/libs/chaincode-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chaincode/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/chaincode/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chaincode/src/main/java/org/hyperledger/fabric/supplychain/contract/SupplyChainContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/chaincode/src/main/java/org/hyperledger/fabric/supplychain/contract/SupplyChainContract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chaincode/src/main/java/org/hyperledger/fabric/supplychain/entity/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/chaincode/src/main/java/org/hyperledger/fabric/supplychain/entity/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chaincode/src/main/java/org/hyperledger/fabric/supplychain/enumeration/ContractErrors.java" beforeDir="false" afterPath="$PROJECT_DIR$/chaincode/src/main/java/org/hyperledger/fabric/supplychain/enumeration/ContractErrors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chaincode/src/main/java/org/hyperledger/fabric/supplychain/util/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/chaincode/src/main/java/org/hyperledger/fabric/supplychain/util/TimeUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/IssuerPublicKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/IssuerPublicKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/IssuerRevocationPublicKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/IssuerRevocationPublicKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/ca-cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/ca-cert.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/fabric-ca-server.db" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/fabric-ca-server.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/msp/keystore/IssuerRevocationPrivateKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/msp/keystore/IssuerRevocationPrivateKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/msp/keystore/IssuerSecretKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/msp/keystore/IssuerSecretKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/tls-cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg3/fabric-ca/org3/tls-cert.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/IssuerPublicKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/IssuerPublicKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/IssuerRevocationPublicKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/IssuerRevocationPublicKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/ca-cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/ca-cert.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/fabric-ca-server.db" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/fabric-ca-server.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/msp/keystore/IssuerRevocationPrivateKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/msp/keystore/IssuerRevocationPrivateKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/msp/keystore/IssuerSecretKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/msp/keystore/IssuerSecretKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/tls-cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg4/fabric-ca/org4/tls-cert.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/IssuerPublicKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/IssuerPublicKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/IssuerRevocationPublicKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/IssuerRevocationPublicKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/ca-cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/ca-cert.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/fabric-ca-server.db" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/fabric-ca-server.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/msp/keystore/IssuerRevocationPrivateKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/msp/keystore/IssuerRevocationPrivateKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/msp/keystore/IssuerSecretKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/msp/keystore/IssuerSecretKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/tls-cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg5/fabric-ca/org5/tls-cert.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/IssuerPublicKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/IssuerPublicKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/IssuerRevocationPublicKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/IssuerRevocationPublicKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/ca-cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/ca-cert.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/fabric-ca-server.db" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/fabric-ca-server.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/msp/keystore/IssuerRevocationPrivateKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/msp/keystore/IssuerRevocationPrivateKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/msp/keystore/IssuerSecretKey" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/msp/keystore/IssuerSecretKey" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/tls-cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/test-network/addOrg6/fabric-ca/org6/tls-cert.pem" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/entity/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/entity/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/enumeration/ContractErrors.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/enumeration/ContractErrors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/service/HyperledgerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/service/HyperledgerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/util/TestInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../servers/src/main/java/com/blockchain/supplychain/util/TestInit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../servers/wallet/org1CaAdmin.id" beforeDir="false" afterPath="$PROJECT_DIR$/../servers/wallet/org1CaAdmin.id" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../servers/wallet/viethung@gmail.com.id" beforeDir="false" afterPath="$PROJECT_DIR$/../servers/wallet/viethung@gmail.com.id" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chaincode/src/main/java/org/hyperledger/fabric/supplychain/enumeration/RequestType.java" beforeDir="false" afterPath="$PROJECT_DIR$/chaincode/src/main/java/org/hyperledger/fabric/supplychain/enumeration/RequestType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servers/wallet/org1CaAdmin.id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../servers/wallet/viethung@gmail.com.id" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

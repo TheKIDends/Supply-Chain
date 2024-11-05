@@ -31,6 +31,10 @@ spring:
           uri: http://192.168.0.106:9000
           predicates:
             - Path=/api/product/**
+        - id: userservice
+          uri: http://192.168.0.106:9001
+          predicates:
+            - Path=/api/user/**
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       globalcors:

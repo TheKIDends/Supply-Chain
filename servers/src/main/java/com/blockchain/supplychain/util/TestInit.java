@@ -2,10 +2,10 @@ package com.blockchain.supplychain.util;
 
 import com.blockchain.supplychain.chaincode.Config;
 import com.blockchain.supplychain.chaincode.client.RegisterUserHyperledger;
-import com.blockchain.supplychain.entity.Item;
+import com.blockchain.supplychain.entity.ProductItem;
 import com.blockchain.supplychain.entity.Product;
-import com.blockchain.supplychain.entity.ProductLicense;
-import com.blockchain.supplychain.enumeration.ItemType;
+import com.blockchain.supplychain.entity.request.ProductLicense;
+import com.blockchain.supplychain.enumeration.ProductItemType;
 import com.blockchain.supplychain.enumeration.RequestStatus;
 import com.blockchain.supplychain.model.Business;
 import com.blockchain.supplychain.repository.BusinessRepository;
@@ -68,7 +68,7 @@ public class TestInit implements CommandLineRunner {
 //        getProduct();
 //        sendProductLicense();
 //        getProductLicense();
-//        setProductLicenseStatus();
+        setProductLicenseStatus();
 
 //        addItem();
 //        addItem();
@@ -88,7 +88,7 @@ public class TestInit implements CommandLineRunner {
 
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("productId", "3c4c0149937c00ade0d2a4a86e1cf079555092c0a0dfb077aab43c9af6adccd1");
-        jsonObject.put("itemType", ItemType.CONTAINER);
+        jsonObject.put("itemType", ProductItemType.CONTAINER);
         jsonObject.put("containerId", JSONObject.NULL);
         jsonObject.put("productionDate", TimeUtils.getCurrentTimeStrInVietNam());
         jsonObject.put("expirationDate", "30/7/2025");
@@ -98,11 +98,11 @@ public class TestInit implements CommandLineRunner {
         jsonObject.put("details", "Dưa hấu không hạt");
 
         try {
-            Item item = hyperledgerService.addItem(
+            ProductItem productItem = hyperledgerService.addItem(
                     business1,
                     jsonObject
             );
-            System.out.println("item: " + item);
+            System.out.println("productItem: " + productItem);
 
         } catch (Exception exception) {
             System.out.println(exception);
@@ -113,7 +113,7 @@ public class TestInit implements CommandLineRunner {
         String userId = business1.getId();
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("productName", "Dưa hấu 3");
+        jsonObject.put("productName", "Dưa hấu");
         jsonObject.put("creatorId", userId);
         jsonObject.put("dateCreated", TimeUtils.getCurrentTimeStrInVietNam());
         jsonObject.put("details", "Dưa hấu không hạt");
@@ -153,7 +153,7 @@ public class TestInit implements CommandLineRunner {
         jsonObject.put("senderId", userId);
         jsonObject.put("recipientId", "abcfff");
         jsonObject.put("dateCreated", TimeUtils.getCurrentTimeStrInVietNam());
-        jsonObject.put("productId", "3c4c0149937c00ade0d2a4a86e1cf079555092c0a0dfb077aab43c9af6adccd1");
+        jsonObject.put("productId", "711628b8f8288e9c1adc230e8d3ef37246e2388fe36878b5b6a748c3dd6d5d20");
         jsonObject.put("details", "Chi tiết");
 
         try {
@@ -189,12 +189,12 @@ public class TestInit implements CommandLineRunner {
         jsonObject.put("itemId", "52ebe1adf46ee44e36c49f5df34aba875dc59a1054113e397a37b023b305d205");
 
         try {
-            Item item = hyperledgerService.getItem(
+            ProductItem productItem = hyperledgerService.getItem(
                     business1,
                     jsonObject
             );
 
-            System.out.println("getItem: " + item);
+            System.out.println("getItem: " + productItem);
         } catch (Exception exception) {
             System.out.println(exception);
         }
@@ -202,7 +202,7 @@ public class TestInit implements CommandLineRunner {
 
     private void setProductLicenseStatus() {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("requestId", "67bd9f0e2a2b48712e7e9a2b6cbb925be00fbad0a7d6f7464510cee866f59c5d");
+        jsonObject.put("requestId", "dd62b177e82c30ac9d63bd478210f6190439cdd804e4d91969b3534c3a700f90");
         jsonObject.put("requestStatus", RequestStatus.ACCEPTED);
         jsonObject.put("dateModified", TimeUtils.getCurrentTimeStrInVietNam());
 
@@ -224,12 +224,12 @@ public class TestInit implements CommandLineRunner {
         jsonObject.put("containerId", "d27b6bc058244874556530497afbbf02850f6085f011c491e094064f760bf2a6");
 
         try {
-            Item item = hyperledgerService.setContainerIdForItem(
+            ProductItem productItem = hyperledgerService.setContainerIdForItem(
                     business1,
                     jsonObject
             );
 
-            System.out.println("setContainerIdForItem: " + item);
+            System.out.println("setContainerIdForItem: " + productItem);
         } catch (Exception exception) {
             System.out.println(exception);
         }
@@ -240,12 +240,12 @@ public class TestInit implements CommandLineRunner {
         jsonObject.put("itemId", "52ebe1adf46ee44e36c49f5df34aba875dc59a1054113e397a37b023b305d205");
 
         try {
-            Item item = hyperledgerService.removeContainerIdForItem(
+            ProductItem productItem = hyperledgerService.removeContainerIdForItem(
                     business1,
                     jsonObject
             );
 
-            System.out.println("removeContainerIdForItem: " + item);
+            System.out.println("removeContainerIdForItem: " + productItem);
         } catch (Exception exception) {
             System.out.println(exception);
         }

@@ -4,9 +4,9 @@ import com.blockchain.supplychain.chaincode.Config;
 import com.blockchain.supplychain.chaincode.client.RegisterUserHyperledger;
 import com.blockchain.supplychain.chaincode.util.ConnectionParamsUtil;
 import com.blockchain.supplychain.chaincode.util.WalletUtil;
-import com.blockchain.supplychain.entity.Item;
+import com.blockchain.supplychain.entity.ProductItem;
 import com.blockchain.supplychain.entity.Product;
-import com.blockchain.supplychain.entity.ProductLicense;
+import com.blockchain.supplychain.entity.request.ProductLicense;
 import com.blockchain.supplychain.model.User;
 import com.owlike.genson.Genson;
 import lombok.SneakyThrows;
@@ -74,7 +74,8 @@ public class HyperledgerService {
         return contract;
     }
 
-    private Gateway connect(String userWalletIdentity, String connectionProfilePath, String userIdentity, String org) throws Exception {
+    private Gateway connect(String userWalletIdentity, String connectionProfilePath, String userIdentity, String org)
+            throws Exception {
         Identity identity = RegisterUserHyperledger.enrollOrgAppUsers(userWalletIdentity, org, userIdentity);
         if (identity == null) {
             throw new Exception(String.format("Cannot find %s's idenitty", userWalletIdentity));
@@ -198,8 +199,8 @@ public class HyperledgerService {
         return product;
     }
 
-    public Item addItem(User user, JSONObject jsonObject) throws Exception {
-        Item item = null;
+    public ProductItem addItem(User user, JSONObject jsonObject) throws Exception {
+        ProductItem productItem = null;
         try {
             Contract contract = getContract(user);
 
@@ -209,17 +210,17 @@ public class HyperledgerService {
             );
 
             String itemStr = new String(result);
-            item = genson.deserialize(itemStr, Item.class);
+            productItem = genson.deserialize(itemStr, ProductItem.class);
 
-            LOG.info("addItem: " + item);
+            LOG.info("addItem: " + productItem);
         } catch (Exception e) {
             formatExceptionMessage(e);
         }
-        return item;
+        return productItem;
     }
 
-    public Item setContainerIdForItem(User user, JSONObject jsonObject) throws Exception {
-        Item item = new Item();
+    public ProductItem setContainerIdForItem(User user, JSONObject jsonObject) throws Exception {
+        ProductItem productItem = new ProductItem();
         try {
             Contract contract = getContract(user);
 
@@ -229,17 +230,17 @@ public class HyperledgerService {
             );
 
             String itemStr = new String(result);
-            item = genson.deserialize(itemStr, Item.class);
+            productItem = genson.deserialize(itemStr, ProductItem.class);
 
-            LOG.info("setContainerIdForItem: " + item);
+            LOG.info("setContainerIdForItem: " + productItem);
         } catch (Exception e) {
             formatExceptionMessage(e);
         }
-        return item;
+        return productItem;
     }
 
-    public Item removeContainerIdForItem(User user, JSONObject jsonObject) throws Exception {
-        Item item = new Item();
+    public ProductItem removeContainerIdForItem(User user, JSONObject jsonObject) throws Exception {
+        ProductItem productItem = new ProductItem();
         try {
             Contract contract = getContract(user);
 
@@ -249,17 +250,17 @@ public class HyperledgerService {
             );
 
             String itemStr = new String(result);
-            item = genson.deserialize(itemStr, Item.class);
+            productItem = genson.deserialize(itemStr, ProductItem.class);
 
-            LOG.info("removeContainerIdForItem: " + item);
+            LOG.info("removeContainerIdForItem: " + productItem);
         } catch (Exception e) {
             formatExceptionMessage(e);
         }
-        return item;
+        return productItem;
     }
 
-    public Item getItem(User user, JSONObject jsonObject) throws Exception {
-        Item item = new Item();
+    public ProductItem getItem(User user, JSONObject jsonObject) throws Exception {
+        ProductItem productItem = new ProductItem();
         try {
             Contract contract = getContract(user);
 
@@ -269,12 +270,12 @@ public class HyperledgerService {
             );
 
             String itemStr = new String(result);
-            item = genson.deserialize(itemStr, Item.class);
+            productItem = genson.deserialize(itemStr, ProductItem.class);
 
-            LOG.info("getItem: " + item);
+            LOG.info("getItem: " + productItem);
         } catch (Exception e) {
             formatExceptionMessage(e);
         }
-        return item;
+        return productItem;
     }
 }
