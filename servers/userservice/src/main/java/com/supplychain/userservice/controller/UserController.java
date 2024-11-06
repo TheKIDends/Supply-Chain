@@ -34,6 +34,7 @@ public class UserController {
             dto.setDesignation(Designation.MANAGER);
 
         dto.setId(UUID.randomUUID().toString());
+        dto.setEnabled(true);
         dto.setUsername(dto.getPhoneNumber());
 
         return userService.saveUser(dto);

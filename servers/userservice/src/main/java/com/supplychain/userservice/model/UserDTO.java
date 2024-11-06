@@ -2,11 +2,12 @@ package com.supplychain.userservice.model;
 
 import com.supplychain.userservice.data.User;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Data
-@Builder
 @Getter
 @Setter
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDTO {
@@ -18,36 +19,36 @@ public class UserDTO {
     private String fullName;
     private boolean enabled;
     private String role;
-    private String designation;
+    private String designation; 
 
     private String accessToken;
     private String refreshToken;
 
 
-    public static UserDTO entityToDTO(User user){
-        return UserDTO.builder()
-                .id(user.getId())
-                .username(user.getUsername())
-                .password(user.getPassword())
-                .email(user.getEmail())
-                .phoneNumber(user.getPhoneNumber())
-                .fullName(user.getFullName())
-                .enabled(user.isEnabled())
-                .role(user.getRole())
-                .designation(user.getDesignation())
-                .build();
-    }
-    public static User dtoToEntity(UserDTO dto){
-        return User.builder()
-                .id(dto.getId())
-                .username(dto.getUsername())
-                .password(dto.getPassword())
-                .email(dto.getEmail())
-                .phoneNumber(dto.getPhoneNumber())
-                .fullName(dto.getFullName())
-                .enabled(dto.isEnabled())
-                .role(dto.getRole())
-                .designation(dto.getDesignation())
-                .build();
-    }
+//    public static UserDTO entityToDTO(User user){
+//        return UserDTO.builder()
+//                .id(user.getId())
+//                .username(user.getUsername())
+//                .password(user.getPassword())
+//                .email(user.getEmail())
+//                .phoneNumber(user.getPhoneNumber())
+//                .fullName(user.getFullName())
+//                .enabled(user.isEnabled())
+//                .role(user.getRole())
+//                .designation(user.getDesignation())
+//                .build();
+//    }
+//    public static User dtoToEntity(UserDTO dto){
+//        return User.builder()
+//                .id(dto.getId())
+//                .username(dto.getUsername())
+//                .password(dto.getPassword())
+//                .email(dto.getEmail())
+//                .phoneNumber(dto.getPhoneNumber())
+//                .fullName(dto.getFullName())
+//                .enabled(dto.isEnabled())
+//                .role(dto.getRole())
+//                .designation(dto.getDesignation())
+//                .build();
+//    }
 }

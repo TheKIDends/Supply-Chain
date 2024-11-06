@@ -1,6 +1,7 @@
 package com.supplychain.userservice.data;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -10,12 +11,11 @@ import jakarta.persistence.*;
 @Getter
 @Setter
 @ToString
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class User {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class User {
     @Id
     private String id;
 
@@ -27,8 +27,8 @@ public class User {
     @Column(name = "phoneNumber", length = 30, unique = true)
     private String phoneNumber;
     private String fullName;
+
     private boolean enabled;
     private String role;
     private String designation;
-
 }
