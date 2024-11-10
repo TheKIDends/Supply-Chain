@@ -9,6 +9,8 @@ import {
 } from '@ant-design/icons';
 import {Breadcrumb, Button, Layout, Menu, theme} from 'antd';
 import HeaderComponent from "../header/Header";
+import {ToastContainer} from "react-toastify";
+import BackToTopButton from "../../components/BackToTopButton/BackToTopButton";
 const { Header, Content, Sider } = Layout;
 
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
@@ -46,70 +48,87 @@ const MasterLayout = ({children, ...props}) => {
     };
 
     return (
-        <Layout>
-            <HeaderComponent/>
+        <>
+            <Layout>
+                <HeaderComponent/>
 
-            <div {...props}>
-                {children}
-            </div>
+                <div {...props}>
+                    {children}
+                </div>
 
-            {/*<Layout hasSider>*/}
-            {/*    <Sider*/}
-            {/*        width={200}*/}
-            {/*        style={siderStyle}*/}
-            {/*        trigger={null} collapsible collapsed={collapsed}*/}
-            {/*    >*/}
-            {/*        <Menu*/}
-            {/*            mode="inline"*/}
-            {/*            defaultSelectedKeys={['1']}*/}
-            {/*            defaultOpenKeys={['sub1']}*/}
-            {/*            style={{*/}
-            {/*                height: '100%',*/}
-            {/*                borderRight: 0,*/}
-            {/*            }}*/}
-            {/*            items={items2}*/}
-            {/*        />*/}
-            {/*    </Sider>*/}
-            {/*    <Layout*/}
-            {/*        style={{*/}
-            {/*            overflowY: 'auto',*/}
-            {/*            overflowX: 'hidden',*/}
-            {/*            position: 'fixed',*/}
-            {/*            top: 70,*/}
-            {/*            right: 0,*/}
-            {/*            bottom: 0,*/}
-            {/*            padding: `24px 24px 24px 40px`,*/}
-            {/*            width: collapsed ? `calc(100vw - 80px)` : `calc(100vw - 200px)`,*/}
+                {/*<Layout hasSider>*/}
+                {/*    <Sider*/}
+                {/*        width={200}*/}
+                {/*        style={siderStyle}*/}
+                {/*        trigger={null} collapsible collapsed={collapsed}*/}
+                {/*    >*/}
+                {/*        <Menu*/}
+                {/*            mode="inline"*/}
+                {/*            defaultSelectedKeys={['1']}*/}
+                {/*            defaultOpenKeys={['sub1']}*/}
+                {/*            style={{*/}
+                {/*                height: '100%',*/}
+                {/*                borderRight: 0,*/}
+                {/*            }}*/}
+                {/*            items={items2}*/}
+                {/*        />*/}
+                {/*    </Sider>*/}
+                {/*    <Layout*/}
+                {/*        style={{*/}
+                {/*            overflowY: 'auto',*/}
+                {/*            overflowX: 'hidden',*/}
+                {/*            position: 'fixed',*/}
+                {/*            top: 70,*/}
+                {/*            right: 0,*/}
+                {/*            bottom: 0,*/}
+                {/*            padding: `24px 24px 24px 40px`,*/}
+                {/*            width: collapsed ? `calc(100vw - 80px)` : `calc(100vw - 200px)`,*/}
 
-            {/*        }}*/}
-            {/*        className={collapsed ? 'collapsed' : 'expanded'}*/}
-            {/*    >*/}
-            {/*        <Button*/}
-            {/*            type="text"*/}
-            {/*            icon={collapsed ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}*/}
-            {/*            onClick={() => setCollapsed(!collapsed)}*/}
-            {/*            style={{*/}
-            {/*                fontSize: '16px',*/}
-            {/*                width: 64,*/}
-            {/*                height: 64,*/}
-            {/*            }}*/}
-            {/*        />*/}
+                {/*        }}*/}
+                {/*        className={collapsed ? 'collapsed' : 'expanded'}*/}
+                {/*    >*/}
+                {/*        <Button*/}
+                {/*            type="text"*/}
+                {/*            icon={collapsed ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}*/}
+                {/*            onClick={() => setCollapsed(!collapsed)}*/}
+                {/*            style={{*/}
+                {/*                fontSize: '16px',*/}
+                {/*                width: 64,*/}
+                {/*                height: 64,*/}
+                {/*            }}*/}
+                {/*        />*/}
 
 
-            {/*        /!*<Content*!/*/}
-            {/*        /!*    style={{*!/*/}
-            {/*        /!*        padding: 24,*!/*/}
-            {/*        /!*        margin: 0,*!/*/}
-            {/*        /!*        minHeight: 280,*!/*/}
-            {/*        /!*        background: colorBgContainer,*!/*/}
-            {/*        /!*        borderRadius: borderRadiusLG,*!/*/}
-            {/*        /!*    }}*!/*/}
-            {/*        /!*>*!/*/}
-            {/*        /!*    Content*!/*/}
-            {/*        /!*</Content>*!/*/}
-            {/*    </Layout>*/}
-            {/*</Layout>*/}
-        </Layout>
+                {/*        /!*<Content*!/*/}
+                {/*        /!*    style={{*!/*/}
+                {/*        /!*        padding: 24,*!/*/}
+                {/*        /!*        margin: 0,*!/*/}
+                {/*        /!*        minHeight: 280,*!/*/}
+                {/*        /!*        background: colorBgContainer,*!/*/}
+                {/*        /!*        borderRadius: borderRadiusLG,*!/*/}
+                {/*        /!*    }}*!/*/}
+                {/*        /!*>*!/*/}
+                {/*        /!*    Content*!/*/}
+                {/*        /!*</Content>*!/*/}
+                {/*    </Layout>*/}
+                {/*</Layout>*/}
+            </Layout>
+            <BackToTopButton/>
+            <ToastContainer
+                position="bottom-left"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                style={{fontSize: "15px"}}
+            />
+        </>
+
     );
 };
 export default MasterLayout;
