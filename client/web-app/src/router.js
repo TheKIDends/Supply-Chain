@@ -3,8 +3,8 @@ import {Route, Routes} from "react-router-dom";
 import {ROUTERS} from "./util/router";
 
 import MasterLayout from "./theme/masterLayout";
-import HomePage from "./page/user/customer/homePage";
-import ManagementPage from "./page/user/business/managementPage";
+import HomePage from "./pages/user/customer/homePage";
+import ManagementPage from "./pages/user/business/managementPage";
 // import NotFoundPage from "./pages/error/notFoundPage";
 // import DoNotHavePermissionPage from "./pages/error/doNotHavePermissionPage";
 
