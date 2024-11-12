@@ -1,127 +1,45 @@
-// import React  from 'react';
-// import './style.scss'
-//
-// const MasterLayout = ({children, ...props}) => {
-//     const divStyle = {
-//         marginTop: "80px",
-//     };
-//
-//     return (
-//         <div {...props}>
-//             {/*<Header/>*/}
-//             <div style={divStyle}>
-//                 {children}
-//             </div>
-//             {/*<Footer/>*/}
-//         </div>
-//     );
-// }
-// export default MasterLayout;
-
-import React from 'react';
+import React, {memo, useState} from 'react';
 import './style.scss'
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
-const { Header, Content, Sider } = Layout;
+import {Breadcrumb} from "antd";
 
-const items1 = ['1', '2', '3'].map((key) => ({
-    key,
-    label: `nav ${key}`,
-}));
+const Footer = () => {
+    const [count, setCount] = useState(0);
 
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-    const key = String(index + 1);
-    return {
-        key: `sub${key}`,
-        icon: React.createElement(icon),
-        label: `subnav ${key}`,
-        children: new Array(4).fill(null).map((_, j) => {
-            const subKey = index * 4 + j + 1;
-            return {
-                key: subKey,
-                label: `option${subKey}`,
-            };
-        }),
-    };
-});
+    function incrementCount() {
+        return count + 1;
+    }
 
-const MasterLayout = () => {
-    const {
-        token: { colorBgContainer, borderRadiusLG },
-    } = theme.useToken();
+    function handleClick() {
+        // setCount((a) => { return a + 1});
+        // setCount((a) => { return a + 1});
+        // setCount((a) => { return a + 1});
+        setCount(incrementCount);
+        setCount(incrementCount);
+        setCount(incrementCount);
+    }
+
     return (
-        <Layout>
-            <Header
-                style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                }}
-            >
-                <div className="demo-logo" />
-                <Menu
-                    theme="dark"
-                    mode="horizontal"
-                    defaultSelectedKeys={['2']}
-                    items={items1}
-                    style={{
-                        flex: 1,
-                        minWidth: 0,
-                    }}
-                />
-            </Header>
-            <Layout>
-                <Sider
-                    width={200}
-                    style={{
-                        background: colorBgContainer,
-                    }}
-                >
-                    <Menu
-                        mode="inline"
-                        defaultSelectedKeys={['1']}
-                        defaultOpenKeys={['sub1']}
-                        style={{
-                            height: '100%',
-                            borderRight: 0,
-                        }}
-                        items={items2}
-                    />
-                </Sider>
-                <Layout
-                    style={{
-                        padding: '0 24px 24px',
-                    }}
-                >
-                    <Breadcrumb
-                        items={[
-                            {
-                                title: 'Home',
-                            },
-                            {
-                                title: 'List',
-                            },
-                            {
-                                title: 'App',
-                            },
-                        ]}
-                        style={{
-                            margin: '16px 0',
-                        }}
-                    />
-                    <Content
-                        style={{
-                            padding: 24,
-                            margin: 0,
-                            minHeight: 280,
-                            background: colorBgContainer,
-                            borderRadius: borderRadiusLG,
-                        }}
-                    >
-                        Content
-                    </Content>
-                </Layout>
-            </Layout>
-        </Layout>
+        <>
+            {/*<Breadcrumb*/}
+            {/*    items={[*/}
+            {/*        {*/}
+            {/*            title: 'Home',*/}
+            {/*        },*/}
+            {/*        {*/}
+            {/*            title: 'List',*/}
+            {/*        },*/}
+            {/*        {*/}
+            {/*            title: 'App',*/}
+            {/*        },*/}
+            {/*    ]}*/}
+            {/*    style={{*/}
+            {/*        // margin: '16px 0',*/}
+            {/*    }}*/}
+            {/*/>*/}
+            HomePage
+            {/*<button onClick={handleClick} style={{width:"100px"}}>{count}</button>*/}
+        </>
     );
-};
-export default MasterLayout;
+}
+
+export default memo(Footer);

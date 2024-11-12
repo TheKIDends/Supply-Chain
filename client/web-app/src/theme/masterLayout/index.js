@@ -1,119 +1,65 @@
-import React, {useState} from 'react';
+import React, {createContext, useEffect, useState} from 'react';
 import './style.scss'
-import {
-    LaptopOutlined,
-    MenuFoldOutlined,
-    MenuUnfoldOutlined,
-    NotificationOutlined,
-    UserOutlined
-} from '@ant-design/icons';
-import {Breadcrumb, Button, Layout, Menu, theme} from 'antd';
-import HeaderComponent from "../header/Header";
-import {ToastContainer} from "react-toastify";
-import BackToTopButton from "../../components/BackToTopButton/BackToTopButton";
-const { Header, Content, Sider } = Layout;
 
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-    const key = String(index + 1);
-    return {
-        key: `sub${key}`,
-        icon: React.createElement(icon),
-        label: `subnav ${key}`,
-        children: new Array(5).fill(null).map((_, j) => {
-            const subKey = index * 5 + j + 1;
-            return {
-                key: subKey,
-                label: `option${subKey}`,
-            };
-        }),
-    };
-});
+import {ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+import {useCookies} from "react-cookie";
+import {API, MESSAGE} from "@Const";
+import BackToTopButton from "../../components/BackToTopButton/BackToTopButton";
+import Header from "../header/Header";
+import Footer from "../footer/Footer";
+
+export const CartContext = createContext();
 
 const MasterLayout = ({children, ...props}) => {
-    const [collapsed, setCollapsed] = useState(true);
-
-    const {
-        token: { colorBgContainer, borderRadiusLG },
-    } = theme.useToken();
-
-    const siderStyle = {
-        overflow: 'auto',
-        position: 'fixed',
-        insetInlineStart: 0,
-        top: 70,
-        bottom: 0,
-        scrollbarWidth: 'thin',
-        background: colorBgContainer,
-        scrollbarColor: 'unset',
+    const [amountInCart, setAmountInCart] = useState(0);
+    const divStyle = {
+        marginTop: "80px",
     };
 
-    return (
-        <>
-            <Layout>
-                <HeaderComponent/>
+    const [cookies] = useCookies(['access_token']);
+    const accessToken = cookies.access_token;
 
-                <div {...props}>
+    const getAmountInCart = async () => {
+        // try {
+        //     const response = await fetch(API.PUBLIC.GET_CART_ENDPOINT, {
+        //         method: 'GET',
+        //         headers: {
+        //             'Authorization': `Bearer ${accessToken}`,
+        //         },
+        //     });
+        //
+        //     if (response.ok) {
+        //         const data = await response.json();
+        //         setAmountInCart(data.data.cartItems.length);
+        //         // console.log(amountInCart.current);
+        //     } else {
+        //         const data = await response.json();
+        //         console.log(data.message);
+        //     }
+        // } catch (error) {
+        //     console.log(error);
+        //     toast.error(MESSAGE.DB_CONNECTION_ERROR);
+        // }
+    };
+
+    useEffect(() => {
+        getAmountInCart();
+    }, [])
+
+
+    return (
+        <div {...props}>
+            <CartContext.Provider value={{amountInCart, getAmountInCart}}>
+                <Header/>
+                <div style={divStyle}>
                     {children}
                 </div>
+                <Footer/>
+            </CartContext.Provider>
 
-                {/*<Layout hasSider>*/}
-                {/*    <Sider*/}
-                {/*        width={200}*/}
-                {/*        style={siderStyle}*/}
-                {/*        trigger={null} collapsible collapsed={collapsed}*/}
-                {/*    >*/}
-                {/*        <Menu*/}
-                {/*            mode="inline"*/}
-                {/*            defaultSelectedKeys={['1']}*/}
-                {/*            defaultOpenKeys={['sub1']}*/}
-                {/*            style={{*/}
-                {/*                height: '100%',*/}
-                {/*                borderRight: 0,*/}
-                {/*            }}*/}
-                {/*            items={items2}*/}
-                {/*        />*/}
-                {/*    </Sider>*/}
-                {/*    <Layout*/}
-                {/*        style={{*/}
-                {/*            overflowY: 'auto',*/}
-                {/*            overflowX: 'hidden',*/}
-                {/*            position: 'fixed',*/}
-                {/*            top: 70,*/}
-                {/*            right: 0,*/}
-                {/*            bottom: 0,*/}
-                {/*            padding: `24px 24px 24px 40px`,*/}
-                {/*            width: collapsed ? `calc(100vw - 80px)` : `calc(100vw - 200px)`,*/}
-
-                {/*        }}*/}
-                {/*        className={collapsed ? 'collapsed' : 'expanded'}*/}
-                {/*    >*/}
-                {/*        <Button*/}
-                {/*            type="text"*/}
-                {/*            icon={collapsed ? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}*/}
-                {/*            onClick={() => setCollapsed(!collapsed)}*/}
-                {/*            style={{*/}
-                {/*                fontSize: '16px',*/}
-                {/*                width: 64,*/}
-                {/*                height: 64,*/}
-                {/*            }}*/}
-                {/*        />*/}
-
-
-                {/*        /!*<Content*!/*/}
-                {/*        /!*    style={{*!/*/}
-                {/*        /!*        padding: 24,*!/*/}
-                {/*        /!*        margin: 0,*!/*/}
-                {/*        /!*        minHeight: 280,*!/*/}
-                {/*        /!*        background: colorBgContainer,*!/*/}
-                {/*        /!*        borderRadius: borderRadiusLG,*!/*/}
-                {/*        /!*    }}*!/*/}
-                {/*        /!*>*!/*/}
-                {/*        /!*    Content*!/*/}
-                {/*        /!*</Content>*!/*/}
-                {/*    </Layout>*/}
-                {/*</Layout>*/}
-            </Layout>
-            <BackToTopButton/>
+            <BackToTopButton />
             <ToastContainer
                 position="bottom-left"
                 autoClose={5000}
@@ -127,8 +73,8 @@ const MasterLayout = ({children, ...props}) => {
                 theme="light"
                 style={{fontSize: "15px"}}
             />
-        </>
-
+        </div>
     );
-};
+}
+
 export default MasterLayout;

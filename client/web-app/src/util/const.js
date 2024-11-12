@@ -1,3 +1,9 @@
+export const DIALOGS = {
+    LOGIN: "login",
+    REGISTER: "register",
+    FORGOT_PASSWORD: "forgot-password"
+}
+
 export const SCROLLING = {
     NORMAL: "normal",
     SMOOTH : "smooth",

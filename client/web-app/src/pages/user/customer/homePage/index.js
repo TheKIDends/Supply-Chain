@@ -20,22 +20,22 @@ const HomePage = () => {
 
     return (
         <>
-            <Breadcrumb
-                items={[
-                    {
-                        title: 'Home',
-                    },
-                    {
-                        title: 'List',
-                    },
-                    {
-                        title: 'App',
-                    },
-                ]}
-                style={{
-                    // margin: '16px 0',
-                }}
-            />
+            {/*<Breadcrumb*/}
+            {/*    items={[*/}
+            {/*        {*/}
+            {/*            title: 'Home',*/}
+            {/*        },*/}
+            {/*        {*/}
+            {/*            title: 'List',*/}
+            {/*        },*/}
+            {/*        {*/}
+            {/*            title: 'App',*/}
+            {/*        },*/}
+            {/*    ]}*/}
+            {/*    style={{*/}
+            {/*        // margin: '16px 0',*/}
+            {/*    }}*/}
+            {/*/>*/}
             HomePage
             {/*<button onClick={handleClick} style={{width:"100px"}}>{count}</button>*/}
         </>
