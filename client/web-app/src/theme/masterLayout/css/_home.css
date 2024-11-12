@@ -210,7 +210,7 @@ div {
 .voucher-content-left
 .voucher-description
 .discount {
-    color: #bd0000;
+    color: #294780;
     font-size: 15px;
     font-weight: 700;
     line-height: 18px;
@@ -247,7 +247,7 @@ div {
 .voucher-content-left
 .voucher-condition-product
 span {
-    color: #bd0000;
+    color: #294780;
     font-size: 11px;
     font-weight: 400;
     line-height: 14px;
@@ -281,12 +281,12 @@ span {
     padding: 3px 8px;
 }
 .voucher-container .voucher-content .voucher-content-right .btn-save {
-    background: #bd0000;
+    background: #294780;
     color: #fff;
 }
 .voucher-container .voucher-content .voucher-content-right .btn-saved {
     background: #fceaec;
-    color: #bd0000;
+    color: #294780;
 }
 .voucher-container .voucher-content .voucher-content-right .btn-used-up {
     background: #fceaec;
@@ -411,7 +411,7 @@ span {
     font-size: 18px;
 }
 .product .product-img .product-sold-info .liked {
-    color: #bd0000;
+    color: #294780;
 }
 .product .product-img .product-sold-info img {
     height: 16px !important;
@@ -452,7 +452,7 @@ span {
     top: 0;
 }
 .product .product-img .product-sale-info .discount-container {
-    background: #bd0000;
+    background: #294780;
     box-sizing: border-box;
     font-weight: 700;
     height: 45px;
@@ -493,7 +493,7 @@ span {
     margin-top: 4px;
 }
 .product .product-img .product-sale-info .bookmark {
-    border: 22px solid #bd0000;
+    border: 22px solid #294780;
     border-bottom: 8px solid transparent;
     margin-top: -21px;
 }
@@ -520,8 +520,8 @@ span {
     top: 45%;
 }
 .product .product-img .bundle-deal {
-    background: #bd0000;
-    border: 1px solid #bd0000;
+    background: #294780;
+    border: 1px solid #294780;
     border-radius: 4px;
     bottom: 5px;
     box-shadow: 0 0 5px -4px;
@@ -657,7 +657,7 @@ label {
 .product-popup-select-size
 .select-size-content
 .size-item:hover {
-    background-color: #bd0000;
+    background-color: #294780;
 }
 .product
 .product-img
@@ -710,7 +710,7 @@ label {
     text-decoration: line-through;
 }
 .product .product-info-content .product-price .sale-price {
-    color: #bd0000;
+    color: #294780;
     font-size: 16px;
     font-weight: 700;
     line-height: 22px;
@@ -787,7 +787,7 @@ label {
 .product .product-info-content .product-color .color-wrap .active-item {
     border: 2px solid #fff;
     border-radius: 50%;
-    box-shadow: 0 0 0 1px #bd0000;
+    box-shadow: 0 0 0 1px #294780;
     outline: none;
 }
 .product .product-info-content .product-color .sw-group {
@@ -816,7 +816,7 @@ label {
 }
 .product .product-info-content .product-color .sw-group li a .active,
 .product .product-info-content .product-color .sw-group li a img:hover {
-    border-color: #bd0000;
+    border-color: #294780;
 }
 .product:hover .product-img img {
     transform: scale(1.1);
@@ -845,7 +845,7 @@ label {
     top: 0;
 }
 .product_sale .thumbnail-product .discount .discount-container {
-    background: #bd0000;
+    background: #294780;
     box-sizing: border-box;
     font-weight: 700;
     height: 30px;
@@ -881,7 +881,7 @@ label {
     line-height: 9px;
 }
 .product_sale .thumbnail-product .discount .bookmark {
-    border: 15px solid #bd0000;
+    border: 15px solid #294780;
     border-bottom: 6px solid transparent;
     margin-top: -15px;
 }
@@ -899,7 +899,7 @@ label {
     margin-bottom: 4px;
 }
 .product_sale .info-product .price-container .price-content {
-    color: #bd0000;
+    color: #294780;
     font-size: 16px;
     font-weight: 700;
     line-height: 22px;
@@ -924,7 +924,7 @@ label {
     z-index: 3;
 }
 .product_sale .info-product .sold .sold-container .sold-box {
-    background: #bd0000;
+    background: #294780;
     background-size: cover;
     border-radius: 30px 0 0 30px;
     height: 14px;
@@ -951,7 +951,7 @@ label {
     transition: all 0.5s;
 }
 .category-box:hover {
-    border: 1px solid #bd0000;
+    border: 1px solid #294780;
     border-radius: 4px;
 }
 .category-box .image-wrap {
@@ -989,7 +989,7 @@ label {
     line-height: 19px;
 }
 .active_category {
-    border: 1px solid #bd0000;
+    border: 1px solid #294780;
     border-radius: 4px;
 }
 .category {
@@ -1133,7 +1133,7 @@ label {
 }
 .collection .collection-wrap .title .nav-wrap .nav-tabs .active {
     border: none;
-    color: #bd0000;
+    color: #294780;
     font-weight: 700;
 }
 .collection .collection-wrap .content {
@@ -1291,7 +1291,7 @@ label {
     margin: 22px 0;
 }
 .banner-image-center .banner-item .item-text .origin .sale_price {
-    color: #bd0000;
+    color: #294780;
     font-size: 18px;
     font-weight: 700;
     line-height: 25px;
@@ -1449,7 +1449,7 @@ label {
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: contain;
-    color: #bd0000;
+    color: #294780;
     display: inline-block;
     height: 28px;
     margin-top: 1px;

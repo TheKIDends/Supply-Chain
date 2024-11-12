@@ -1,4 +1,8 @@
 @import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;700&display=swap);
+a {
+    text-decoration: none!important;
+}
+
 .header {
     background: #fff;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
@@ -19,12 +23,12 @@
     font-style: normal;
 }
 .header .wrap-container .wrap-content .content-left .logo-box {
-    margin-right: 117px;
+    margin-right: 90px;
     padding: 25px 0;
 }
 .header .wrap-container .wrap-content .content-left .logo-box .logo {
-    height: 30px;
-    width: 140px;
+    height: 35px;
+    width: 200px;
 }
 .header .wrap-container .wrap-content .content-left .menu-header {
     margin-right: 65px;
@@ -39,9 +43,10 @@
 .menu-header
 .menu-header-text {
     color: #232734;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 600;
     line-height: 19px;
+    text-decoration: none
 }
 .header
 .wrap-container
@@ -49,7 +54,7 @@
 .content-left
 .menu-header
 .menu-header-text:hover {
-    color: #bd0000;
+    color: #294780;
 }
 .header
 .wrap-container
@@ -63,7 +68,7 @@ img {
     width: 12px;
 }
 .header .wrap-container .wrap-content .content-left .menu-header .active {
-    color: #bd0000;
+    color: #294780;
 }
 .header .wrap-container .wrap-content .content-right .search-box {
     height: 30px;
@@ -88,7 +93,7 @@ img {
 .search-box
 input:focus-within,
 .header .wrap-container .wrap-content .content-right .search-box input:target {
-    border-color: #bd0000;
+    border-color: #294780;
     box-shadow: none;
 }
 .header .wrap-container .wrap-content .content-right .search-box .btn-search {
@@ -172,7 +177,7 @@ img {
 .product-info
 .product-price
 .sale-price {
-    color: #bd0000;
+    color: #294780;
     font-size: 16px;
     font-weight: 700;
     line-height: 25px;
@@ -242,7 +247,7 @@ a {
 .result-box
 .view_all_search
 a:hover {
-    color: #bd0000;
+    color: #294780;
 }
 .header
 .wrap-container
@@ -289,7 +294,7 @@ a:hover {
 .header-tool
 .cart-drop
 .count_item_pr {
-    background: #bd0000;
+    background: #294780;
     border-radius: 10px;
     color: #fff;
     font-size: 10px;
@@ -304,6 +309,7 @@ a:hover {
     padding-left: 20px;
     width: calc(100% - 42px);
 }
+
 .header
 .wrap-container
 .wrap-content
@@ -331,7 +337,9 @@ ul
 a {
     border-top: 1px solid #eee;
     padding-top: 6px;
+    text-decoration: none;
 }
+
 .header
 .wrap-container
 .wrap-content
@@ -366,7 +374,7 @@ li {
 ul
 li:hover
 a {
-    color: #bd0000 !important;
+    color: #294780 !important;
 }
 .header
 .wrap-container
@@ -439,7 +447,7 @@ a {
 .header-tool
 .btn-wrap
 button {
-    background: #bd0000;
+    background: #294780;
     border: none;
     border-radius: 5px;
     font-size: 14px;
@@ -537,7 +545,7 @@ li:last-child {
 .menu-col
 .menu-children
 li:hover {
-    color: #bd0000;
+    color: #294780;
     cursor: pointer;
 }
 @media (max-width: 1440px) {
@@ -609,11 +617,11 @@ li:hover {
     padding: 8px 12px;
 }
 .footer #subscribe-email input:focus {
-    border-color: #bd0000;
+    border-color: #294780;
     box-shadow: unset;
 }
 .footer #subscribe-email button {
-    background: #bd0000;
+    background: #294780;
     border-radius: 0 4px 4px 0;
     color: #fff;
     font-size: 14px;
@@ -624,7 +632,7 @@ li:hover {
     width: 70px;
 }
 .footer #subscribe-email .btn-subscribe:hover {
-    background: #bd0000;
+    background: #294780;
     color: #fff;
 }
 .footer #subscribe-email #email-error {
@@ -696,7 +704,7 @@ li:hover {
     padding: 0;
 }
 .footer .list-menu .fone .icon-footer {
-    color: #bd0000;
+    color: #294780;
     font-size: 16px;
     font-weight: 550;
     min-width: 20px;
@@ -732,7 +740,7 @@ li:hover {
     padding-right: 20px !important;
 }
 .footer .error {
-    color: #bd0000;
+    color: #294780;
     font-size: 12px;
 }
 @media (min-width: 1431px) and (max-width: 1440px) {
@@ -808,7 +816,7 @@ a {
 }
 .text-link:hover,
 a:hover {
-    color: #bd0000;
+    color: #294780;
     cursor: pointer;
     text-decoration: none;
 }
@@ -950,8 +958,8 @@ ul {
 }
 #btn-back-to-top {
     align-items: center;
-    background-color: #bd0000;
-    border: #bd0000;
+    background-color: #294780;
+    border: #294780;
     border-radius: 8px;
     bottom: 25px;
     color: #fff;
@@ -965,7 +973,7 @@ ul {
     z-index: 1000;
 }
 .error--message {
-    color: #bd0000;
+    color: #294780;
     font-size: 12px;
 }
 .modal-backdrop {
@@ -990,7 +998,7 @@ ul {
 }
 #reviewModal .btn-submit-form,
 #viewRating .btn-submit-form {
-    background: #bd0000;
+    background: #294780;
     border: none;
     border-radius: 4px;
     color: #fff;

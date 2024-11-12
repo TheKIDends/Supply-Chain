@@ -89,9 +89,9 @@ const NavigationMenu = () => {
             theme={{
                 components: {
                     // Menu: {
-                    //     horizontalItemSelectedColor: '#bd0000',
-                    //     horizontalItemSelectedBg: '#bd0000',
-                    //     itemSelectedColor: '#bd0000',
+                    //     horizontalItemSelectedColor: '#294780',
+                    //     horizontalItemSelectedBg: '#294780',
+                    //     itemSelectedColor: '#294780',
                     //     itemActiveBg: '#fbe9e9',
                     //     itemSelectedBg: '#ffdada',
                     // },
