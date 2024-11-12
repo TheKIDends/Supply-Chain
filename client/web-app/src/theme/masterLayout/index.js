@@ -15,7 +15,7 @@ export const CartContext = createContext();
 const MasterLayout = ({children, ...props}) => {
     const [amountInCart, setAmountInCart] = useState(0);
     const divStyle = {
-        marginTop: "80px",
+        marginTop: "75px",
     };
 
     const [cookies] = useCookies(['access_token']);

@@ -36,7 +36,7 @@ const Footer = () => {
             {/*        // margin: '16px 0',*/}
             {/*    }}*/}
             {/*/>*/}
-            HomePage
+            {/*HomePage*/}
             {/*<button onClick={handleClick} style={{width:"100px"}}>{count}</button>*/}
         </>
     );
