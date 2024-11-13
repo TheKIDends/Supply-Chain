@@ -129,22 +129,22 @@ export const MANAGEMENT_PAGE = {
     //         EDIT_BANNER: "Chỉnh sửa banner",
     //     },
     // },
-    // SALES_MANAGEMENT: {
-    //     KEY: "sales-management",
-    //     LABEL: "Quản lý bán hàng",
-    //     SUB: {
-    //         ORDER_LIST: "Danh sách đơn hàng",
-    //         SALES_PRODUCT_QUANTITY_STATISTICS: "Thống kê sản phẩm đã bán",
-    //     },
-    // },
-    // ACCOUNT_MANAGEMENT: {
-    //     KEY: "account-management",
-    //     LABEL: "Quản lý người dùng",
-    //     SUB: {
-    //         ACCOUNT_LIST: "Danh sách người dùng",
-    //         ADD_ACCOUNT: "Thêm người dùng",
-    //     },
-    // },
+    SALES_MANAGEMENT: {
+        KEY: "sales-management",
+        LABEL: "Quản lý bán hàng",
+        SUB: {
+            ORDER_LIST: "Danh sách đơn hàng",
+            // SALES_PRODUCT_QUANTITY_STATISTICS: "Thống kê sản phẩm đã bán",
+        },
+    },
+    ACCOUNT_MANAGEMENT: {
+        KEY: "account-management",
+        LABEL: "Quản lý người dùng",
+        SUB: {
+            ACCOUNT_LIST: "Danh sách người dùng",
+            ADD_ACCOUNT: "Thêm người dùng",
+        },
+    },
 };
 
 export const PRODUCT_DETAILS = {

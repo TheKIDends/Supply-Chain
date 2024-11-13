@@ -6,7 +6,7 @@ import {API, HEADER, MESSAGE} from "@Const";
 
 const userInfoData = {
     "userID": 4,
-    "fullName": "Nguyen Chau Khanh",
+    "fullName": "",
     "email": "khachhang@gmail.com",
     "hashedPassword": null,
     "phoneNumber": "09090909",
@@ -55,7 +55,7 @@ const ProfileMenu = ({openModal}) => {
 
                             {isAdmin &&
                                 <li>
-                                    <a href="/management-page/categories-and-products">{HEADER.PROFILE_MENU.DASHBOARD}</a>
+                                    <a href="/management-page/product-list">{HEADER.PROFILE_MENU.DASHBOARD}</a>
                                 </li>
                             }
                             <li>

@@ -31,8 +31,8 @@ spring:
           uri: http://192.168.0.106:9000
           predicates:
             - Path=/api/product/**
-          filters:
-            - AuthFilter
+#          filters:
+#            - AuthFilter
         - id: userservice
           uri: http://192.168.0.106:9001
           predicates:

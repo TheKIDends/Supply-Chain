@@ -30,14 +30,14 @@ const items = [
     //     getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.SHOP_MANAGEMENT.SUB.STORE_INFORMATION}</span>,  ROUTERS.ADMIN.STORE_INFORMATION),
     //     getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.SHOP_MANAGEMENT.SUB.EDIT_BANNER}</span>,  ROUTERS.ADMIN.EDIT_BANNER),
     // ]),
-    // getItem(MANAGEMENT_PAGE.SALES_MANAGEMENT.LABEL, MANAGEMENT_PAGE.SALES_MANAGEMENT.KEY, <RiShoppingCart2Line style={{fontSize:"20px", marginBottom:"1px"}}/>, [
-    //     getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.SALES_MANAGEMENT.SUB.ORDER_LIST}</span>,  ROUTERS.ADMIN.ORDER_LIST),
-    //     getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.SALES_MANAGEMENT.SUB.SALES_PRODUCT_QUANTITY_STATISTICS}</span>,  ROUTERS.ADMIN.SALES_PRODUCT_QUANTITY_STATISTICS),
-    // ]),
-    // getItem(MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.LABEL, MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.KEY, <FaRegUser style={{fontSize:"18px", marginBottom:"1px"}}/>, [
-    //     getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.SUB.ACCOUNT_LIST}</span>,  ROUTERS.ADMIN.ACCOUNT_LIST),
-    //     getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.SUB.ADD_ACCOUNT}</span>,  ROUTERS.ADMIN.ADD_ACCOUNT),
-    // ]),
+    getItem(MANAGEMENT_PAGE.SALES_MANAGEMENT.LABEL, MANAGEMENT_PAGE.SALES_MANAGEMENT.KEY, <RiShoppingCart2Line style={{fontSize:"20px", marginBottom:"1px"}}/>, [
+        getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.SALES_MANAGEMENT.SUB.ORDER_LIST}</span>,  ROUTERS.USER.ORDER_LIST),
+        // getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.SALES_MANAGEMENT.SUB.SALES_PRODUCT_QUANTITY_STATISTICS}</span>,  ROUTERS.ADMIN.SALES_PRODUCT_QUANTITY_STATISTICS),
+    ]),
+    getItem(MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.LABEL, MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.KEY, <FaRegUser style={{fontSize:"18px", marginBottom:"1px"}}/>, [
+        getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.SUB.ACCOUNT_LIST}</span>,  ROUTERS.ADMIN.ACCOUNT_LIST),
+        getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.SUB.ADD_ACCOUNT}</span>,  ROUTERS.ADMIN.ADD_ACCOUNT),
+    ]),
 ];
 
 const NavigationMenu = () => {
