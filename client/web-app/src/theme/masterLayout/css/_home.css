@@ -362,6 +362,18 @@ span {
 .list-product .product-item {
     padding: 0 22px;
 }
+select {
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+    color: #4f525d;
+    font-size: 12px !important;
+    font-weight: 500;
+    height: 36px;
+    outline: none;
+    padding: 0 10px 0 10px;
+    width: 100%;
+}
+
 .product {
     background-color: #fff;
     border: 1px solid #f5f5f5;

@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import {useCookies} from "react-cookie";
 import {API, MESSAGE} from "@Const";
-import BackToTopButton from "../../components/BackToTopButton/BackToTopButton";
+import BackToTopButton from "../../components/buttons/BackToTopButton/BackToTopButton";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
 

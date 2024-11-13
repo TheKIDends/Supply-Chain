@@ -17,7 +17,8 @@ const userInfoData = {
 };
 
 const ProfileMenu = ({openModal}) => {
-    const accessToken = true;
+    const [cookies] = useCookies(['access_token']);
+    const accessToken = cookies.access_token;
 
     const logout = useLogout();
 
@@ -46,37 +47,38 @@ const ProfileMenu = ({openModal}) => {
                     <div className={`account_header position-absolute ${profileMenuVisible ? "show" : ""}`} style={{textDecoration: "none"}}>
                         <ul className="p-0 m-0">
                             <li>
-                                <a href={`/profile/orders?userID=${userID}`} style={{ wordBreak: "break-word", textAlign: "left", whiteSpace: "normal"}}>
+                                <a href={`/profile/orders?userID=${userID}`}
+                                   style={{wordBreak: "break-word", textAlign: "left", whiteSpace: "normal"}}>
                                     {userData.fullName}
                                 </a>
                             </li>
 
-                            { isAdmin &&
+                            {isAdmin &&
                                 <li>
-                                    <a href="/management-page/categories-and-products">{ HEADER.PROFILE_MENU.DASHBOARD }</a>
+                                    <a href="/management-page/categories-and-products">{HEADER.PROFILE_MENU.DASHBOARD}</a>
                                 </li>
                             }
                             <li>
-                                <a href={`/profile/orders?userID=${userID}`}>{ HEADER.PROFILE_MENU.MY_ORDERS }</a>
+                                <a href={`/profile/orders?userID=${userID}`}>{HEADER.PROFILE_MENU.MY_ORDERS}</a>
                             </li>
                             <li>
-                                <a href={`/profile/personal-information?userID=${userID}`}>{ HEADER.PROFILE_MENU.PERSONAL_INFO }</a>
+                                <a href={`/profile/personal-information?userID=${userID}`}>{HEADER.PROFILE_MENU.PERSONAL_INFO}</a>
                             </li>
                             <li>
-                                <a href={`/profile/address?userID=${userID}`}>{ HEADER.PROFILE_MENU.ADDRESS_BOOK }</a>
+                                <a href={`/profile/address?userID=${userID}`}>{HEADER.PROFILE_MENU.ADDRESS_BOOK}</a>
                             </li>
                             <li>
-                                <a href={`/profile/change-password?userID=${userID}`}>{ HEADER.PROFILE_MENU.CHANGE_PASSWORD }</a>
+                                <a href={`/profile/change-password?userID=${userID}`}>{HEADER.PROFILE_MENU.CHANGE_PASSWORD}</a>
                             </li>
                             <li className="logout">
-                                <a>{ HEADER.PROFILE_MENU.LOGOUT }</a>
+                                <a onClick={() => {logout().then(r => {})}}>{HEADER.PROFILE_MENU.LOGOUT}</a>
                             </li>
                         </ul>
                     </div>
                 </>
                 :
                 <a className="pointer-cursor" onClick={() => openModal('login')}>
-                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M10 0C4.48625 0 0 4.48625 0 10C0 15.5137 4.48625 20 10 20C15.5137 20 20 15.5137 20 10C20
                             4.48625 15.5137 0 10 0ZM6.25 8.75C6.25 6.68187 7.93187 5 10 5C12.0681 5 13.75 6.68187 13.75

@@ -3,17 +3,13 @@ import {useCookies} from "react-cookie";
 import { Link } from "react-router-dom";
 import './style.scss';
 
-import {toast} from "react-toastify";
-
 import {CartContext} from "../masterLayout";
 
-// import LoginDialog from "@Components/dialogs/LoginDialog/LoginDialog";
-// import RegisterDialog from "@Components/dialogs/RegisterDialog/RegisterDialog";
-// import ForgotPasswordDialog from "@Components/dialogs/ForgotPasswordDialog/ForgotPasswordDialog";
-//
+import LoginDialog from "@Components/dialogs/LoginDialog/LoginDialog";
+import RegisterDialog from "@Components/dialogs/RegisterDialog/RegisterDialog";
+import ForgotPasswordDialog from "@Components/dialogs/ForgotPasswordDialog/ForgotPasswordDialog";
+
 import {API, DIALOGS, HEADER, IMAGE_URL, MESSAGE} from "@Const";
-import {MdKeyboardArrowDown} from "react-icons/md";
-import {HEADER_ITEM} from "../../util/const";
 import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
 
 const Header = () => {
@@ -83,38 +79,38 @@ const Header = () => {
                                 </div>
 
                                 <a href="/"
-                                    className="text-decoration-none menu-header p-0 d-flex align-items-center
+                                   className="text-decoration-none menu-header p-0 d-flex align-items-center
                                                 justify-content-center position-relative h-100 underline-effect"
-                                    style={{marginRight: "20px", width: "130px"}}
+                                   style={{marginRight: "20px", width: "130px"}}
                                 >
                                     <div
-                                          className="menu-header-text d-flex align-items-center text-center position-relative"
+                                        className="menu-header-text d-flex align-items-center text-center position-relative"
                                     >
                                         {HEADER.HEADER_ITEM.HOMEPAGE}
                                     </div>
                                 </a>
 
-                                <a href="/"
-                                      className="text-decoration-none menu-header p-0 d-flex align-items-center
+                                <a href="/management-page/product-list"
+                                   className="text-decoration-none menu-header p-0 d-flex align-items-center
                                                 justify-content-center position-relative h-100 underline-effect"
-                                      style={{marginRight: "20px", width: "130px"}}
-                                >
-                                    <div
-                                        className="menu-header-text d-flex align-items-center text-center position-relative"
-                                    >
-                                        {HEADER.HEADER_ITEM.PRODUCT}
-                                    </div>
-                                </a>
-
-                                <a href="/management-page/"
-                                      className="text-decoration-none menu-header p-0 d-flex align-items-center
-                                                justify-content-center position-relative h-100 underline-effect"
-                                      style={{marginRight: "20px", width: "130px"}}
+                                   style={{marginRight: "20px", width: "130px"}}
                                 >
                                     <div
                                         className="menu-header-text d-flex align-items-center text-center position-relative"
                                     >
                                         {HEADER.HEADER_ITEM.MANAGE}
+                                    </div>
+                                </a>
+
+                                <a href="/"
+                                   className="text-decoration-none menu-header p-0 d-flex align-items-center
+                                                justify-content-center position-relative h-100 underline-effect"
+                                   style={{marginRight: "20px", width: "130px"}}
+                                >
+                                    <div
+                                        className="menu-header-text d-flex align-items-center text-center position-relative"
+                                    >
+                                        {HEADER.HEADER_ITEM.PRODUCT}
                                     </div>
                                 </a>
 
@@ -127,7 +123,7 @@ const Header = () => {
                                             <Link to="/cart">
                                                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                                      xmlns="http://www.w3.org/2000/svg">
-                                                    <path
+                                                <path
                                                         d="M16.25 0H3.75C2.375 0 1.25 1.125 1.25 2.5V19.375C1.25 19.75
                                                         1.5 20 1.875 20H18.125C18.5 20 18.75 19.75 18.75 19.375V2.5C18.75
                                                         1.125 17.625 0 16.25 0ZM10 12.5C7.25 12.5 5 10.25 5 7.5C5 7.125
@@ -160,23 +156,23 @@ const Header = () => {
                 </div>
             </div>
 
-            {/*{openDialog === DIALOGS.LOGIN && (*/}
-            {/*    <div className="modal-overlay">*/}
-            {/*        <LoginDialog onClose={handleDialogClose} onSwitch={handleDialogSwitch} />*/}
-            {/*    </div>*/}
-            {/*)}*/}
+            {openDialog === DIALOGS.LOGIN && (
+                <div className="modal-overlay">
+                    <LoginDialog onClose={handleDialogClose} onSwitch={handleDialogSwitch} />
+                </div>
+            )}
 
-            {/*{openDialog === DIALOGS.REGISTER && (*/}
-            {/*    <div className="modal-overlay">*/}
-            {/*        <RegisterDialog onClose={handleDialogClose}  onSwitch={handleDialogSwitch} />*/}
-            {/*    </div>*/}
-            {/*)}*/}
+            {openDialog === DIALOGS.REGISTER && (
+                <div className="modal-overlay">
+                    <RegisterDialog onClose={handleDialogClose}  onSwitch={handleDialogSwitch} />
+                </div>
+            )}
 
-            {/*{openDialog === DIALOGS.FORGOT_PASSWORD && (*/}
-            {/*    <div className="modal-overlay">*/}
-            {/*        <ForgotPasswordDialog onClose={handleDialogClose}  onSwitch={handleDialogSwitch} />*/}
-            {/*    </div>*/}
-            {/*)}*/}
+            {openDialog === DIALOGS.FORGOT_PASSWORD && (
+                <div className="modal-overlay">
+                    <ForgotPasswordDialog onClose={handleDialogClose}  onSwitch={handleDialogSwitch} />
+                </div>
+            )}
         </header>
     );
 }

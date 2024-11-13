@@ -1,0 +1,26 @@
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.confirm-dialog-btn {
+    cursor: pointer;
+    background: #294780;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 0;
+    width: 140px;
+    height: 35px;
+    border: 0;
+    color: white;
+    -webkit-appearance: button;
+    font-family: Manrope !important;
+}
+
+.confirm-dialog-btn-cancel {
+    background: none;
+    color: #294780;
+    border: 1px solid #294780;
+    font-weight: normal;
+}

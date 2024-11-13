@@ -44,7 +44,7 @@ const NavigationMenu = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const COMPONENT_COUNT = 4;
+    const COMPONENT_COUNT = 3;
 
     const [selectedKeys, setSelectedKeys] = useState([]);
     const [openKeys, setOpenKeys] = useState([]);
@@ -92,8 +92,8 @@ const NavigationMenu = () => {
                         horizontalItemSelectedColor: '#294780',
                         horizontalItemSelectedBg: '#294780',
                         itemSelectedColor: '#294780',
-                        itemActiveBg: '#fbe9e9',
-                        itemSelectedBg: '#ffdada',
+                        itemActiveBg: '#e9edfb',
+                        itemSelectedBg: '#dadfff',
                     },
                 },
             }}

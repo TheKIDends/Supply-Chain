@@ -22,7 +22,7 @@ const HomePage = () => {
                     <br/>
                     <p>
                         <a
-                            href="#about"
+                            href="/management-page/add-product"
                             className="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off"
                         >
                             Bắt đầu tạo mã sản phẩm
