@@ -1,41 +1,43 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import btnUp from "./images/up.svg";
+import "./style.scss";
 
 const BackToTopButton = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleClickBtnBackToTop = () => {
-    const bodyElement = document.querySelector('body');
-    bodyElement.scrollTo({
+    window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
-  }
+  };
 
   const handleScroll = () => {
-    const scrollTop = document.querySelector('body').scrollTop;
-    setScrollY(scrollTop);
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    setIsVisible(scrollTop > 50);
   };
 
   useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
     handleScroll();
-    document.querySelector('body').addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
-      <div>
-        <button
-            type="button"
-            className={`${scrollY === 0 ? "hideBtn" : "showBtn"}`}
-            id="btn-back-to-top"
-            style={{display: 'block', right: '25px', left: 'auto'}}
-            onClick={handleClickBtnBackToTop}
-        >
-          <img src={btnUp} alt="icon back to top"/>
-        </button>
-      </div>
-
+      <button
+          type="button"
+          className={`${isVisible ? "showBtn" : "hideBtn"}`}
+          id="btn-back-to-top"
+          style={{display: 'block', right: '25px', left: 'auto'}}
+          onClick={handleClickBtnBackToTop}
+      >
+        <img src={btnUp} alt="Back to top" />
+      </button>
   );
-}
+};
 
 export default BackToTopButton;

@@ -1,0 +1,22 @@
+/* src/components/BackToTopButton.css */
+
+@keyframes showBtn {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#btn-back-to-top.showBtn {
+  animation: showBtn 0.3s ease-in-out !important;
+}
+
+#btn-back-to-top:hover {
+  background-color: #143fac !important;
+}
+
+#btn-back-to-top.hideBtn {
+  opacity: 0;
+}

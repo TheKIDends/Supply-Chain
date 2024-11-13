@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {useCookies} from "react-cookie";
-import {useLogout} from "@Utils/useLogout";
+import {useLogout} from "@Util/useLogout";
 import {API, HEADER, MESSAGE} from "@Const";
 
 const userInfoData = {

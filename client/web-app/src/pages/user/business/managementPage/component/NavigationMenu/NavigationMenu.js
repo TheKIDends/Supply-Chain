@@ -23,7 +23,7 @@ function getItem(label, key, icon, children, type) {
 
 const items = [
     getItem(MANAGEMENT_PAGE.PRODUCT_MANAGEMENT.LABEL, MANAGEMENT_PAGE.PRODUCT_MANAGEMENT.KEY, <TbShoppingBag style={{fontSize:"20px", marginBottom:"1px"}}/>, [
-        // getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.PRODUCT_MANAGEMENT.SUB.PRODUCT_CATEGORY}</span>, ROUTERS.ADMIN.LIST_OF_PRODUCTS_AND_CATEGORIES),
+        getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.PRODUCT_MANAGEMENT.SUB.PRODUCT_LIST}</span>, ROUTERS.USER.PRODUCT_LIST),
         getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.PRODUCT_MANAGEMENT.SUB.ADD_PRODUCT}</span>, ROUTERS.USER.ADD_PRODUCT),
     ]),
     // getItem(MANAGEMENT_PAGE.SHOP_MANAGEMENT.LABEL, MANAGEMENT_PAGE.SHOP_MANAGEMENT.KEY, <AiOutlineShop style={{fontSize:"20px", marginBottom:"1px"}}/>, [
@@ -88,13 +88,13 @@ const NavigationMenu = () => {
         <ConfigProvider
             theme={{
                 components: {
-                    // Menu: {
-                    //     horizontalItemSelectedColor: '#294780',
-                    //     horizontalItemSelectedBg: '#294780',
-                    //     itemSelectedColor: '#294780',
-                    //     itemActiveBg: '#fbe9e9',
-                    //     itemSelectedBg: '#ffdada',
-                    // },
+                    Menu: {
+                        horizontalItemSelectedColor: '#294780',
+                        horizontalItemSelectedBg: '#294780',
+                        itemSelectedColor: '#294780',
+                        itemActiveBg: '#fbe9e9',
+                        itemSelectedBg: '#ffdada',
+                    },
                 },
             }}
         >

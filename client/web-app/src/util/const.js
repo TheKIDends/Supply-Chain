@@ -24,6 +24,12 @@ export const HEADER = {
     },
 }
 
+export const FOOTER = {
+    TITLE_1: "Hệ thống chuỗi cung ứng hàng hóa",
+    DESCRIPTION_CONTENT: <></>,
+    DEVELOPED_BY: "Nguyen Chau Khanh - 21020019 - VNU University of Engineering and Technology",
+}
+
 export const IMAGE_URL = {
     LOGO_SUPPLY_CHAIN: "https://iili.io/2uHVUxf.png",
     FORGOT_PASSWORD_IMG: "https://iili.io/J5YsSYx.jpg",
@@ -44,7 +50,7 @@ export const MANAGEMENT_PAGE = {
         KEY: "product-management",
         LABEL: "Quản lý sản phẩm",
         SUB: {
-            PRODUCT_CATEGORY: "Danh mục và sản phẩm",
+            PRODUCT_LIST: "Danh sách sản phẩm",
             ADD_PRODUCT: "Thêm sản phẩm",
         },
     },

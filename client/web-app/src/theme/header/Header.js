@@ -12,7 +12,6 @@ import {CartContext} from "../masterLayout";
 // import ForgotPasswordDialog from "@Components/dialogs/ForgotPasswordDialog/ForgotPasswordDialog";
 //
 import {API, DIALOGS, HEADER, IMAGE_URL, MESSAGE} from "@Const";
-import MenuItem from "./components/MenuItem/MenuItem";
 import {MdKeyboardArrowDown} from "react-icons/md";
 import {HEADER_ITEM} from "../../util/const";
 import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
@@ -83,7 +82,7 @@ const Header = () => {
                                     </a>
                                 </div>
 
-                                <Link to={"/"}
+                                <a href="/"
                                     className="text-decoration-none menu-header p-0 d-flex align-items-center
                                                 justify-content-center position-relative h-100 underline-effect"
                                     style={{marginRight: "20px", width: "130px"}}
@@ -93,9 +92,9 @@ const Header = () => {
                                     >
                                         {HEADER.HEADER_ITEM.HOMEPAGE}
                                     </div>
-                                </Link>
+                                </a>
 
-                                <Link to={"/"}
+                                <a href="/"
                                       className="text-decoration-none menu-header p-0 d-flex align-items-center
                                                 justify-content-center position-relative h-100 underline-effect"
                                       style={{marginRight: "20px", width: "130px"}}
@@ -105,9 +104,9 @@ const Header = () => {
                                     >
                                         {HEADER.HEADER_ITEM.PRODUCT}
                                     </div>
-                                </Link>
+                                </a>
 
-                                <Link to={"/"}
+                                <a href="/management-page/"
                                       className="text-decoration-none menu-header p-0 d-flex align-items-center
                                                 justify-content-center position-relative h-100 underline-effect"
                                       style={{marginRight: "20px", width: "130px"}}
@@ -117,16 +116,8 @@ const Header = () => {
                                     >
                                         {HEADER.HEADER_ITEM.MANAGE}
                                     </div>
-                                </Link>
+                                </a>
 
-                                {menuItems.slice(0, 5).map((menuItem, index) => (
-                                    <MenuItem
-                                        key={index}
-                                        categoryID={menuItem.categoryID}
-                                        categoryName={menuItem.categoryName}
-                                        subCategories={menuItem.subCategories}
-                                    />
-                                ))}
                             </div>
                             <div
                                 className="col-3 content-right d-flex justify-content-end align-items-center ps-0 pe-0">

@@ -1,12 +1,17 @@
 import {Route, Routes} from "react-router-dom";
 import {ROUTERS} from "./util/router";
 import AddProductPage from "./productManagement/addProductPage";
+import ProductListPage from "./productManagement/productListPage";
 
 const renderCustom = () => {
     const routers =  [
         {
             path: ROUTERS.USER.ADD_PRODUCT,
             component: <AddProductPage />
+        },
+        {
+            path: ROUTERS.USER.PRODUCT_LIST,
+            component: <ProductListPage />
         },
     ]
 
