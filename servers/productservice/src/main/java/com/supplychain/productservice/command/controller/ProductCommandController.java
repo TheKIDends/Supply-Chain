@@ -21,8 +21,8 @@ public class ProductCommandController {
     @PostMapping("${endpoint.add-product}")
     public String addProduct(@RequestBody ProductRequestModel model) {
         CreateProductCommand command =
-                new CreateProductCommand(UUID.randomUUID().toString(), model.getProductName(), null,
-                        model.getCreatorId(), model.getDateCreated(), model.getDetails());
+                new CreateProductCommand(UUID.randomUUID().toString(), model.getProductName(), model.getProductPrice(),
+                        model.getCategoryID(), null, model.getCreatorId(), model.getDateCreated(), model.getDetails());
         commandGateway.sendAndWait(command);
         return "addProduct";
     }

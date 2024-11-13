@@ -1,5 +1,6 @@
 package com.supplychain.productservice.command.command;
 
+import com.owlike.genson.annotation.JsonProperty;
 import lombok.*;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
@@ -15,6 +16,8 @@ public class CreateProductCommand {
     private String productId;
 
     private String productName;
+    private String productPrice;
+    private String categoryID;
     private String licenseID;
     private String creatorId;
     private String dateCreated;

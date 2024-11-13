@@ -80,6 +80,38 @@ export const SCROLLING = {
     NO_SCROLLING: "no-scrolling",
 }
 
+export const CONFIRM_DIALOG = {
+    DELETE_TITLE_BTN_ACCEPT: "Xóa",
+    CANCEL_TITLE_BTN_CANCEL: "Hủy bỏ",
+    TITLE_BTN_ACCEPT: "Có",
+    TITLE_BTN_CANCEL: "Không",
+    WARNING_TITLE: "Cảnh báo",
+    CONFIRM_REFRESH_DATA: "Bạn có chắc chắn muốn làm mới dữ liệu? Thao tác này sẽ làm mới tất cả dữ liệu đã nhập.",
+    CONFIRM_RESTORE_DATA: "Bạn có chắc chắn muốn khôi phục dữ liệu? Thao tác này sẽ đưa dữ liệu về trạng thái cuối cùng được lưu lại.",
+    CONFIRM_DELETE_USER_SUBTITLE_1: "Bạn có chắc chắn xóa người dùng",
+    CONFIRM_DELETE_USER_SUBTITLE_2: "không?",
+    DELETE_PARENT_CATEGORY_WARNING: "Thao tác này sẽ xóa tất cả danh mục con cùng với sản phẩm thuộc danh mục này.",
+    DELETE_SUB_CATEGORY_WARNING: "Thao tác này sẽ xóa tất cả những sản phẩm thuộc danh mục này.",
+    CONFIRM_DELETE_CATEGORY_SUBTITLE_1: "Bạn có chắc chắn xóa danh mục",
+    CONFIRM_DELETE_CATEGORY_SUBTITLE_2: "không?",
+    CONFIRM_DELETE_PRODUCT_SUBTITLE_1: "Bạn có chắc chắn xóa sản phẩm",
+    CONFIRM_DELETE_PRODUCT_SUBTITLE_2: "không?",
+}
+
+
+export const ADD_PRODUCT_PAGE = {
+    SAVE_BTN: "Lưu lại",
+    REFRESH_BTN: "Làm mới"
+}
+
+export const BREADCRUMB = {
+    HOME_PAGE: "Trang chủ",
+    SHOPPING_CART: "Giỏ hàng",
+    PAYMENT: "Thanh toán",
+    EDIT_PRODUCT: "Chỉnh sửa thông tin sản phẩm",
+    USER_ACCOUNT: "Tài khoản người dùng",
+}
+
 export const MANAGEMENT_PAGE = {
     PRODUCT_MANAGEMENT: {
         KEY: "product-management",

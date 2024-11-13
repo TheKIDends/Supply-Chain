@@ -11,6 +11,8 @@ import lombok.*;
 public class ProductResponseModel {
     private String productId;
     private String productName;
+    private String productPrice;
+    private String categoryID;
     private String licenseID;
     private String creatorId;
     private String dateCreated;
