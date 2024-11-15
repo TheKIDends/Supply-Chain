@@ -61,7 +61,7 @@ export const HEADER = {
 
 export const FOOTER = {
     TITLE_1: "Hệ thống chuỗi cung ứng hàng hóa",
-    DESCRIPTION_CONTENT: <></>,
+    DESCRIPTION_CONTENT: <>Hệ thống chuỗi cung ứng hàng hóa sử dụng chuỗi khối riêng tư Hyperledger Fabric giúp tăng cường tính minh bạch, bảo mật và hiệu quả trong quản lý. Với mạng lưới phân quyền và hợp đồng thông minh, các bên liên quan có thể chia sẻ thông tin an toàn, đảm bảo mọi giao dịch được ghi nhận và không thể thay đổi. Giải pháp này giúp giảm rủi ro gian lận, tối ưu hóa thời gian giao dịch và nâng cao sự tin cậy, đồng thời đảm bảo nguồn gốc và chất lượng sản phẩm đến tay khách hàng.</>,
     DEVELOPED_BY: "Nguyen Chau Khanh - 21020019 - VNU University of Engineering and Technology",
 }
 
@@ -80,6 +80,49 @@ export const SCROLLING = {
     NO_SCROLLING: "no-scrolling",
 }
 
+export const DATE_PICKER = {
+    MAX_DAY_DISTANCE: 20,
+}
+
+export const SEARCH = {
+    PRODUCT_CATEGORY: {
+        VALUE: {
+            CATEGORY: "category",
+            SUB_CATEGORY: "sub-category",
+            PRODUCT: "product",
+        },
+        LABEL: {
+            CATEGORY: "Danh mục lớn",
+            SUB_CATEGORY: "Danh mục con",
+            PRODUCT: "Sản phẩm",
+        }
+    },
+    USER: {
+        VALUE: {
+            FULL_NAME: "full-name",
+            PHONE_NUMBER: "phone-number",
+            EMAIL: "email",
+        },
+        LABEL: {
+            FULL_NAME: "Họ tên",
+            PHONE_NUMBER: "Số điện thoại",
+            EMAIL: "Địa chỉ email",
+        }
+    },
+    ORDER: {
+        VALUE: {
+            ORDER_DATE: "order-date",
+            PHONE_NUMBER: "phone-number",
+            ORDER_ID: "order-id",
+        },
+        LABEL: {
+            ORDER_DATE: "Ngày đặt hàng",
+            PHONE_NUMBER: "Số điện thoại đặt hàng",
+            ORDER_ID: "Mã đơn hàng",
+        }
+    },
+}
+
 export const CONFIRM_DIALOG = {
     DELETE_TITLE_BTN_ACCEPT: "Xóa",
     CANCEL_TITLE_BTN_CANCEL: "Hủy bỏ",
@@ -96,6 +139,42 @@ export const CONFIRM_DIALOG = {
     CONFIRM_DELETE_CATEGORY_SUBTITLE_2: "không?",
     CONFIRM_DELETE_PRODUCT_SUBTITLE_1: "Bạn có chắc chắn xóa sản phẩm",
     CONFIRM_DELETE_PRODUCT_SUBTITLE_2: "không?",
+}
+
+export const TAB_LIST_TEXT = {
+    ALL: "Tất cả",
+    PENDING_CONFIRMATION: "Chờ xác nhận",
+    CONFIRMED: "Đã xác nhận",
+    IN_TRANSIT: "Đang giao hàng",
+    COMPLETED: "Hoàn thành",
+    CANCELLED: "Đã hủy"
+}
+
+export const TAB_LIST_ITEMS = [
+    { id: "tab-all", text: TAB_LIST_TEXT.ALL},
+    { id: "tab1", text: TAB_LIST_TEXT.PENDING_CONFIRMATION},
+    { id: "tab5", text: TAB_LIST_TEXT.CONFIRMED},
+    { id: "tab2", text: TAB_LIST_TEXT.IN_TRANSIT},
+    { id: "tab3", text: TAB_LIST_TEXT.COMPLETED},
+    { id: "tab4", text: TAB_LIST_TEXT.CANCELLED}
+]
+
+export const ORDER_LIST_PAGE = {
+    ORDER_ID: "Mã đơn hàng",
+    SIZE: "Size",
+    QUANTITY: "Số lượng:",
+    TOTAL_AMOUNT: "Thành tiền:",
+    PAYMENT_METHOD_LABEL: "Hình thức thanh toán:",
+    PAYMENT_METHOD: "Thanh toán khi nhận hàng",
+    SHIPPING_ADDRESS_LABEL: "Địa chỉ nhận hàng:",
+    NO_ORDERS: "Không có đơn hàng nào",
+    SEARCH_BY: "Tìm kiếm theo:",
+    PHONE_NUMBER_PLACEHOLDER: "Nhập số điện thoại",
+    ORDER_ID_PLACEHOLDER: "Nhập mã đơn hàng",
+    SEARCH_BTN: "Tìm kiếm",
+    EDIT_ORDER_STATUS: "Chỉnh sửa trạng thái đơn hàng",
+    SAVE_BTN: "Lưu",
+    CANCEL_BTN: "Hủy",
 }
 
 

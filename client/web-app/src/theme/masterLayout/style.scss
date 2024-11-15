@@ -10,6 +10,46 @@
 @import "./css/w3.css";
 @import "bootstrap";
 
+.search-btn {
+  cursor: pointer;
+  background: #294780;
+  font-size: 15px !important;
+  font-weight: 700;
+  width: 110px;
+  height: 33px;
+  border-radius: 3px;
+  border: 0;
+  margin-left: 10px;
+  color: white;
+  -webkit-appearance: button;
+  font-family: Manrope !important;
+}
+
+.avatar-hover {
+  font-weight: 600;
+  color: #333333;
+}
+
+.avatar-hover:hover {
+  color: #294780;
+}
+
+.img-avatar {
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.search-btn:hover {
+  background: #cc1111;
+}
+
+.search-btn:active {
+  background: #294780;
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;

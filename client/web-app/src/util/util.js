@@ -24,6 +24,10 @@ export const generateUniqueId = () => {
     return timestamp.toString() + Math.floor(Math.random() * 1000);
 }
 
+export const formatter = (number) => {
+    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(number);
+}
+
 export function convertDateTimeFormat(dateTimeString) {
     const options = {
         hour: 'numeric',

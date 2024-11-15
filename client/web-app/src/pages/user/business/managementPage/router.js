@@ -2,6 +2,7 @@ import {Route, Routes} from "react-router-dom";
 import {ROUTERS} from "./util/router";
 import AddProductPage from "./productManagement/addProductPage";
 import ProductListPage from "./productManagement/productListPage";
+import OrderListPage from "./salesManagement/OrderListPage";
 
 const renderCustom = () => {
     const routers =  [
@@ -12,6 +13,10 @@ const renderCustom = () => {
         {
             path: ROUTERS.USER.PRODUCT_LIST,
             component: <ProductListPage />
+        },
+        {
+            path: ROUTERS.USER.ORDER_LIST,
+            component: <OrderListPage />
         },
     ]
 
