@@ -26,7 +26,7 @@ const RegisterDialog = ({ onClose, onSwitch }) => {
       role,
     };
 
-    const apiUrl = "http://192.168.1.19:8000/api/user/register";
+    const apiUrl = "http://192.168.0.106:8000/api/user/register";
     try {
       const response = await fetch(apiUrl, {
         method: "POST",

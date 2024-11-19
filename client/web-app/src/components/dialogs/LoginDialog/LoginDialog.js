@@ -29,7 +29,7 @@ const LoginDialog = ({ onClose, onSwitch }) => {
 
     console.log(JSON.stringify(data))
 
-    const apiUrl = "http://192.168.1.19:8000/api/user/login";
+    const apiUrl = "http://192.168.0.106:8000/api/user/login";
     try {
       const response = await fetch(apiUrl, {
         method: "POST",

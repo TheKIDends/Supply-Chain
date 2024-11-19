@@ -53,7 +53,7 @@ const AddProductPage = () => {
             return;
         }
 
-        const apiUrl = "http://192.168.1.19:8000/api/product/add-product";
+        const apiUrl = "http://192.168.0.106:8000/api/product/add-product";
         try {
             const response = await fetch(apiUrl, {
                 method: "POST",
