@@ -102,7 +102,7 @@ const Header = () => {
                                     </div>
                                 </a>
 
-                                <a href="/"
+                                <a href="/market"
                                    className="text-decoration-none menu-header p-0 d-flex align-items-center
                                                 justify-content-center position-relative h-100 underline-effect"
                                    style={{marginRight: "20px", width: "130px"}}

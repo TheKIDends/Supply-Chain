@@ -6,6 +6,7 @@ import MasterLayout from "./theme/masterLayout";
 import HomePage from "./pages/user/customer/homePage";
 import ManagementPage from "./pages/user/business/managementPage";
 import ProfilePage from "./pages/user/customer/profilePage";
+import MarketplacePage from "./pages/user/customer/marketplacePage";
 // import NotFoundPage from "./pages/error/notFoundPage";
 // import DoNotHavePermissionPage from "./pages/error/doNotHavePermissionPage";
 
@@ -17,6 +18,10 @@ const userRouters =  [
     {
         path: ROUTERS.USER.PROFILE,
         component: <ProfilePage />
+    },
+    {
+        path: ROUTERS.USER.MARKET,
+        component: <MarketplacePage />
     },
 ];
 
