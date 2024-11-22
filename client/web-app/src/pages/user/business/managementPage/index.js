@@ -13,7 +13,7 @@ const ManagementPage = () => {
         <div style={{display: "flex", justifyContent: "flex-start"}}>
             {location.state?.scrolling === SCROLLING.SMOOTH ? <ScrollToTopSmooth/> : <ScrollToTop/>}
             <NavigationMenu/>
-            <div style={{width: "100%", minHeight: "630px", paddingLeft: "30px", backgroundColor: "#f5f5f5"}}>
+            <div style={{width: "100%", minHeight: "630px", paddingLeft: "30px", backgroundColor: "#f5f5f5", overflowY: "auto"}}>
                 <RouterCustom/>
             </div>
         </div>

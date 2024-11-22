@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./style.scss"
 
-import ProductDetails from "../components/ProductDetails/ProductDetails";
+import ProductDetails from "./ProductDetails/ProductDetails";
 import {toast} from "react-toastify";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {useCookies} from "react-cookie";
@@ -88,17 +88,17 @@ const AddProductPage = () => {
                     </div>
                 </div>
 
-                <div className="container pe-0 ps-0" style={{marginTop: "10px"}}>
+                <div className="container pe-0 ps-0" style={{marginTop: "10px", minWidth:"700px"}}>
                     <ProductDetails informationProduct={informationProduct}
                                     setInformationProduct={setInformationProduct}
                                     productImages={productImages}
                                     setProductImages={setProductImages}
                     />
 
-                    <div data-v-03749d40="" className="product-edit__container">
-                        <div data-v-03749d40="" className="product-edit">
+                    <div >
+                        <div >
                             <section style={{ marginBottom:"50px" }}>
-                                <div className="button-container">
+                                <div className="button-container" style={{textAlign: "right"}}>
                                     <button type="button" className="product-details-btn" onClick={addProduct}>
                                         {ADD_PRODUCT_PAGE.SAVE_BTN}
                                     </button>
