@@ -88,24 +88,28 @@ const AddProductPage = () => {
                     </div>
                 </div>
 
-                <div className="container pe-0 ps-0" style={{marginTop: "10px", minWidth:"700px"}}>
+                <div className="container pe-0 ps-0" style={{marginTop: "10px"}}>
                     <ProductDetails informationProduct={informationProduct}
                                     setInformationProduct={setInformationProduct}
                                     productImages={productImages}
                                     setProductImages={setProductImages}
                     />
 
-                    <div >
-                        <div >
-                            <section style={{ marginBottom:"50px" }}>
+                    <div data-v-03749d40="" className="product-edit__container">
+                        <div data-v-03749d40="" className="product-edit">
+                            <section style={{marginBottom: "50px"}}>
                                 <div className="button-container" style={{textAlign: "right"}}>
-                                    <button type="button" className="product-details-btn" onClick={addProduct}>
-                                        {ADD_PRODUCT_PAGE.SAVE_BTN}
-                                    </button>
+
                                     <button type="button" className="product-details-btn product-details-btn-danger"
-                                            onClick={() => {setIsShowConfirmDialog(true)}}
+                                            onClick={() => {
+                                                setIsShowConfirmDialog(true)
+                                            }}
                                     >
                                         {ADD_PRODUCT_PAGE.REFRESH_BTN}
+                                    </button>
+
+                                    <button type="button" className="product-details-btn" onClick={addProduct}>
+                                        {ADD_PRODUCT_PAGE.SAVE_BTN}
                                     </button>
                                 </div>
                             </section>
@@ -115,31 +119,34 @@ const AddProductPage = () => {
 
                 {isShowConfirmDialog && (
                     <div className="modal-overlay">
-                        <ConfirmDialog title={<span style={{color:"#294780"}}>{CONFIRM_DIALOG.WARNING_TITLE}</span>}
-                                       subTitle={
-                                           <>
-                                               {CONFIRM_DIALOG.CONFIRM_REFRESH_DATA}
-                                           </>
-                                       }
-                                       titleBtnAccept={CONFIRM_DIALOG.TITLE_BTN_ACCEPT}
-                                       titleBtnCancel={CONFIRM_DIALOG.TITLE_BTN_CANCEL}
-                                       onAccept={() => {
-                                           setInformationProduct({
-                                               productName: "",
-                                               productPrice: "",
-                                               details: "",
-                                               category: "",
-                                           });
-                                           setProductImages([]);
-                                           setIsShowConfirmDialog(false);
-                                       }}
-                                       onCancel={() => {setIsShowConfirmDialog(false)}}/>
+                        <ConfirmDialog
+                            title={<span style={{color: "#294780"}}>{CONFIRM_DIALOG.WARNING_TITLE}</span>}
+                            subTitle={
+                                <>
+                                    {CONFIRM_DIALOG.CONFIRM_REFRESH_DATA}
+                                </>
+                            }
+                            titleBtnAccept={CONFIRM_DIALOG.TITLE_BTN_ACCEPT}
+                            titleBtnCancel={CONFIRM_DIALOG.TITLE_BTN_CANCEL}
+                            onAccept={() => {
+                                setInformationProduct({
+                                    productName: "",
+                                    productPrice: "",
+                                    details: "",
+                                    category: "",
+                                });
+                                setProductImages([]);
+                                setIsShowConfirmDialog(false);
+                            }}
+                            onCancel={() => {
+                                setIsShowConfirmDialog(false)
+                            }}/>
                     </div>
                 )}
 
             </main>
         </div>
-    );
+);
 }
 
 export default AddProductPage;

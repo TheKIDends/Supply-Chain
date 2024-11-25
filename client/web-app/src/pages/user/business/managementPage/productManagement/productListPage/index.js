@@ -21,6 +21,9 @@ const ProductListPage  = () => {
     const [cookies] = useCookies(['access_token']);
     const accessToken = cookies.access_token;
 
+    const [loading, setLoading] = useState(true);
+
+
     const getProduct = async () => {
 
         const apiUrl = "http://192.168.0.106:8000/api/product/get-all-products";
@@ -39,10 +42,11 @@ const ProductListPage  = () => {
                     ...product,
                     tags: ['Chờ phê duyệt']
                 }));
-
                 setProducts(updatedProducts);
+                setLoading(false);
 
             } else {
+                toast.error(MESSAGE.GENERIC_ERROR)
                 console.error(response);
             }
         } catch (error) {
@@ -51,12 +55,9 @@ const ProductListPage  = () => {
         }
     }
 
-    getProduct().then(r => {});
-
     useEffect(() => {
         getProduct().then(r => {});
     }, []);
-
 
     return (
         <div id="app">
@@ -68,48 +69,48 @@ const ProductListPage  = () => {
                         &gt; <span>{MANAGEMENT_PAGE.PRODUCT_MANAGEMENT.SUB.PRODUCT_LIST}</span>
                     </div>
                 </div>
-
-                <div className="product-list-table" style={{margin:"13px 50px 20px 38px"}}>
-                    <Table dataSource={products} >
-                        <Column title="Mã sản phẩm" dataIndex="productId" key="productId"/>
-                        <Column title="Tên sản phẩm" dataIndex="productName" key="productName"/>
-                        <Column title="Ngày tạo" dataIndex="dateCreated" key="dateCreated"/>
-                        <Column title="Giấy phép" dataIndex="licenseID" key="licenseID"/>
-                        <Column
-                            title="Trạng thái"
-                            dataIndex="tags"
-                            key="tags"
-                            render={(tags) => (
-                                <>
-                                    {tags.map((tag) => {
-                                        let color = 'geekblue';
-                                        if (tag === 'Bị từ chối') {
-                                            color = 'volcano';
-                                        }
-                                        if (tag === 'Đã phê duyệt') {
-                                            color = 'green';
-                                        }
-                                        return (
-                                            <Tag color={color} key={tag}  style={{fontSize:"13px"}}>
-                                                {tag.toUpperCase()}
-                                            </Tag>
-                                        );
-                                    })}
-                                </>
-                            )}
-                        />
-                        <Column
-                            title=""
-                            key="action"
-                            render={(_, record) => (
-                                <Space size="middle">
-                                    <a>Chi tiết</a>
-                                </Space>
-                            )}
-                        />
-                    </Table>
+                <div className="container">
+                    <div className="product-list-table" style={{margin: "13px 50px 20px 38px"}}>
+                        <Table loading={loading} dataSource={products}>
+                            <Column title="Mã sản phẩm" dataIndex="productId" key="productId"/>
+                            <Column title="Tên sản phẩm" dataIndex="productName" key="productName"/>
+                            <Column title="Ngày tạo" dataIndex="dateCreated" key="dateCreated"/>
+                            <Column title="Giấy phép" dataIndex="licenseID" key="licenseID"/>
+                            <Column
+                                title="Trạng thái"
+                                dataIndex="tags"
+                                key="tags"
+                                render={(tags) => (
+                                    <>
+                                        {tags.map((tag) => {
+                                            let color = 'geekblue';
+                                            if (tag === 'Bị từ chối') {
+                                                color = 'volcano';
+                                            }
+                                            if (tag === 'Đã phê duyệt') {
+                                                color = 'green';
+                                            }
+                                            return (
+                                                <Tag color={color} key={tag} style={{fontSize: "13px"}}>
+                                                    {tag.toUpperCase()}
+                                                </Tag>
+                                            );
+                                        })}
+                                    </>
+                                )}
+                            />
+                            <Column
+                                title=""
+                                key="action"
+                                render={(_, record) => (
+                                    <Space size="middle">
+                                        <a>Chi tiết</a>
+                                    </Space>
+                                )}
+                            />
+                        </Table>
+                    </div>
                 </div>
-
             </main>
 
         </div>
