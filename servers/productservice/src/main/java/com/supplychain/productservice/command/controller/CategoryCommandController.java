@@ -2,6 +2,7 @@ package com.supplychain.productservice.command.controller;
 
 import com.supplychain.productservice.command.command.CreateCategoryCommand;
 import com.supplychain.productservice.command.model.CategoryRequestModel;
+import com.supplychain.productservice.enumeration.Status;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,7 @@ public class CategoryCommandController {
     @PostMapping("${endpoint.add-category}")
     public String addCategory(@RequestBody CategoryRequestModel model) {
         CreateCategoryCommand command =
-                new CreateCategoryCommand(UUID.randomUUID().toString(), model.getCategoryName());
+                new CreateCategoryCommand(UUID.randomUUID().toString(), model.getCategoryName(), Status.ENABLED);
         commandGateway.sendAndWait(command);
         return "addCategory";
     }

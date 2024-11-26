@@ -22,6 +22,7 @@ public class ProductAggregate {
     private String licenseID;
     private String creatorId;
     private String dateCreated;
+    private String productStatus;
     private String details;
 
     public ProductAggregate() {
@@ -43,6 +44,7 @@ public class ProductAggregate {
         this.licenseID = event.getLicenseID();
         this.creatorId = event.getCreatorId();
         this.dateCreated = event.getDateCreated();
+        this.productStatus = event.getProductStatus();
         this.details = event.getDetails();
     }
 }

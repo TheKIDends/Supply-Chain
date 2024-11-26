@@ -37,6 +37,9 @@ public class Product {
     @JsonProperty("dateCreated")
     private String dateCreated;
 
+    @JsonProperty("productStatus")
+    private String productStatus;
+
     @JsonProperty("details")
     private String details;
 }

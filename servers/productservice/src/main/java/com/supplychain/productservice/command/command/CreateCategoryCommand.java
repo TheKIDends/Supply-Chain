@@ -15,4 +15,5 @@ public class CreateCategoryCommand {
     private String categoryId;
 
     private String categoryName;
+    private String categoryStatus;
 }

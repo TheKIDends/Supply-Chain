@@ -2,7 +2,6 @@ package com.supplychain.productservice.command.aggregate;
 
 import com.supplychain.productservice.command.command.CreateCategoryCommand;
 import com.supplychain.productservice.command.event.CategoryCreatedEvent;
-import com.supplychain.productservice.command.event.ProductCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -18,6 +17,7 @@ public class CategoryAggregate {
     private String categoryId;
 
     private String categoryName;
+    private String categoryStatus;
 
     public CategoryAggregate() {
     }
@@ -30,9 +30,10 @@ public class CategoryAggregate {
     }
 
     @EventSourcingHandler
-    public void on(ProductCreatedEvent event) {
-        this.categoryId = event.getCategoryID();
-        this.categoryName = event.getProductName();
+    public void on(CategoryCreatedEvent event) {
+        this.categoryId = event.getCategoryId();
+        this.categoryName = event.getCategoryName();
+        this.categoryStatus = event.getCategoryStatus();
 
     }
 }

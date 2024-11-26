@@ -31,7 +31,7 @@ public class ProductItem {
     @JsonProperty("productionDate")
     private String productionDate;
 
-    @JsonProperty("expirationDate")
+    @JsonProperty("                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ")
     private String expirationDate;
 
     @JsonProperty("creatorId")

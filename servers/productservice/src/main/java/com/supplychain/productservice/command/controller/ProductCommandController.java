@@ -2,6 +2,7 @@ package com.supplychain.productservice.command.controller;
 
 import com.supplychain.productservice.command.command.CreateProductCommand;
 import com.supplychain.productservice.command.model.ProductRequestModel;
+import com.supplychain.productservice.enumeration.Status;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,8 @@ public class ProductCommandController {
     public String addProduct(@RequestBody ProductRequestModel model) {
         CreateProductCommand command =
                 new CreateProductCommand(UUID.randomUUID().toString(), model.getProductName(), model.getProductPrice(),
-                        model.getCategoryID(), null, model.getCreatorId(), model.getDateCreated(), model.getDetails());
+                        model.getCategoryID(), null, model.getCreatorId(), model.getDateCreated(),
+                        Status.ENABLED, model.getDetails());
         commandGateway.sendAndWait(command);
         return "addProduct";
     }

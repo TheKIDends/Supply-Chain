@@ -11,4 +11,5 @@ import lombok.*;
 @NoArgsConstructor
 public class CategoryRequestModel {
     private String categoryName;
+    private String categoryStatus;
 }

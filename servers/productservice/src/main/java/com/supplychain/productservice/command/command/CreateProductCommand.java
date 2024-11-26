@@ -21,5 +21,6 @@ public class CreateProductCommand {
     private String licenseID;
     private String creatorId;
     private String dateCreated;
+    private String productStatus;
     private String details;
 }

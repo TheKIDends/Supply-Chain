@@ -12,4 +12,5 @@ import lombok.*;
 public class CategoryCreatedEvent {
     private String categoryId;
     private String categoryName;
+    private String categoryStatus;
 }

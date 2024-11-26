@@ -21,4 +21,8 @@ public class Category {
 
     @JsonProperty("categoryName")
     private String categoryName;
+
+    @JsonProperty("categoryStatus")
+    private String categoryStatus;
+
 }

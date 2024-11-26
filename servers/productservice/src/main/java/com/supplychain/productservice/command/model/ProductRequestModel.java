@@ -14,5 +14,6 @@ public class ProductRequestModel {
     private String categoryID;
     private String creatorId;
     private String dateCreated;
+    private String productStatus;
     private String details;
 }
