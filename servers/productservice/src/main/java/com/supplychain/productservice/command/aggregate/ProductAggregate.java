@@ -17,6 +17,8 @@ public class ProductAggregate {
     private String productId;
 
     private String productName;
+    private String productPrice;
+    private String categoryID;
     private String licenseID;
     private String creatorId;
     private String dateCreated;
@@ -36,6 +38,8 @@ public class ProductAggregate {
     public void on(ProductCreatedEvent event) {
         this.productId = event.getProductId();
         this.productName = event.getProductName();
+        this.productPrice = event.getProductPrice();
+        this.categoryID = event.getCategoryID();
         this.licenseID = event.getLicenseID();
         this.creatorId = event.getCreatorId();
         this.dateCreated = event.getDateCreated();

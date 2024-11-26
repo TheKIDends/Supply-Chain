@@ -22,6 +22,4 @@ public class CreateProductCommand {
     private String creatorId;
     private String dateCreated;
     private String details;
-
-
 }

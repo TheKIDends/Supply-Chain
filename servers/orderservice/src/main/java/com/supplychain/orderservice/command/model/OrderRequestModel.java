@@ -9,7 +9,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderRequestModel {
-    private String requestId;
     private String senderId;
     private String recipientId;
     private String dateCreated;
