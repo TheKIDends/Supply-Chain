@@ -1,4 +1,4 @@
-package com.supplychain.productservice.command.data.request;
+package com.supplychain.orderservice.command.data.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
