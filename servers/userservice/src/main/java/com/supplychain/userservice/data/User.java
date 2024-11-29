@@ -2,8 +2,6 @@ package com.supplychain.userservice.data;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
-import jakarta.persistence.Table;
-import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.persistence.*;
 

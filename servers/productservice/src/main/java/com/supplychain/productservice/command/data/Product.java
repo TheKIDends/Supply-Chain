@@ -25,11 +25,11 @@ public class Product {
     @JsonProperty("productPrice")
     private String productPrice;
 
-    @JsonProperty("categoryID")
-    private String categoryID;
+    @JsonProperty("categoryId")
+    private String categoryId;
 
-    @JsonProperty("licenseID")
-    private String licenseID;
+    @JsonProperty("licenseId")
+    private String licenseId;
 
     @JsonProperty("creatorId")
     private String creatorId;

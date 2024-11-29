@@ -11,7 +11,7 @@ import lombok.*;
 public class ProductRequestModel {
     private String productName;
     private String productPrice;
-    private String categoryID;
+    private String categoryId;
     private String creatorId;
     private String dateCreated;
     private String productStatus;

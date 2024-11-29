@@ -12,8 +12,8 @@ public class ProductResponseModel {
     private String productId;
     private String productName;
     private String productPrice;
-    private String categoryID;
-    private String licenseID;
+    private String categoryId;
+    private String licenseId;
     private String creatorId;
     private String dateCreated;
     private String productStatus;

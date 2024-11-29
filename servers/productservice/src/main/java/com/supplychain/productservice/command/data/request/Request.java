@@ -1,20 +1,18 @@
 package com.supplychain.productservice.command.data.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import jakarta.persistence.*;
+
+@Entity
 @Getter
 @Setter
 @ToString
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Request {
     @Id

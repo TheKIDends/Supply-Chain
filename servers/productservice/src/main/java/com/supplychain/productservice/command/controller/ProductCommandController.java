@@ -23,7 +23,7 @@ public class ProductCommandController {
     public String addProduct(@RequestBody ProductRequestModel model) {
         CreateProductCommand command =
                 new CreateProductCommand(UUID.randomUUID().toString(), model.getProductName(), model.getProductPrice(),
-                        model.getCategoryID(), null, model.getCreatorId(), model.getDateCreated(),
+                        model.getCategoryId(), null, model.getCreatorId(), model.getDateCreated(),
                         Status.ENABLED, model.getDetails());
         commandGateway.sendAndWait(command);
         return "addProduct";

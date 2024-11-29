@@ -18,8 +18,8 @@ public class ProductAggregate {
 
     private String productName;
     private String productPrice;
-    private String categoryID;
-    private String licenseID;
+    private String categoryId;
+    private String licenseId;
     private String creatorId;
     private String dateCreated;
     private String productStatus;
@@ -40,8 +40,8 @@ public class ProductAggregate {
         this.productId = event.getProductId();
         this.productName = event.getProductName();
         this.productPrice = event.getProductPrice();
-        this.categoryID = event.getCategoryID();
-        this.licenseID = event.getLicenseID();
+        this.categoryId = event.getCategoryId();
+        this.licenseId = event.getLicenseId();
         this.creatorId = event.getCreatorId();
         this.dateCreated = event.getDateCreated();
         this.productStatus = event.getProductStatus();

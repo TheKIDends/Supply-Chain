@@ -6,7 +6,6 @@ import lombok.*;
 @Setter
 @ToString
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
 public class GetAllCategoriesQuery {
 }
