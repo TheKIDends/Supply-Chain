@@ -5,12 +5,112 @@ import {ScrollToTop} from '@Util/util';
 import {da} from "date-fns/locale";
 import {Link} from "react-router-dom";
 import ProductItem from "./productItem/ProductItem";
+import {Col, Row} from "antd";
 
 const data = [
     {
         "categoryId": 15,
         "categoryName": "Phụ Kiện",
         "products": [
+            {
+                "productId": 109,
+                "productName": "Tất Nam, Kháng Khuẩn, Khử Mùi ",
+                "productPrice": 19000,
+                "productDescription": "Tất Nam sử dụng chất liệu Cotton mềm mại, thấm hút mồ tốt, sản phẩm giữ cho đôi chân luôn thoáng mát nên rất phù hợp với những ai thường mang giày cả ngày. Sản phẩm được dệt bo tròn cổ đảm bảo không bị tụt trong suốt quá trình vận động, đi lại.",
+                "productImages": [
+                    {
+                        "imageId": 545,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ9dtS.jpg"
+                    },
+                    {
+                        "imageId": 546,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ93o7.jpg"
+                    },
+                    {
+                        "imageId": 547,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ9KPe.jpg"
+                    },
+                    {
+                        "imageId": 548,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ9qKu.jpg"
+                    },
+                    {
+                        "imageId": 549,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ9Bcb.jpg"
+                    }
+                ],
+            },
+            {
+                "productId": 109,
+                "productName": "Tất Nam, Kháng Khuẩn, Khử Mùi ",
+                "productPrice": 19000,
+                "productDescription": "Tất Nam sử dụng chất liệu Cotton mềm mại, thấm hút mồ tốt, sản phẩm giữ cho đôi chân luôn thoáng mát nên rất phù hợp với những ai thường mang giày cả ngày. Sản phẩm được dệt bo tròn cổ đảm bảo không bị tụt trong suốt quá trình vận động, đi lại.",
+                "productImages": [
+                    {
+                        "imageId": 545,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ9dtS.jpg"
+                    },
+                    {
+                        "imageId": 546,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ93o7.jpg"
+                    },
+                    {
+                        "imageId": 547,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ9KPe.jpg"
+                    },
+                    {
+                        "imageId": 548,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ9qKu.jpg"
+                    },
+                    {
+                        "imageId": 549,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ9Bcb.jpg"
+                    }
+                ],
+            },
+            {
+                "productId": 109,
+                "productName": "Tất Nam, Kháng Khuẩn, Khử Mùi ",
+                "productPrice": 19000,
+                "productDescription": "Tất Nam sử dụng chất liệu Cotton mềm mại, thấm hút mồ tốt, sản phẩm giữ cho đôi chân luôn thoáng mát nên rất phù hợp với những ai thường mang giày cả ngày. Sản phẩm được dệt bo tròn cổ đảm bảo không bị tụt trong suốt quá trình vận động, đi lại.",
+                "productImages": [
+                    {
+                        "imageId": 545,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ9dtS.jpg"
+                    },
+                    {
+                        "imageId": 546,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ93o7.jpg"
+                    },
+                    {
+                        "imageId": 547,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ9KPe.jpg"
+                    },
+                    {
+                        "imageId": 548,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ9qKu.jpg"
+                    },
+                    {
+                        "imageId": 549,
+                        "productId": 109,
+                        "imagePath": "https://iili.io/JRQ9Bcb.jpg"
+                    }
+                ],
+            },
             {
                 "productId": 109,
                 "productName": "Tất Nam, Kháng Khuẩn, Khử Mùi ",
@@ -150,7 +250,8 @@ const data = [
                 ],
             }
         ]
-    }
+    },
+
 ];
 
 const MarketplacePage = () => {
@@ -168,11 +269,20 @@ const MarketplacePage = () => {
                                 <div className="title row">
                                     <p className="col-4">{item.categoryName}</p>
                                 </div>
-                                <div className="product-list">
-                                    {
-                                        item.products.slice(0, NUMBER_PRODUCT_LIMIT).map((product, index) => (
-                                            <ProductItem key={index} product={product}/>))
-                                    }
+                                <div className="">
+
+                                    <Row gutter={[16, 24]}>
+                                        <Col className="gutter-row" span={6}>
+                                            <div style={{padding:"8px 0"}}>
+                                                {
+                                                    item.products.slice(0, NUMBER_PRODUCT_LIMIT).map((product, index) => (
+                                                        <ProductItem key={index} product={product}/>))
+                                                }
+                                            </div>
+                                        </Col>
+
+                                    </Row>
+
                                 </div>
 
                                 <div className="load-more-wrap text-center">
