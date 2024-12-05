@@ -43,6 +43,10 @@ export const DIALOGS = {
     FORGOT_PASSWORD: "forgot-password"
 }
 
+export const BUTTON = {
+    SEE_MORE: "Xem thêm",
+}
+
 export const HEADER = {
     HEADER_ITEM: {
         HOMEPAGE: "Trang chủ",
@@ -181,6 +185,10 @@ export const ORDER_LIST_PAGE = {
 export const ADD_PRODUCT_PAGE = {
     SAVE_BTN: "Lưu lại",
     REFRESH_BTN: "Làm mới"
+}
+
+export const MARKETPLACE_PAGE = {
+    PRODUCT_CATEGORIES_TITLE: "DANH MỤC SẢN PHẨM",
 }
 
 export const BREADCRUMB = {

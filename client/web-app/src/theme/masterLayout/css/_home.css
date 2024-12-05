@@ -1243,6 +1243,12 @@ label {
     animation-timing-function: linear;
     display: none;
 }
+
+.view-more-product {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 @keyframes animationLoading {
     0% {
         transform: rotate(0);
