@@ -1,5 +1,6 @@
 package com.supplychain.productservice.command.controller;
 
+import com.supplychain.productservice.Util.TimeUtils;
 import com.supplychain.productservice.command.command.CreateProductCommand;
 import com.supplychain.productservice.command.model.ProductRequestModel;
 import com.supplychain.productservice.enumeration.Status;
@@ -23,7 +24,7 @@ public class ProductCommandController {
     public String addProduct(@RequestBody ProductRequestModel model) {
         CreateProductCommand command =
                 new CreateProductCommand(UUID.randomUUID().toString(), model.getProductName(), model.getProductPrice(),
-                        model.getCategoryId(), null, model.getCreatorId(), model.getDateCreated(),
+                        model.getCategoryId(), null, model.getCreatorId(), TimeUtils.getCurrentTimeStrInVietNam(),
                         Status.ENABLED, model.getDetails());
         commandGateway.sendAndWait(command);
         return "addProduct";

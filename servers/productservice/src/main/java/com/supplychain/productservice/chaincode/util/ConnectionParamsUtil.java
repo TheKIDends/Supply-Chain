@@ -1,6 +1,6 @@
 package com.supplychain.productservice.chaincode.util;
 
-import com.supplychain.userservice.chaincode.Config;
+import com.supplychain.productservice.chaincode.Config;
 
 import java.util.HashMap;
 import java.util.Map;

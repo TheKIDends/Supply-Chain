@@ -1,5 +1,6 @@
 package com.supplychain.productservice.query.controller;
 
+import com.supplychain.productservice.Util.TimeUtils;
 import com.supplychain.productservice.command.model.CategoryRequestModel;
 import com.supplychain.productservice.query.model.ProductResponseModel;
 import com.supplychain.productservice.query.model.ProductsByTimeRequestModel;
@@ -10,6 +11,7 @@ import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -33,11 +35,18 @@ public class ProductQueryController {
         return queryGateway.query(getAllProductsQuery, ResponseTypes.multipleInstancesOf(ProductResponseModel.class)).join();
     }
 
-    @GetMapping("${endpoint.get-product-by-time}")
+    @PostMapping("${endpoint.get-products-by-time}")
     public List<ProductResponseModel> getProductsByTime(@RequestBody ProductsByTimeRequestModel model) {
         GetAllProductsQuery getAllProductsQuery = new GetAllProductsQuery();
         List<ProductResponseModel> responseModelList = queryGateway.query(getAllProductsQuery, ResponseTypes.multipleInstancesOf(ProductResponseModel.class)).join();
 
-        return responseModelList;
+        List<ProductResponseModel> productList = new ArrayList<>();
+        for (ProductResponseModel item : responseModelList) {
+            if (TimeUtils.isTimeInRange(item.getDateCreated(), model.getStartTime(), model.getEndTime())) {
+                productList.add(item);
+            }
+        }
+
+        return productList;
     }
 }

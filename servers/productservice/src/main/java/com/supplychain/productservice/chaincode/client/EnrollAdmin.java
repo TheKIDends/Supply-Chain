@@ -1,7 +1,7 @@
 package com.supplychain.productservice.chaincode.client;
 
-import com.supplychain.userservice.chaincode.util.ConnectionParamsUtil;
-import com.supplychain.userservice.chaincode.util.WalletUtil;
+import com.supplychain.productservice.chaincode.util.ConnectionParamsUtil;
+import com.supplychain.productservice.chaincode.util.WalletUtil;
 import org.hyperledger.fabric.gateway.Identities;
 import org.hyperledger.fabric.gateway.Identity;
 import org.hyperledger.fabric.sdk.Enrollment;

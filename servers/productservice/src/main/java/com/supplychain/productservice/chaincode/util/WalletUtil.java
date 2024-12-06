@@ -1,6 +1,6 @@
 package com.supplychain.productservice.chaincode.util;
 
-import com.supplychain.userservice.chaincode.Config;
+import com.supplychain.productservice.chaincode.Config;
 import org.hyperledger.fabric.gateway.Identity;
 import org.hyperledger.fabric.gateway.Wallet;
 import org.hyperledger.fabric.gateway.Wallets;

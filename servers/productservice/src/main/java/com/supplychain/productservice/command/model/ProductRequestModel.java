@@ -13,7 +13,6 @@ public class ProductRequestModel {
     private String productPrice;
     private String categoryId;
     private String creatorId;
-    private String dateCreated;
     private String productStatus;
     private String details;
 }

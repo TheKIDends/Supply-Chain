@@ -1,10 +1,10 @@
 package com.supplychain.productservice.chaincode.client;
 
-import com.supplychain.userservice.chaincode.Config;
-import com.supplychain.userservice.chaincode.user.CAEnrollment;
-import com.supplychain.userservice.chaincode.user.HyperledgerUser;
-import com.supplychain.userservice.chaincode.util.ConnectionParamsUtil;
-import com.supplychain.userservice.chaincode.util.WalletUtil;
+import com.supplychain.productservice.chaincode.Config;
+import com.supplychain.productservice.chaincode.user.CAEnrollment;
+import com.supplychain.productservice.chaincode.user.HyperledgerUser;
+import com.supplychain.productservice.chaincode.util.ConnectionParamsUtil;
+import com.supplychain.productservice.chaincode.util.WalletUtil;
 import org.hyperledger.fabric.gateway.Identities;
 import org.hyperledger.fabric.gateway.Identity;
 import org.hyperledger.fabric.gateway.X509Identity;
