@@ -1,6 +1,8 @@
 package com.supplychain.productservice.query.controller;
 
+import com.supplychain.productservice.command.model.CategoryRequestModel;
 import com.supplychain.productservice.query.model.ProductResponseModel;
+import com.supplychain.productservice.query.model.ProductsByTimeRequestModel;
 import com.supplychain.productservice.query.query.GetAllProductsQuery;
 import com.supplychain.productservice.query.query.GetProductQuery;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
@@ -29,5 +31,13 @@ public class ProductQueryController {
         GetAllProductsQuery getAllProductsQuery = new GetAllProductsQuery();
 
         return queryGateway.query(getAllProductsQuery, ResponseTypes.multipleInstancesOf(ProductResponseModel.class)).join();
+    }
+
+    @GetMapping("${endpoint.get-product-by-time}")
+    public List<ProductResponseModel> getProductsByTime(@RequestBody ProductsByTimeRequestModel model) {
+        GetAllProductsQuery getAllProductsQuery = new GetAllProductsQuery();
+        List<ProductResponseModel> responseModelList = queryGateway.query(getAllProductsQuery, ResponseTypes.multipleInstancesOf(ProductResponseModel.class)).join();
+
+        return responseModelList;
     }
 }
