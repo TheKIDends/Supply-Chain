@@ -1,18 +1,3 @@
-#spring.application.name=apigateway
-#server.port=8080
-#
-## Gateway routes configuration for productservice
-#spring.cloud.gateway.routes[0].id=productservice
-#spring.cloud.gateway.routes[0].uri=http://192.168.0.106:9000
-#spring.cloud.gateway.routes[0].predicates[0]=Path=/api/product/**
-#
-## Default filters configuration
-#spring.cloud.gateway.default-filters[0]=DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-#
-## Global CORS configuration
-#spring.cloud.gateway.globalcors.corsConfigurations.[/**].allowedOrigins=*
-#spring.cloud.gateway.globalcors.corsConfigurations.[/**].allowedMethods=*
-#spring.cloud.gateway.globalcors.corsConfigurations.[/**].allowedHeaders=*
 server:
   port: 8000
 

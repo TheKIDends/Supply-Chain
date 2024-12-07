@@ -39,4 +39,5 @@ public class ProductProjection {
 
         return modelList;
     }
+
 }
