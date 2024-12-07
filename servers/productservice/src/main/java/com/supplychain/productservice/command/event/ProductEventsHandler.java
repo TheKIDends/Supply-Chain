@@ -4,6 +4,9 @@ package com.supplychain.productservice.command.event;
 import com.supplychain.commonservice.model.UserResponseCommonModel;
 import com.supplychain.commonservice.query.GetDetailsUserQuery;
 
+import com.supplychain.userservice.data.Business;
+import com.supplychain.userservice.enumeration.UserRole;
+
 import com.supplychain.productservice.command.data.Product;
 import com.supplychain.productservice.command.repository.ProductRepository;
 
@@ -14,6 +17,8 @@ import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Objects;
 
 @Component
 public class ProductEventsHandler {
@@ -32,14 +37,18 @@ public class ProductEventsHandler {
 
         GetDetailsUserQuery getDetailsUserQuery  = new GetDetailsUserQuery(event.getCreatorId());
 
-      
-        UserResponseCommonModel userResponseCommonModel =
+
+        UserResponseCommonModel model =
                 queryGateway.query(getDetailsUserQuery, ResponseTypes.instanceOf(UserResponseCommonModel.class)).join();
 
-        System.out.println(userResponseCommonModel);
-
-
-
+        
+        if (Objects.equals(model.getRole(), UserRole.BUSINESS)) {
+            Business business = new Business();
+            BeanUtils.copyProperties(model, business);
+            System.out.println("hah");
+            System.out.println(business.getDirectorIDNumber());
+        }
+         
 
         productRepository.save(product);
     }

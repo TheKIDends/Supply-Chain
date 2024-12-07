@@ -1,5 +1,6 @@
 package com.supplychain.userservice.projection;
 
+import com.supplychain.commonservice.model.BusinessResponseCommonModel;
 import com.supplychain.commonservice.model.UserResponseCommonModel;
 import com.supplychain.commonservice.query.GetDetailsUserQuery;
 
@@ -23,10 +24,12 @@ public class UserProjection {
 
     @QueryHandler
     public UserResponseCommonModel handle(GetDetailsUserQuery getDetailsUserQuery) {
-        UserResponseCommonModel model = new UserResponseCommonModel();
-        Business business = businessRepository.findBusinessById(getDetailsUserQuery.getId());
+        UserResponseCommonModel model = new BusinessResponseCommonModel();
 
+        Business business = businessRepository.findBusinessById(getDetailsUserQuery.getId());
         BeanUtils.copyProperties(business, model);
-        return model; 
+//        System.out.println("sđsđá");
+//        System.out.println(model.toString());
+        return model;  
     }
 }

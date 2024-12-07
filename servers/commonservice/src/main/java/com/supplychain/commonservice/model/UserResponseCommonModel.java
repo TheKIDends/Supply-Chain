@@ -1,11 +1,12 @@
 package com.supplychain.commonservice.model;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
 @ToString
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserResponseCommonModel {
@@ -18,9 +19,4 @@ public class UserResponseCommonModel {
     private boolean enabled;
     private String role;
     private String designation;
-
-    private String address;
-    private String businessLicenseNumber;
-    private String directorName;
-    private String directorIDNumber;
 }
