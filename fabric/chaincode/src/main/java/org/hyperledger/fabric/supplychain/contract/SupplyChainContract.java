@@ -8,8 +8,6 @@ import org.hyperledger.fabric.contract.annotation.*;
 import org.hyperledger.fabric.shim.ChaincodeException;
 import org.hyperledger.fabric.shim.ChaincodeStub;
 import org.hyperledger.fabric.shim.ledger.CompositeKey;
-import org.hyperledger.fabric.shim.ledger.KeyValue;
-import org.hyperledger.fabric.shim.ledger.QueryResultsIterator;
 import org.hyperledger.fabric.supplychain.entity.OrderItem;
 import org.hyperledger.fabric.supplychain.entity.ProductItem;
 import org.hyperledger.fabric.supplychain.entity.Product;
@@ -21,7 +19,6 @@ import org.hyperledger.fabric.supplychain.enumeration.OrderRequestStatus;
 import org.hyperledger.fabric.supplychain.enumeration.ProductItemType;
 import org.hyperledger.fabric.supplychain.enumeration.RequestStatus;
 import org.json.JSONObject;
-import org.json.JSONArray;
 
 import java.util.*;
 import java.util.logging.Logger;
@@ -105,25 +102,46 @@ public class SupplyChainContract implements ContractInterface {
         }
     }
 
-    private boolean isProductLicenseAccepted(Context ctx, String productId) {
-        if (ctx == null) return false;
-        if (!isEntityExists(ctx, Product.class.getSimpleName(), productId)) return  false;
+//    public String getProductLicenseIdByProductId(Context ctx, String productId) {
+//
+//        if (!isEntityExists(ctx, ProductLicense.class.getSimpleName(), requestId)) {
+//            String errorMessage = String.format("Product license %s does not exist.", requestId);
+//            System.out.println(errorMessage);
+//            throw new ChaincodeException(errorMessage, ContractErrors.REQUEST_NOT_FOUND);
+//        }
+//
+//        CompositeKey compositeKey = ctx.getStub().createCompositeKey(ProductLicense.class.getSimpleName(), requestId);
+//        String dbKey = compositeKey.toString();
+//        byte [] result = ctx.getStub().getState(dbKey);
+//        ProductLicense productLicense = genson.deserialize(result, ProductLicense.class);
+//
+//        String productLicenseStr = genson.serialize(productLicense);
+//        System.out.println("getProductLicense: " + productLicenseStr);
+//        return productLicenseStr;
+//    }
 
-        CompositeKey productCompositeKey = ctx.getStub().createCompositeKey(Product.class.getSimpleName(), productId);
-        String productDBKey = productCompositeKey.toString();
-        byte [] productResult = ctx.getStub().getState(productDBKey);
-        Product product = genson.deserialize(productResult, Product.class);
 
-        String licenseID = product.getLicenseID();
-        if (!isEntityExists(ctx, ProductLicense.class.getSimpleName(), licenseID)) return false;
-
-        CompositeKey licenseCompositeKey = ctx.getStub().createCompositeKey(ProductLicense.class.getSimpleName(), licenseID);
-        String licenseDBKey = licenseCompositeKey.toString();
-        byte [] licenseResult = ctx.getStub().getState(licenseDBKey);
-        ProductLicense license = genson.deserialize(licenseResult, ProductLicense.class);
-
-        return Objects.equals(license.getRequestStatus(), RequestStatus.ACCEPTED);
-    }
+//    private boolean isProductLicenseAccepted(Context ctx, String productId) {
+//        if (ctx == null) return false;
+//        if (!isEntityExists(ctx, Product.class.getSimpleName(), productId)) return  false;
+//
+//        CompositeKey productCompositeKey = ctx.getStub().createCompositeKey(Product.class.getSimpleName(), productId);
+//        String productDBKey = productCompositeKey.toString();
+//        byte [] productResult = ctx.getStub().getState(productDBKey);
+//        Product product = genson.deserialize(productResult, Product.class);
+//
+//
+//        String licenseId = product.getLicenseId();
+//
+//        if (!isEntityExists(ctx, ProductLicense.class.getSimpleName(), licenseId)) return false;
+//
+//        CompositeKey licenseCompositeKey = ctx.getStub().createCompositeKey(ProductLicense.class.getSimpleName(), licenseId);
+//        String licenseDBKey = licenseCompositeKey.toString();
+//        byte [] licenseResult = ctx.getStub().getState(licenseDBKey);
+//        ProductLicense license = genson.deserialize(licenseResult, ProductLicense.class);
+//
+//        return Objects.equals(license.getRequestStatus(), RequestStatus.ACCEPTED);
+//    }
 
     private boolean isEntityExists(Context ctx, String classSimpleName, String entityId) {
         if (ctx == null) return false;
@@ -182,6 +200,7 @@ public class SupplyChainContract implements ContractInterface {
         String recipientId = jsonObject.getString("recipientId");
         String dateCreated = jsonObject.getString("dateCreated");
         String dateModified = dateCreated;
+        String requestType = ProductLicense.class.getSimpleName();
         String requestStatus = RequestStatus.PENDING;
 
         String productId = jsonObject.getString("productId");
@@ -191,16 +210,6 @@ public class SupplyChainContract implements ContractInterface {
             String errorMessage = String.format("Product %s does not exist.", requestId);
             System.out.println(errorMessage);
             throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_NOT_FOUND);
-        } else {
-            CompositeKey compositeKey = ctx.getStub().createCompositeKey(Product.class.getSimpleName(), productId);
-            String dbKey = compositeKey.toString();
-            byte [] result = ctx.getStub().getState(dbKey);
-            Product product = genson.deserialize(result, Product.class);
-
-            product.setLicenseID(requestId);
-
-            String productStr = genson.serialize(product);
-            ctx.getStub().putStringState(dbKey, productStr);
         }
 
         CompositeKey compositeKey = ctx.getStub().createCompositeKey(ProductLicense.class.getSimpleName(), requestId);
@@ -213,6 +222,7 @@ public class SupplyChainContract implements ContractInterface {
                 .recipientId(recipientId)
                 .dateCreated(dateCreated)
                 .dateModified(dateModified)
+                .requestType(requestType)
                 .requestStatus(requestStatus)
                 .productId(productId)
                 .details(details)
@@ -270,7 +280,6 @@ public class SupplyChainContract implements ContractInterface {
         ctx.getStub().putStringState(dbKey, productLicenseStr);
         System.out.println("setProductLicenseStatus: " + productLicenseStr);
         return productLicenseStr;
-
     }
 
     @Transaction(intent = Transaction.TYPE.SUBMIT)
@@ -279,10 +288,11 @@ public class SupplyChainContract implements ContractInterface {
 
         String productId = ctx.getStub().getTxId();
         String productName = jsonObject.getString("productName");
-        String licenseID = null;
+        String productPrice = jsonObject.getString("productPrice");
+        String categoryId = jsonObject.getString("categoryId");
         String creatorId = jsonObject.getString("creatorId");
         String dateCreated = jsonObject.getString("dateCreated");
-        String price = jsonObject.getString("price");
+        String productStatus = jsonObject.getString("productStatus");
         String details = jsonObject.getString("details");
 
         CompositeKey compositeKey = ctx.getStub().createCompositeKey(Product.class.getSimpleName(), productId);
@@ -292,13 +302,13 @@ public class SupplyChainContract implements ContractInterface {
                 .builder()
                 .productId(productId)
                 .productName(productName)
-                .licenseID(licenseID)
+                .productPrice(productPrice)
+                .categoryId(categoryId)
                 .creatorId(creatorId)
                 .dateCreated(dateCreated)
+                .productStatus(productStatus)
                 .details(details)
-                .price(price)
                 .build();
-
 
         String productStr = genson.serialize(product);
         ctx.getStub().putStringState(dbKey, productStr);
@@ -328,8 +338,34 @@ public class SupplyChainContract implements ContractInterface {
     }
 
     @Transaction(intent = Transaction.TYPE.SUBMIT)
+    public String setProductStatus(Context ctx, String jsonStr) {
+        JSONObject jsonObject = new JSONObject(jsonStr);
+        String productId = jsonObject.getString("productId");
+        String productStatus = jsonObject.getString("productStatus");
+
+        if (!isEntityExists(ctx, Product.class.getSimpleName(), productId)) {
+            String errorMessage = String.format("Product %s does not exist.", productId);
+            System.out.println(errorMessage);
+            throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_NOT_FOUND);
+        }
+
+        CompositeKey compositeKey = ctx.getStub().createCompositeKey(Product.class.getSimpleName(), productId);
+        String dbKey = compositeKey.toString();
+        byte [] result = ctx.getStub().getState(dbKey);
+        Product product = genson.deserialize(result, Product.class);
+
+        product.setProductStatus(productStatus);
+
+        String productStr = genson.serialize(product);
+        ctx.getStub().putStringState(dbKey, productStr);
+        System.out.println("setProductStatus: " + productStr);
+        return productStr;
+    }
+
+    @Transaction(intent = Transaction.TYPE.SUBMIT)
     public String addProductItem(Context ctx, String jsonStr) {
         JSONObject jsonObject = new JSONObject(jsonStr);
+
         String productItemId = ctx.getStub().getTxId();
         String productId = jsonObject.getString("productId");
         String productItemType = jsonObject.getString("productItemType");
@@ -338,7 +374,7 @@ public class SupplyChainContract implements ContractInterface {
         String expirationDate = jsonObject.getString("expirationDate");
         String creatorId = jsonObject.getString("creatorId");
         String ownerId = jsonObject.getString("ownerId");
-        String status = jsonObject.getString("status");
+        String itemStatus = jsonObject.getString("itemStatus");
         String details = jsonObject.getString("details");
 
         if (!isEntityExists(ctx, Product.class.getSimpleName(), productId)) {
@@ -347,11 +383,14 @@ public class SupplyChainContract implements ContractInterface {
             throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_NOT_FOUND);
         }
 
-        if (!isProductLicenseAccepted(ctx, productId)) {
-            String errorMessage = String.format("Product license %s is not accepted.", productId);
-            System.out.println(errorMessage);
-            throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_LICENSE_IS_NOT_ACCEPTED);
-        }
+
+        ///
+
+//        if (!isProductLicenseAccepted(ctx, productId)) {
+//            String errorMessage = String.format("Product license %s is not accepted.", productId);
+//            System.out.println(errorMessage);
+//            throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_LICENSE_IS_NOT_ACCEPTED);
+//        }
 
         if (containerId != null) {
             if (!isEntityExists(ctx, ProductItem.class.getSimpleName(), containerId)) {
@@ -391,7 +430,7 @@ public class SupplyChainContract implements ContractInterface {
                 .expirationDate(expirationDate)
                 .creatorId(creatorId)
                 .ownerId(ownerId)
-                .status(status)
+                .itemStatus(itemStatus)
                 .details(details)
                 .build();
 
@@ -521,11 +560,11 @@ public class SupplyChainContract implements ContractInterface {
                 throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_NOT_FOUND);
             }
 
-            if (!isProductLicenseAccepted(ctx, productId)) {
-                String errorMessage = String.format("Product license %s is not accepted.", productId);
-                System.out.println(errorMessage);
-                throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_LICENSE_IS_NOT_ACCEPTED);
-            }
+//            if (!isProductLicenseAccepted(ctx, productId)) {
+//                String errorMessage = String.format("Product license %s is not accepted.", productId);
+//                System.out.println(errorMessage);
+//                throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_LICENSE_IS_NOT_ACCEPTED);
+//            }
         }
 
         for (OrderItem item : orderItems) {
@@ -584,85 +623,85 @@ public class SupplyChainContract implements ContractInterface {
     }
 
 
-    @Transaction(intent = Transaction.TYPE.SUBMIT)
-    public String sendPaymentRequest(Context ctx, String jsonStr) {
-        JSONObject jsonObject = new JSONObject(jsonStr);
-
-        String requestId = ctx.getStub().getTxId();
-        String senderId = jsonObject.getString("senderId");
-        String recipientId = jsonObject.getString("recipientId");
-        String dateCreated = jsonObject.getString("dateCreated");
-        String dateModified = dateCreated;
-        String requestStatus = RequestStatus.PENDING;
-
-        String orderId = jsonObject.getString("orderId");
-        String totalAmount = "";
-        String details = jsonObject.getString("details");
-
-
-        OrderRequest orderRequest = getEntity(ctx, OrderRequest.class, orderId);
-        if (orderRequest == null) {
-            String errorMessage = String.format("Order request %s does not exist.", orderId);
-            System.out.println(errorMessage);
-            throw new ChaincodeException(errorMessage, ContractErrors.REQUEST_NOT_FOUND);
-        }
-
-
-//        CompositeKey compositeKey = ctx.getStub().createCompositeKey(OrderRequest.class.getSimpleName(), orderId);
+//    @Transaction(intent = Transaction.TYPE.SUBMIT)
+//    public String sendPaymentRequest(Context ctx, String jsonStr) {
+//        JSONObject jsonObject = new JSONObject(jsonStr);
+//
+//        String requestId = ctx.getStub().getTxId();
+//        String senderId = jsonObject.getString("senderId");
+//        String recipientId = jsonObject.getString("recipientId");
+//        String dateCreated = jsonObject.getString("dateCreated");
+//        String dateModified = dateCreated;
+//        String requestStatus = RequestStatus.PENDING;
+//
+//        String orderId = jsonObject.getString("orderId");
+//        String totalAmount = "";
+//        String details = jsonObject.getString("details");
+//
+//
+//        OrderRequest orderRequest = getEntity(ctx, OrderRequest.class, orderId);
+//        if (orderRequest == null) {
+//            String errorMessage = String.format("Order request %s does not exist.", orderId);
+//            System.out.println(errorMessage);
+//            throw new ChaincodeException(errorMessage, ContractErrors.REQUEST_NOT_FOUND);
+//        }
+//
+//
+////        CompositeKey compositeKey = ctx.getStub().createCompositeKey(OrderRequest.class.getSimpleName(), orderId);
+////        String dbKey = compositeKey.toString();
+////
+////        byte [] result = ctx.getStub().getState(dbKey);
+////        ProductItem productItem = genson.deserialize(result, ProductItem.class);
+////
+//
+//        CompositeKey compositeKey = ctx.getStub().createCompositeKey(PaymentRequest.class.getSimpleName(), requestId);
 //        String dbKey = compositeKey.toString();
 //
-//        byte [] result = ctx.getStub().getState(dbKey);
-//        ProductItem productItem = genson.deserialize(result, ProductItem.class);
+//        PaymentRequest paymentRequest = PaymentRequest
+//                .builder()
+//                .requestId(requestId)
+//                .senderId(senderId)
+//                .recipientId(recipientId)
+//                .dateCreated(dateCreated)
+//                .dateModified(dateModified)
+//                .requestStatus(requestStatus)
+//                .orderId(orderId)
+//                .totalAmount(totalAmount)
+//                .details(details)
+//                .build();
 //
-
-        CompositeKey compositeKey = ctx.getStub().createCompositeKey(PaymentRequest.class.getSimpleName(), requestId);
-        String dbKey = compositeKey.toString();
-
-        PaymentRequest paymentRequest = PaymentRequest
-                .builder()
-                .requestId(requestId)
-                .senderId(senderId)
-                .recipientId(recipientId)
-                .dateCreated(dateCreated)
-                .dateModified(dateModified)
-                .requestStatus(requestStatus)
-                .orderId(orderId)
-                .totalAmount(totalAmount)
-                .details(details)
-                .build();
-
-        String paymentRequestStr = genson.serialize(paymentRequest);
-        ctx.getStub().putStringState(dbKey, paymentRequestStr);
-
-        System.out.println("sendPaymentRequest: " + paymentRequestStr);
-        return paymentRequestStr;
-    }
-
-    @Transaction(intent = Transaction.TYPE.SUBMIT)
-    public String setPaymentRequestStatus(Context ctx, String jsonStr) {
-        JSONObject jsonObject = new JSONObject(jsonStr);
-        String requestId = jsonObject.getString("requestId");
-        String requestStatus = jsonObject.getString("requestStatus");
-        String dateModified = jsonObject.getString("dateModified");
-
-        if (!isEntityExists(ctx, PaymentRequest.class.getSimpleName(), requestId)) {
-            String errorMessage = String.format("Payment request %s does not exist.", requestId);
-            System.out.println(errorMessage);
-            throw new ChaincodeException(errorMessage, ContractErrors.REQUEST_NOT_FOUND);
-        }
-
-        CompositeKey compositeKey = ctx.getStub().createCompositeKey(PaymentRequest.class.getSimpleName(), requestId);
-        String dbKey = compositeKey.toString();
-        byte [] result = ctx.getStub().getState(dbKey);
-        PaymentRequest paymentRequest = genson.deserialize(result, PaymentRequest.class);
-
-        paymentRequest.setRequestStatus(requestStatus);
-        paymentRequest.setDateModified(dateModified);
-
-        String paymentRequestStr = genson.serialize(paymentRequest);
-        ctx.getStub().putStringState(dbKey, paymentRequestStr);
-        System.out.println("setPaymentRequestStatus: " + paymentRequestStr);
-        return paymentRequestStr;
-    }
+//        String paymentRequestStr = genson.serialize(paymentRequest);
+//        ctx.getStub().putStringState(dbKey, paymentRequestStr);
+//
+//        System.out.println("sendPaymentRequest: " + paymentRequestStr);
+//        return paymentRequestStr;
+//    }
+//
+//    @Transaction(intent = Transaction.TYPE.SUBMIT)
+//    public String setPaymentRequestStatus(Context ctx, String jsonStr) {
+//        JSONObject jsonObject = new JSONObject(jsonStr);
+//        String requestId = jsonObject.getString("requestId");
+//        String requestStatus = jsonObject.getString("requestStatus");
+//        String dateModified = jsonObject.getString("dateModified");
+//
+//        if (!isEntityExists(ctx, PaymentRequest.class.getSimpleName(), requestId)) {
+//            String errorMessage = String.format("Payment request %s does not exist.", requestId);
+//            System.out.println(errorMessage);
+//            throw new ChaincodeException(errorMessage, ContractErrors.REQUEST_NOT_FOUND);
+//        }
+//
+//        CompositeKey compositeKey = ctx.getStub().createCompositeKey(PaymentRequest.class.getSimpleName(), requestId);
+//        String dbKey = compositeKey.toString();
+//        byte [] result = ctx.getStub().getState(dbKey);
+//        PaymentRequest paymentRequest = genson.deserialize(result, PaymentRequest.class);
+//
+//        paymentRequest.setRequestStatus(requestStatus);
+//        paymentRequest.setDateModified(dateModified);
+//
+//        String paymentRequestStr = genson.serialize(paymentRequest);
+//        ctx.getStub().putStringState(dbKey, paymentRequestStr);
+//        System.out.println("setPaymentRequestStatus: " + paymentRequestStr);
+//        return paymentRequestStr;
+//    }
 
 }

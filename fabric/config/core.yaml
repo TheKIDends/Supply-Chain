@@ -20,7 +20,7 @@ peer:
 
     # The Address at local network interface this Peer will listen on.
     # By default, it will listen on all network interfaces
-    listenAddress: 0.0.0.0:5127
+    listenAddress: 0.0.0.0:7051
 
     # The endpoint this peer uses to listen for inbound chaincode connections.
     # If this is commented-out, the listen address is selected to be
@@ -39,7 +39,7 @@ peer:
     # in the same organization. For peers in other organization, see
     # gossip.externalEndpoint for more info.
     # When used as CLI config, this means the peer's endpoint to interact with
-    address: 0.0.0.0:5127
+    address: 0.0.0.0:7051
 
     # Whether the Peer should programmatically determine its address
     # This case is useful for docker containers.
@@ -101,7 +101,7 @@ peer:
         # Important: The endpoints here have to be endpoints of peers in the same
         # organization, because the peer would refuse connecting to these endpoints
         # unless they are in the same organization as the peer.
-        bootstrap: 127.0.0.1:5127
+        bootstrap: 127.0.0.1:7051
 
         # NOTE: orgLeader and useLeaderElection parameters are mutual exclusive.
         # Setting both to true would result in the termination of the peer
@@ -310,7 +310,8 @@ peer:
     # client messages
     authentication:
         # the acceptable difference between the current server time and the
-        # client's time as specified in a client request message
+        # client's time as specified in a client request message.
+        # timewindow is checked on requests to the delivery service only.
         timewindow: 15m
 
     # Path on the file system where peer will store data (eg ledger). This
@@ -674,7 +675,7 @@ ledger:
        # not map the CouchDB container port to a server port in docker-compose.
        # Otherwise proper security must be provided on the connection between
        # CouchDB client (on the peer) and server.
-       couchDBAddress: 127.0.0.1:3165
+       couchDBAddress: 127.0.0.1:5984
        # This username must have read and write authority on CouchDB
        username:
        # The password is recommended to pass as an environment variable

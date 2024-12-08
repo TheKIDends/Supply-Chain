@@ -28,9 +28,6 @@ public class Product {
     @JsonProperty("categoryId")
     private String categoryId;
 
-    @JsonProperty("licenseId")
-    private String licenseId;
-
     @JsonProperty("creatorId")
     private String creatorId;
 

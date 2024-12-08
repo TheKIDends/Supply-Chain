@@ -28,8 +28,7 @@ public class UserProjection {
 
         Business business = businessRepository.findBusinessById(getDetailsUserQuery.getId());
         BeanUtils.copyProperties(business, model);
-//        System.out.println("sđsđá");
-//        System.out.println(model.toString());
+
         return model;  
     }
 }

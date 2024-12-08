@@ -2,6 +2,7 @@ package org.hyperledger.fabric.supplychain.entity.request;
 
 import lombok.*;
 
+import lombok.experimental.SuperBuilder;
 import org.hyperledger.fabric.contract.annotation.DataType;
 import com.owlike.genson.annotation.JsonProperty;
 import org.hyperledger.fabric.contract.annotation.Property;
@@ -9,6 +10,9 @@ import org.hyperledger.fabric.contract.annotation.Property;
 @Getter
 @Setter
 @ToString
+@SuperBuilder
+@AllArgsConstructor
+@NoArgsConstructor
 @DataType()
 public abstract class Request {
     @Property()
@@ -42,20 +46,4 @@ public abstract class Request {
     @Property()
     @JsonProperty("entityName")
     protected String entityName;
-
-    public Request() {
-    }
-
-    public Request(String requestId, String senderId, String recipientId, String dateCreated, String dateModified,
-                   String requestType, String requestStatus, String entityName)
-    {
-        this.requestId = requestId;
-        this.senderId = senderId;
-        this.recipientId = recipientId;
-        this.dateCreated = dateCreated;
-        this.dateModified = dateModified;
-        this.requestType = requestType;
-        this.requestStatus = requestStatus;
-        this.entityName = entityName;
-    }
 }

@@ -23,12 +23,12 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/list-user")
+    @GetMapping("${endpoint.list-user}")
     public List<User> getAllUser() {
         return userService.getAllUser();
     }
 
-    @PostMapping("/register")
+    @PostMapping("${endpoint.register}")
     public UserDTO register(@RequestBody UserDTO dto) {
         if (Objects.equals(dto.getRole(), UserRole.BUSINESS))
             dto.setDesignation(Designation.MANAGER);
@@ -40,7 +40,7 @@ public class UserController {
         return userService.saveUser(dto);
     }
 
-    @PostMapping("/login")
+    @PostMapping("${endpoint.login}")
     public UserDTO login(@RequestBody UserDTO dto) {
         return userService.login(dto.getPhoneNumber(), dto.getPassword());
     }

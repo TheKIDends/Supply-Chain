@@ -1,16 +1,16 @@
 package org.hyperledger.fabric.supplychain.entity;
 
 import com.owlike.genson.annotation.JsonProperty;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hyperledger.fabric.contract.annotation.DataType;
 import org.hyperledger.fabric.contract.annotation.Property;
 
 @Getter
 @Setter
 @ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @DataType()
 public class ProductItem {
     @Property()
@@ -46,30 +46,11 @@ public class ProductItem {
     private String ownerId;
 
     @Property()
-    @JsonProperty("status")
-    private String status;
+    @JsonProperty("itemStatus")
+    private String itemStatus;
 
     @Property()
     @JsonProperty("details")
     private String details;
 
-    public ProductItem() {
-    }
-
-    @Builder
-    public ProductItem(String productItemId, String productId, String productItemType, String containerId,
-                       String productionDate, String expirationDate, String creatorId, String ownerId, String status,
-                       String details
-    ) {
-        this.productItemId = productItemId;
-        this.productId = productId;
-        this.productItemType = productItemType;
-        this.containerId = containerId;
-        this.productionDate = productionDate;
-        this.expirationDate = expirationDate;
-        this.creatorId = creatorId;
-        this.ownerId = ownerId;
-        this.status = status;
-        this.details = details;
-    }
 }

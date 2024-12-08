@@ -8,6 +8,9 @@ import org.hyperledger.fabric.contract.annotation.Property;
 @Getter
 @Setter
 @ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @DataType()
 public class Product {
     @Property()
@@ -19,8 +22,12 @@ public class Product {
     private String productName;
 
     @Property()
-    @JsonProperty("licenseID")
-    private String licenseID;
+    @JsonProperty("productPrice")
+    private String productPrice;
+
+    @Property()
+    @JsonProperty("categoryId")
+    private String categoryId;
 
     @Property()
     @JsonProperty("creatorId")
@@ -31,26 +38,10 @@ public class Product {
     private String dateCreated;
 
     @Property()
-    @JsonProperty("price")
-    private String price;
+    @JsonProperty("productStatus")
+    private String productStatus;
 
     @Property()
     @JsonProperty("details")
     private String details;
-
-    public Product() {
-    }
-
-    @Builder
-    public Product(String productId, String productName, String licenseID,
-                   String creatorId, String dateCreated, String price, String details
-    ) {
-        this.productId = productId;
-        this.productName = productName;
-        this.licenseID = licenseID;
-        this.creatorId = creatorId;
-        this.dateCreated = dateCreated;
-        this.price = price;
-        this.details = details;
-    }
 }

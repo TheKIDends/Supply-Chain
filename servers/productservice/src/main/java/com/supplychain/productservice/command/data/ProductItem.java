@@ -22,8 +22,8 @@ public class ProductItem {
     @JsonProperty("productId")
     private String productId;
 
-    @JsonProperty("itemType")
-    private String itemType;
+    @JsonProperty("productItemType")
+    private String productItemType;
 
     @JsonProperty("containerId")
     private String containerId;
@@ -31,7 +31,7 @@ public class ProductItem {
     @JsonProperty("productionDate")
     private String productionDate;
 
-    @JsonProperty("                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ")
+    @JsonProperty("expirationDate")
     private String expirationDate;
 
     @JsonProperty("creatorId")

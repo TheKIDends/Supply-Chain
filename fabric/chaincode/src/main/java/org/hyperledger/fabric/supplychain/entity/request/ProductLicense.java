@@ -2,6 +2,7 @@ package org.hyperledger.fabric.supplychain.entity.request;
 
 import com.owlike.genson.annotation.JsonProperty;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hyperledger.fabric.contract.annotation.DataType;
 import org.hyperledger.fabric.contract.annotation.Property;
 import org.hyperledger.fabric.supplychain.enumeration.RequestType;
@@ -9,6 +10,9 @@ import org.hyperledger.fabric.supplychain.enumeration.RequestType;
 @Getter
 @Setter
 @ToString
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
 @DataType()
 public class ProductLicense extends Request {
     @Property()
@@ -18,20 +22,4 @@ public class ProductLicense extends Request {
     @Property()
     @JsonProperty("details")
     private String details;
-
-    public ProductLicense() {
-        super();
-        this.requestType = RequestType.PRODUCT_LICENSE;
-        this.entityName = ProductLicense.class.getSimpleName();
-    }
-
-    @Builder
-    public ProductLicense(String requestId, String senderId, String recipientId, String dateCreated,
-                          String dateModified, String requestStatus, String productId, String details
-    ) {
-        super(requestId, senderId, recipientId, dateCreated, dateModified, RequestType.PRODUCT_LICENSE,
-                requestStatus, ProductLicense.class.getSimpleName());
-        this.productId = productId;
-        this.details = details;
-    }
 }

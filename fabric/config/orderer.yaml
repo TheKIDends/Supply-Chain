@@ -16,7 +16,7 @@ General:
     ListenAddress: 127.0.0.1
 
     # Listen port: The port on which to bind to listen.
-    ListenPort: 3127
+    ListenPort: 7050
 
     # TLS: TLS settings for the GRPC server.
     TLS:
@@ -162,7 +162,8 @@ General:
     # client messages
     Authentication:
         # the acceptable difference between the current server time and the
-        # client's time as specified in a client request message
+        # client's time as specified in a client request message.
+        # TimeWindow is checked on requests to the delivery service only.
         TimeWindow: 15m
 
 

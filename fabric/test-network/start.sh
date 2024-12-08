@@ -1,8 +1,8 @@
-#!/bin/bash
-
 ./network.sh down
 
-./network.sh up createChannel -c supplychain -ca -s couchdb
+./network.sh up 
+
+./network.sh createChannel -c supplychain -ca -s couchdb
 
 cd addOrg3
 
@@ -16,16 +16,16 @@ cd addOrg4
 
 cd ..
 
-cd addOrg5
+# cd addOrg5
 
-./addOrg5.sh up -c supplychain -ca -s couchdb
+# ./addOrg5.sh up -c supplychain -ca -s couchdb
 
-cd ..
+# cd ..
 
-cd addOrg6
+# cd addOrg6
 
-./addOrg6.sh up -c supplychain -ca -s couchdb
+# ./addOrg6.sh up -c supplychain -ca -s couchdb
 
-cd ..
+# cd ..
 
 ./network.sh deployCC -c supplychain -ccn chaincode -ccp ../chaincode/ -ccl java

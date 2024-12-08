@@ -182,7 +182,7 @@ COMPOSE_FILE_Org5=docker/docker-compose-org5.yaml
 # certificate authorities compose file
 COMPOSE_FILE_CA_Org5=docker/docker-compose-ca-org5.yaml
 # database
-DATABASE="leveldb"
+DATABASE="couchdb"
 
 # Parse commandline args
 

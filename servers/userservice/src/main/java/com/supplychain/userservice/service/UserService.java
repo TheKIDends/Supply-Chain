@@ -3,6 +3,9 @@ package com.supplychain.userservice.service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.supplychain.userservice.chaincode.Config;
+import com.supplychain.userservice.chaincode.client.RegisterUserHyperledger;
+import com.supplychain.userservice.data.Business;
 import com.supplychain.userservice.data.User;
 import com.supplychain.userservice.enumeration.Designation;
 import com.supplychain.userservice.enumeration.UserRole;
@@ -38,14 +41,31 @@ public class UserService {
 
     public UserDTO saveUser(UserDTO userDTO) {
         userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+     
+        if (Objects.equals(userDTO.getRole(), UserRole.BUSINESS)) {
 
-//        if (Objects.equals(userDTO.getRole(), UserRole.BUSINESS)) {
             BusinessDTO businessDTO = BusinessDTO.convertUserDTOToBusinessDTO(userDTO);
-            return BusinessDTO.entityToDTO(businessRepository.save(BusinessDTO.dtoToEntity(businessDTO)));
-//        }
+            Business business = BusinessDTO.dtoToEntity(businessDTO);
+            Business savedBusiness = businessRepository.save(business);
+            
+            if (savedBusiness != null && savedBusiness.getId() != null) {
+                try {
+                    RegisterUserHyperledger.enrollOrgAppUsers(savedBusiness.getEmail(), Config.ORG2, savedBusiness.getId());
+                } catch (Exception exception) {
+                   
+                    System.out.println("Error in registering user in Hyperledger: " + exception.getMessage());
+            
+                }
+                return BusinessDTO.entityToDTO(savedBusiness);
+                
+            } else {
+                throw new RuntimeException("Failed to save business into database");
+            }
+        }
 
-//        return UserDTO.entityToDTO(userRepository.save(UserDTO.dtoToEntity(userDTO))).toString();
+        return null;
     }
+
 
     public UserDTO login(String phoneNumber, String password) {
         User user = null;
