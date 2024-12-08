@@ -1,6 +1,13 @@
 package com.supplychain.productservice.service;
 
 import com.owlike.genson.Genson;
+import com.supplychain.productservice.chaincode.Config;
+import com.supplychain.productservice.chaincode.client.RegisterUserHyperledger;
+import com.supplychain.productservice.chaincode.util.ConnectionParamsUtil;
+import com.supplychain.productservice.chaincode.util.WalletUtil;
+import com.supplychain.productservice.command.data.Product;
+import com.supplychain.userservice.data.User;
+
 import lombok.SneakyThrows;
 import org.hyperledger.fabric.gateway.Contract;
 import org.hyperledger.fabric.gateway.Gateway;
@@ -10,6 +17,7 @@ import org.hyperledger.fabric.sdk.BlockEvent;
 import org.hyperledger.fabric.sdk.Channel;
 import org.hyperledger.fabric.sdk.exception.InvalidArgumentException;
 import org.springframework.stereotype.Service;
+import org.json.JSONObject;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -49,46 +57,46 @@ public class HyperledgerService {
         network.addBlockListener(e);
     }
 
-//    private Contract getContract(User user) throws Exception {
-//        String userWalletIdentity = user.getEmail();
-//        String userId = user.getId();
-//        String userIdentity = String.valueOf(userId);
-//
-//        String org = determineOrg(user);
-//        Map<String, String> connectionConfigParams = ConnectionParamsUtil.setOrgConfigParams(org);
-//        String connectionProfilePath = connectionConfigParams.get("networkConfigPath");
-//
-//        Gateway gateway = connect(userWalletIdentity, connectionProfilePath, userIdentity, org);
-//        Network network = gateway.getNetwork(Config.CHANNEL_NAME);
-//        Contract contract = network.getContract(Config.CHAINCODE_NAME);
-//        registerListener(network, network.getChannel(), contract);
-//        return contract;
-//    }
-//
-//    private Gateway connect(String userWalletIdentity, String connectionProfilePath, String userIdentity, String org)
-//            throws Exception {
-//        Identity identity = RegisterUserHyperledger.enrollOrgAppUsers(userWalletIdentity, org, userIdentity);
-//        if (identity == null) {
-//            throw new Exception(String.format("Cannot find %s's idenitty", userWalletIdentity));
-//        }
-//
-//        Gateway.Builder builder = Gateway.createBuilder();
-//        Path networkConfigPath = Paths.get(connectionProfilePath);
-//        WalletUtil walletUtil = new WalletUtil();
-//        builder.identity(walletUtil.getWallet(), userWalletIdentity).networkConfig(networkConfigPath).discovery(true);
-//
-//        return builder.connect();
-//    }
-//
-//    private void formatExceptionMessage(Exception e) throws Exception {
-//        String msg = e.getMessage();
-//        String errorMsg = msg.substring(msg.lastIndexOf(":") + 1);
-//        throw new Exception(errorMsg);
-//    }
-//
-//    private String determineOrg(User user) {
-//        return Config.ORG1;
-//    }
+    private Contract getContract(User user) throws Exception {
+        String userWalletIdentity = user.getPhoneNumber();
+        String userId = user.getId();
+        String userIdentity = String.valueOf(userId);
+
+        String org = determineOrg(user);
+        Map<String, String> connectionConfigParams = ConnectionParamsUtil.setOrgConfigParams(org);
+        String connectionProfilePath = connectionConfigParams.get("networkConfigPath");
+
+        Gateway gateway = connect(userWalletIdentity, connectionProfilePath, userIdentity, org);
+        Network network = gateway.getNetwork(Config.CHANNEL_NAME);
+        Contract contract = network.getContract(Config.CHAINCODE_NAME);
+        registerListener(network, network.getChannel(), contract);
+        return contract;
+    }
+
+    private Gateway connect(String userWalletIdentity, String connectionProfilePath, String userIdentity, String org)
+            throws Exception {
+        Identity identity = RegisterUserHyperledger.enrollOrgAppUsers(userWalletIdentity, org, userIdentity);
+        if (identity == null) {
+            throw new Exception(String.format("Cannot find %s's idenitty", userWalletIdentity));
+        }
+
+        Gateway.Builder builder = Gateway.createBuilder();
+        Path networkConfigPath = Paths.get(connectionProfilePath);
+        WalletUtil walletUtil = new WalletUtil();
+        builder.identity(walletUtil.getWallet(), userWalletIdentity).networkConfig(networkConfigPath).discovery(true);
+
+        return builder.connect();
+    }
+
+    private void formatExceptionMessage(Exception e) throws Exception {
+        String msg = e.getMessage();
+        String errorMsg = msg.substring(msg.lastIndexOf(":") + 1);
+        throw new Exception(errorMsg);
+    }
+
+    private String determineOrg(User user) {
+        return Config.ORG1;
+    }
 
 //    public ProductLicense sendProductLicense(User user, JSONObject jsonObject) throws Exception {
 //        ProductLicense productLicense = null;
@@ -149,25 +157,25 @@ public class HyperledgerService {
 //        return productLicense;
 //    }
 //
-//    public Product addProduct(User user, JSONObject jsonObject) throws Exception {
-//        Product product = null;
-//        try {
-//            Contract contract = getContract(user);
-//
-//            byte[] result = contract.submitTransaction(
-//                    "addProduct",
-//                    jsonObject.toString()
-//            );
-//
-//            String productStr = new String(result);
-//            product = genson.deserialize(productStr, Product.class);
-//
-//            LOG.info("addProduct: " + product);
-//        } catch (Exception e) {
-//            formatExceptionMessage(e);
-//        }
-//        return product;
-//    }
+    public Product addProduct(User user, JSONObject jsonObject) throws Exception {
+        Product product = null;
+        try {
+            Contract contract = getContract(user);
+
+            byte[] result = contract.submitTransaction(
+                    "addProduct",
+                    jsonObject.toString()
+            );
+
+            String productStr = new String(result);
+            product = genson.deserialize(productStr, Product.class);
+
+            LOG.info("addProduct: " + product);
+        } catch (Exception e) {
+            formatExceptionMessage(e);
+        }
+        return product;
+    }
 //
 //    public Product getProduct(User user, JSONObject jsonObject ) throws Exception {
 //        Product product = new Product();

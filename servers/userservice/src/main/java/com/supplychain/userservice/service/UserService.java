@@ -13,6 +13,7 @@ import com.supplychain.userservice.model.BusinessDTO;
 import com.supplychain.userservice.model.UserDTO;
 import com.supplychain.userservice.repository.BusinessRepository;
 import com.supplychain.userservice.repository.UserRepository;
+import org.hyperledger.fabric.gateway.Identity;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -46,21 +47,25 @@ public class UserService {
 
             BusinessDTO businessDTO = BusinessDTO.convertUserDTOToBusinessDTO(userDTO);
             Business business = BusinessDTO.dtoToEntity(businessDTO);
+
             Business savedBusiness = businessRepository.save(business);
-            
+
             if (savedBusiness != null && savedBusiness.getId() != null) {
+
                 try {
-                    RegisterUserHyperledger.enrollOrgAppUsers(savedBusiness.getEmail(), Config.ORG2, savedBusiness.getId());
+                    RegisterUserHyperledger.enrollOrgAppUsers(business.getPhoneNumber(), Config.ORG2, business.getId());
+
                 } catch (Exception exception) {
-                   
+
+                    businessRepository.delete(business);
                     System.out.println("Error in registering user in Hyperledger: " + exception.getMessage());
-            
-                }
+                } 
+
                 return BusinessDTO.entityToDTO(savedBusiness);
-                
             } else {
                 throw new RuntimeException("Failed to save business into database");
             }
+
         }
 
         return null;

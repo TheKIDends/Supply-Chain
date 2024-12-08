@@ -56,7 +56,7 @@ public class HyperledgerService {
     }
 
     private Contract getContract(User user) throws Exception {
-        String userWalletIdentity = user.getEmail();
+        String userWalletIdentity = user.getPhoneNumber();
         String userId = user.getId();
         String userIdentity = String.valueOf(userId);
 
