@@ -9,15 +9,19 @@ import LoginDialog from "@Components/dialogs/LoginDialog/LoginDialog";
 import RegisterDialog from "@Components/dialogs/RegisterDialog/RegisterDialog";
 import ForgotPasswordDialog from "@Components/dialogs/ForgotPasswordDialog/ForgotPasswordDialog";
 
-import {API, DIALOGS, HEADER, IMAGE_URL, MESSAGE} from "@Const";
+import {API, USER_ROLE, DIALOGS, HEADER, IMAGE_URL, MESSAGE} from "@Const";
 import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
 import {toast} from "react-toastify";
+import {da} from "date-fns/locale";
 
 const Header = () => {
     const [cookies] = useCookies(['access_token']);
     const accessToken = cookies.access_token;
 
-    const [menuItems, setMenuItems] = useState([{}])
+    const [isLoading, setIsLoading] = useState(false);
+    const [menuItems, setMenuItems] = useState([{}]);
+    const [user, setUser] = useState();
+
     const cartContext = useContext(CartContext);
 
     const [openDialog, setOpenDialog] = useState(null);
@@ -39,7 +43,7 @@ const Header = () => {
     };
 
     const fetchData = async () => {
-        const apiUrl = "http://192.168.0.106:8000/api/user/get-user-by-token";
+        const apiUrl = "http://localhost:8000/api/user/get-user-by-token";
         try {
             const response = await fetch(apiUrl, {
                 method: "GET",
@@ -53,30 +57,11 @@ const Header = () => {
             const messageResponse = jsonResponse.message;
 
             if (response.ok) {
-                let accessToken = dataResponse.accessToken;
-                let refreshToken = dataResponse.refreshToken;
-
-                if (accessToken == null || refreshToken == null) {
-                    toast.error(messageResponse);
-                    return;
-                }
-
-                const cookies = new Cookies();
-                if (!cookies['access_token']) {
-                    cookies.set('access_token', accessToken, { path: '/' });
-                }
-
-                if (!cookies['refresh_token']) {
-                    cookies.set('refresh_token', refreshToken, { path: '/' });
-                }
-
-                window.location.reload();
+                setUser(dataResponse);
             } else {
-
-                toast.error(messageResponse);
+                console.log(messageResponse);
             }
         } catch (error) {
-            toast.error(MESSAGE.GENERIC_ERROR);
             console.log(error);
         } finally {
         }
@@ -86,7 +71,7 @@ const Header = () => {
         fetchData().then(r => {});
     }, []);
 
-    return (
+    return ( !isLoading &&
         <header id="header">
             <div className="header position-fixed">
                 <div className="wrap-container">
@@ -114,18 +99,6 @@ const Header = () => {
                                     </div>
                                 </a>
 
-                                <a href="/management-page/product-list"
-                                   className="text-decoration-none menu-header p-0 d-flex align-items-center
-                                                justify-content-center position-relative h-100 underline-effect"
-                                   style={{marginRight: "20px", width: "130px"}}
-                                >
-                                    <div
-                                        className="menu-header-text d-flex align-items-center text-center position-relative"
-                                    >
-                                        {HEADER.HEADER_ITEM.MANAGE}
-                                    </div>
-                                </a>
-
                                 <a href="/market"
                                    className="text-decoration-none menu-header p-0 d-flex align-items-center
                                                 justify-content-center position-relative h-100 underline-effect"
@@ -137,6 +110,21 @@ const Header = () => {
                                         {HEADER.HEADER_ITEM.PRODUCT}
                                     </div>
                                 </a>
+
+                                {   user && (user.role == USER_ROLE.BUSINESS ||user.role == USER_ROLE. ADMIN) &&
+                                    <a href="/management-page/product-list"
+                                       className="text-decoration-none menu-header p-0 d-flex align-items-center
+                                                justify-content-center position-relative h-100 underline-effect"
+                                       style={{marginRight: "20px", width: "130px"}}
+                                    >
+                                        <div
+                                            className="menu-header-text d-flex align-items-center text-center position-relative"
+                                        >
+                                            {HEADER.HEADER_ITEM.MANAGE}
+                                        </div>
+                                    </a>
+                                }
+
 
                             </div>
                             <div

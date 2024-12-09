@@ -1,11 +1,27 @@
 export const ROUTERS = {
-    USER: {
+    ADMIN: {
         HOME: "/",
         PROFILE: "/profile",
         MARKET: "/market",
         MANAGEMENT: "/management-page/*",
     },
-    ADMIN: {
+    CUSTOMER: {
+        HOME: "/",
+        PROFILE: "/profile",
+        MARKET: "/market",
+        MANAGEMENT: "/management-page/*",
+    },
+    BUSINESS: {
+        HOME: "/",
+        PROFILE: "/profile",
+        MARKET: "/market",
+        MANAGEMENT: "/management-page/*",
+    },
+    CARRIER: {
+        HOME: "/",
+        PROFILE: "/profile",
+        MARKET: "/market",
+        MANAGEMENT: "/management-page/*",
+    },
 
-    }
 }

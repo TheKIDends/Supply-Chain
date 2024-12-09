@@ -27,7 +27,7 @@ const LoginDialog = ({ onClose, onSwitch }) => {
       password
     };
 
-    const apiUrl = "http://192.168.0.106:8000/api/user/login";
+    const apiUrl = "http://localhost:8000/api/user/login";
     try {
       const response = await fetch(apiUrl, {
         method: "POST",

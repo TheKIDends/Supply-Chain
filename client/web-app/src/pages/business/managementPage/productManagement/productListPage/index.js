@@ -26,7 +26,7 @@ const ProductListPage  = () => {
 
     const getProduct = async () => {
 
-        const apiUrl = "http://192.168.0.106:8000/api/product/get-all-products";
+        const apiUrl = "http://localhost:8000/api/product/get-all-products";
         try {
             const response = await fetch(apiUrl, {
                 method: "GET",

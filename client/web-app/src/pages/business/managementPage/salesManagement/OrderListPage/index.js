@@ -29,9 +29,9 @@ import {
     MESSAGE,
     ORDER_LIST_PAGE, SEARCH,
     TAB_LIST_ITEMS,
-    TAB_LIST_TEXT
+    TAB_LIST_TEXT,
+    MANAGEMENT_PAGE
 } from "@Const";
-import {MANAGEMENT_PAGE} from "../../../../../../util/const";
 
 
 const { RangePicker } = DatePicker;

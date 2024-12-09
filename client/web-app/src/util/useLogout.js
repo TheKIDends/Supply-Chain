@@ -24,9 +24,13 @@ export function useLogout() {
                     })
                 );
             }
-            // Redirect về trang chính của bạn (localhost:3000)
+
             toast.success(MESSAGE.LOGOUT_SUCCESS);
+
             navigate('/');
+            setTimeout(function() {
+                window.location.reload();
+            }, 1000);
         } catch (error) {
             console.error('Error during logout:', error);
         }

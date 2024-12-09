@@ -56,9 +56,9 @@ public class UserService {
         Map<String, Object> response = new HashMap<>();
         try {
 
-            String userId = TokenUtils.getUserIdFromToken(accessToken);
+            String userName = TokenUtils.getUsernameFromToken(accessToken);
 
-            User user = userRepository.getById(userId);
+            User user = userRepository.findByUsername(userName);
 
             response.put("message", "Lấy dữ liệu thành công");
             response.put("data", user);

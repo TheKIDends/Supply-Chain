@@ -6,8 +6,7 @@ import {toast} from "react-toastify";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import {useCookies} from "react-cookie";
 import ConfirmDialog from "@Components/dialogs/ConfirmDialog/ConfirmDialog";
-import {ADD_PRODUCT_PAGE, API, BREADCRUMB, CONFIRM_DIALOG, MESSAGE, SCROLLING} from "@Const";
-import {MANAGEMENT_PAGE} from "../../../../../../util/const";
+import {ADD_PRODUCT_PAGE, API, BREADCRUMB, CONFIRM_DIALOG, MESSAGE, SCROLLING, MANAGEMENT_PAGE} from "@Const";
 
 const AddProductPage = () => {
     const [cookies] = useCookies(['access_token']);
@@ -53,7 +52,7 @@ const AddProductPage = () => {
             return;
         }
 
-        const apiUrl = "http://192.168.0.106:8000/api/product/add-product";
+        const apiUrl = "http://localhost:8000/api/product/add-product";
         try {
             const response = await fetch(apiUrl, {
                 method: "POST",

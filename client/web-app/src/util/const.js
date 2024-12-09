@@ -8,6 +8,13 @@ export const FORGOT_PASSWORD_DIALOG = {
     LOGIN: "Đăng nhập"
 }
 
+export const USER_ROLE = {
+    ADMIN: "Quản trị viên",
+    CUSTOMER: "Khách hàng",
+    BUSINESS: "Doanh nghiệp",
+    CARRIER: "Đơn vị vận chuyển"
+}
+
 export const LOGIN = {
     LOGIN: "Đăng nhập",
     PHONE: "Số điện thoại",

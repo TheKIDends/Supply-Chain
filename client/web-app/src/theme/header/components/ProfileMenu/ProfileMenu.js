@@ -4,28 +4,49 @@ import {useCookies} from "react-cookie";
 import {useLogout} from "@Util/useLogout";
 import {API, HEADER, MESSAGE} from "@Const";
 
-const userInfoData = {
-    "userID": 4,
-    "fullName": "",
-    "email": "khachhang@gmail.com",
-    "hashedPassword": null,
-    "phoneNumber": "09090909",
-    "gender": "Nam",
-    "dateBirthday": "1933-02-03",
-    "avatarPath": "",
-    "isAdmin": false
-};
-
 const ProfileMenu = ({openModal}) => {
     const [cookies] = useCookies(['access_token']);
     const accessToken = cookies.access_token;
 
     const logout = useLogout();
 
-    const [userData, setUserData] = useState(userInfoData);
     const [isAdmin, setIsAdmin] = useState(true);
-    const [userID, setUserID] = useState(4);
+    const [userID, setUserID] = useState();
     const [profileMenuVisible, setProfileMenuVisible] = useState(false);
+
+    const [isLoading, setIsLoading] = useState(true);
+    const [user, setUser] = useState();
+
+    const fetchData = async () => {
+        const apiUrl = "http://localhost:8000/api/user/get-user-by-token";
+        try {
+            const response = await fetch(apiUrl, {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${accessToken}`
+                },
+            });
+
+            let jsonResponse = await response.json();
+            const dataResponse = jsonResponse.data;
+            const messageResponse = jsonResponse.message;
+
+            if (response.ok) {
+                setUserID(dataResponse.id);
+                setUser(dataResponse);
+            } else {
+                console.log(messageResponse);
+            }
+        } catch (error) {
+            console.log(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchData().then(r => {});
+    }, []);
 
     return (
         <div className="user-drop h-100 position-relative d-flex align-items-center justify-content-end" id="user-drop"
@@ -48,16 +69,11 @@ const ProfileMenu = ({openModal}) => {
                         <ul className="p-0 m-0">
                             <li>
                                 <a href={`/profile/orders?userID=${userID}`}
-                                   style={{wordBreak: "break-word", textAlign: "left", whiteSpace: "normal"}}>
-                                    {userData.fullName}
+                                   style={{wordBreak: "break-word", textAlign: "left", whiteSpace: "normal", textTransform: "uppercase"}}>
+                                    {user && user.fullName}
                                 </a>
                             </li>
 
-                            {isAdmin &&
-                                <li>
-                                    <a href="/management-page/product-list">{HEADER.PROFILE_MENU.DASHBOARD}</a>
-                                </li>
-                            }
                             <li>
                                 <a href={`/profile/orders?userID=${userID}`}>{HEADER.PROFILE_MENU.MY_ORDERS}</a>
                             </li>
