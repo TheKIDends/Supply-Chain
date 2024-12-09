@@ -198,6 +198,111 @@ export const MARKETPLACE_PAGE = {
     PRODUCT_CATEGORIES_TITLE: "DANH MỤC SẢN PHẨM",
 }
 
+export const POPCONFIRM = {
+    DELETE: "Xóa",
+    CANCEL: "Hủy",
+    YES: "Có",
+    NO: "Không",
+    CONFIRM_DELETE_ADDRESS: "Chắc chắn xóa địa chỉ này?",
+    CONFIRM_CANCEL_ORDER: "Chắc chắn hủy đơn?",
+    CONFIRM_DELETE_CATEGORY: "Bạn có chắc chắn xóa danh mục này không?",
+    DELETE_PARENT_CATEGORY_WARNING: <div>Thao tác này sẽ xóa tất cả danh mục con <br></br> cùng với sản phẩm thuộc danh mục này.</div>,
+    DELETE_SUB_CATEGORY_WARNING: <div>Thao tác này sẽ xóa tất cả sản phẩm  <br></br> thuộc danh mục này.</div>,
+}
+
+export const TOOLTIP = {
+    ORDER_TIME: "Thời gian đặt hàng",
+    DELETE_USER: "Xóa người dùng",
+    USER_DETAILS: "Chi tiết người dùng",
+    ADD_USER: "Thêm người dùng",
+    ADD_PRODUCT: "Thêm sản phẩm",
+    DELETE_PRODUCT: "Xóa sản phẩm",
+    EDIT_PRODUCT: "Chỉnh sửa sản phẩm",
+    ADD_SUBCATEGORY: "Thêm danh mục con",
+    DELETE_CATEGORY: "Xóa danh mục",
+    EDIT_CATEGORY: "Chỉnh sửa danh mục",
+    EDIT_ACCESS_PERMISSION: "Chỉnh sửa quyền truy cập"
+}
+
+export const PROFILE_PAGE = {
+    MENU_ITEMS: {
+        ORDERS: "Đơn hàng",
+        EDIT_PROFILE: "Chỉnh sửa thông tin cá nhân",
+        ADDRESS_BOOK: "Sổ địa chỉ",
+        CHANGE_PASSWORD: "Đổi mật khẩu",
+        LOGOUT: "Đăng xuất"
+    },
+    PROFILE_ADDRESS: {
+        DEFAULT: "Mặc định",
+        SET_DEFAULT: "Thiết lập mặc định",
+        DELETE: "Xóa",
+        ADDRESS_BOOK: "Sổ địa chỉ",
+        ADD_NEW_ADDRESS: "Thêm địa chỉ mới"
+    },
+    PROFILE_CHANGE_PASSWORD: {
+        CHANGE_PASSWORD: "Đổi mật khẩu",
+        CURRENT_PASSWORD: "Mật khẩu cũ",
+        CURRENT_PASSWORD_PLACEHOLDER: "Nhập mật khẩu cũ",
+        NEW_PASSWORD: "Mật khẩu mới",
+        NEW_PASSWORD_PLACEHOLDER: "Nhập mật khẩu mới",
+        CONFIRM_NEW_PASSWORD: "Nhập lại mật khẩu mới",
+        CONFIRM_NEW_PASSWORD_PLACEHOLDER: "Nhập lại mật khẩu mới",
+        SAVE_CHANGES: "Lưu lại",
+        REFRESH: "Làm mới"
+    },
+    PROFILE_EDIT_ADDRESS: {
+        UPDATE_ADDRESS: "Cập nhật địa chỉ",
+        FULL_NAME: "Họ tên",
+        FULL_NAME_PLACEHOLDER: "Nhập họ tên",
+        PHONE_NUMBER: "Số điện thoại",
+        PHONE_NUMBER_PLACEHOLDER: "Nhập số điện thoại",
+        ADDRESS: "Địa chỉ",
+        ADDRESS_PLACEHOLDER: "Nhập địa chỉ",
+        SAVE_CHANGES: "Lưu lại",
+        CANCEL: "Hủy bỏ"
+    },
+    PROFILE_NEW_ADDRESS: {
+        ADD_NEW_ADDRESS: "Thêm địa chỉ mới",
+        FULL_NAME: "Họ tên",
+        FULL_NAME_PLACEHOLDER: "Nhập họ tên",
+        PHONE_NUMBER: "Số điện thoại",
+        PHONE_NUMBER_PLACEHOLDER: "Nhập số điện thoại",
+        ADDRESS: "Địa chỉ",
+        ADDRESS_PLACEHOLDER: "Nhập địa chỉ",
+        SAVE_CHANGES: "Lưu lại",
+        CANCEL: "Hủy bỏ"
+    },
+    PROFILE_ORDERS_PAGE: {
+        ORDER_ID: "Mã đơn hàng",
+        SIZE: "Size",
+        QUANTITY: "Số lượng:",
+        TOTAL_AMOUNT: "Thành tiền:",
+        CANCEL_ORDER: "Huỷ đơn hàng",
+        PAYMENT_METHOD: "Hình thức thanh toán:",
+        CASH_ON_DELIVERY: "Thanh toán khi nhận hàng",
+        SHIPPING_ADDRESS: "Địa chỉ nhận hàng:",
+        NO_ORDERS: "Không có đơn hàng nào"
+    },
+    PROFILE_PERSONAL_INFORMATION_PAGE: {
+        EDIT_PERSONAL_INFORMATION: "Chỉnh sửa thông tin cá nhân",
+        FULL_NAME: "Họ và tên",
+        FULL_NAME_PLACEHOLDER: "Nhập họ và tên",
+        EMAIL: "Email",
+        EMAIL_PLACEHOLDER: "Nhập email",
+        PHONE_NUMBER: "Số điện thoại",
+        PHONE_NUMBER_PLACEHOLDER: "Nhập số điện thoại",
+        GENDER: "Giới tính",
+        MALE: "Nam",
+        FEMALE: "Nữ",
+        OTHER: "Khác",
+        BIRTH_DATE: "Ngày sinh",
+        DAY: "Ngày",
+        MONTH: "Tháng",
+        YEAR: "Năm",
+        SAVE_INFORMATION: "Lưu thông tin"
+    },
+}
+
 export const BREADCRUMB = {
     HOME_PAGE: "Trang chủ",
     SHOPPING_CART: "Giỏ hàng",

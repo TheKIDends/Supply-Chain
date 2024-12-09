@@ -1,3 +1,7 @@
+.pointer-cursor {
+    cursor: pointer;
+}
+
 .slide-banner {
     max-height: 550px;
     padding: 0 70px;
@@ -271,7 +275,7 @@ span {
     line-height: 14px;
 }
 .voucher-container .voucher-content .voucher-content-right {
-    border-left: 1px dashed hsla(0, 83%, 70%, 0.502);
+    border-left: 1px dashed hsla(214, 83%, 70%, 0.5);
 }
 .voucher-container .voucher-content .voucher-content-right button {
     border-radius: 4px;
@@ -285,12 +289,12 @@ span {
     color: #fff;
 }
 .voucher-container .voucher-content .voucher-content-right .btn-saved {
-    background: #fceaec;
+    background: #eaedfc;
     color: #294780;
 }
 .voucher-container .voucher-content .voucher-content-right .btn-used-up {
-    background: #fceaec;
-    color: rgba(128, 60, 60, 0.69);
+    background: #eaedfc;
+    color: rgba(60, 74, 128, 0.69);
 }
 .voucher-container .voucher-content .voucher-content-right .btn-not-condition {
     background: #d3d4d6;

@@ -35,7 +35,7 @@ function ProductItem({ product }) {
                         </Link>
                     </h3>
                     <p className="product-price">
-                        <IoMdPricetag style={{fontSize:"18px", color:"#bd0000", marginRight:"5px"}}/>
+                        <IoMdPricetag style={{fontSize:"18px", color:"#294780", marginRight:"5px"}}/>
                         <span className="sale-price">{formatter(product.productPrice)}</span>
                     </p>
                     {/*<div className="sold">*/}

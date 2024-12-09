@@ -1,37 +1,41 @@
 import React, {useState} from 'react';
 import './style.scss'
 
+import {ScrollToTop, ScrollToTopSmooth} from '@Util/util';
+import {API, BREADCRUMB, SCROLLING} from "@Const";
+
+import {useCookies} from "react-cookie";
+import {useLocation} from "react-router-dom";
+import queryString from "query-string";
+import Menu from "./components/Menu/Menu";
+import RouterCustom from "./router";
+
 const ProfilePage = () => {
+    const [cookies] = useCookies(['access_token']);
+    const accessToken = cookies.access_token;
+
+    const location = useLocation();
+    const queryParams = queryString.parse(location.search);
+    const [userID, setUserID] = useState(queryParams.userID);
 
     return (
         <>
-            Profile
-            {/*<header*/}
-            {/*    className="bgimg-1 w3-display-container "*/}
-            {/*    id="home"*/}
-            {/*>*/}
-            {/*    <div className="w3-display-left w3-text-white" style={{padding: '0 0 45px 65px'}}>*/}
-            {/*        <span className="w3-jumbo w3-hide-small" style={{color: "#294780", fontWeight: "800"}}>*/}
-            {/*          Supply Chain*/}
-            {/*        </span>*/}
-            {/*        <br/>*/}
+            <div id="app">
+                {location.state?.scrolling === SCROLLING.SMOOTH ? <ScrollToTopSmooth/> : <ScrollToTop/>}
+                <main id="main">
+                    <div className="container profile-wrap">
+                        <div className="breadcrumb-wrap">
+                            <a href="/">{BREADCRUMB.HOME_PAGE}</a>
+                            &gt; <span>{BREADCRUMB.USER_ACCOUNT}</span>
+                        </div>
 
-            {/*        <br/>*/}
-            {/*        <span className="w3-large" style={{color: "#294780"}}>*/}
-            {/*          Tạo lập chuỗi cung ứng bền vững và minh bạch với giải pháp Blockchain.*/}
-            {/*        </span>*/}
-            {/*        <br/>*/}
-            {/*        <p>*/}
-            {/*            <a*/}
-            {/*                href="/management-page/add-product"*/}
-            {/*                className="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off"*/}
-            {/*            >*/}
-            {/*                Bắt đầu tạo mã sản phẩm*/}
-            {/*            </a>*/}
-            {/*        </p>*/}
-            {/*    </div>*/}
-
-            {/*</header>*/}
+                        <div className="row content-wrap" style={{padding: "0 0 60px 0"}}>
+                            <Menu/>
+                            <RouterCustom/>
+                        </div>
+                    </div>
+                </main>
+            </div>
         </>
     );
 }

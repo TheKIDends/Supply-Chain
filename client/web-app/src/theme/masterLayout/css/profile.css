@@ -247,7 +247,7 @@ input:disabled,textarea:disabled {
 
 .address-wrap .item-address-wrap .default-address {
     align-items: center;
-    background: #fceaec;
+    background: #eaedfc;
     border: 1px solid #fbced3;
     border-radius: 4px;
     color: #294780;
@@ -1037,7 +1037,7 @@ input:disabled,textarea:disabled {
 }
 
 .order-wrap .order-list .order-item-wrap .content-wrap .product-wrap .info-wrap .name .tag-gift {
-    background-color: #fceaec;
+    background-color: #eaedfc;
     border: 1px solid #fbced3;
     border-radius: 4px;
     color: #294780;
@@ -2195,7 +2195,7 @@ input:disabled,textarea:disabled {
 
 .profile-wrap .content-wrap .menu-wrap .menu-nav-wrap ul .item-wrap .img-wrap {
     align-items: center;
-    background: #fceaec;
+    background: #eaedfc;
     border-radius: 50%;
     display: flex;
     height: 36px;
