@@ -27,8 +27,6 @@ const LoginDialog = ({ onClose, onSwitch }) => {
       password
     };
 
-    console.log(JSON.stringify(data))
-
     const apiUrl = "http://192.168.0.106:8000/api/user/login";
     try {
       const response = await fetch(apiUrl, {
@@ -39,34 +37,35 @@ const LoginDialog = ({ onClose, onSwitch }) => {
         },
       });
 
-      if (response.status === 200) {
-        let jsonResponse = await response.json();
+      let jsonResponse = await response.json();
+      const dataResponse = jsonResponse.data;
+      const messageResponse = jsonResponse.message;
 
-        let access_token = jsonResponse.accessToken;
-        let refresh_token = jsonResponse.refreshToken;
+      if (response.ok) {
+        let accessToken = dataResponse.accessToken;
+        let refreshToken = dataResponse.refreshToken;
 
-        if (access_token == null || refresh_token == null) {
-          toast.error(MESSAGE.LOGIN_FAILED);
+        if (accessToken == null || refreshToken == null) {
+          toast.error(messageResponse);
           return;
         }
 
         const cookies = new Cookies();
         if (!cookies['access_token']) {
-          cookies.set('access_token', access_token, { path: '/' });
+          cookies.set('access_token', accessToken, { path: '/' });
         }
 
         if (!cookies['refresh_token']) {
-          cookies.set('refresh_token', refresh_token, { path: '/' });
+          cookies.set('refresh_token', refreshToken, { path: '/' });
         }
 
         window.location.reload();
       } else {
-        response.text().then(data => {
-          console.log(data);
-        });
 
+        toast.error(messageResponse);
       }
     } catch (error) {
+      toast.error(MESSAGE.GENERIC_ERROR);
       console.log(error);
     } finally {
     }

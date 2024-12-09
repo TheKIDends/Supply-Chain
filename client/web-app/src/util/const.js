@@ -22,8 +22,8 @@ export const LOGIN = {
 
 export const REGISTER = {
     REGISTER: "Đăng ký",
-    FULL_NAME: "Họ và tên",
-    FULL_NAME_PLACEHOLDER: "Nhập họ và tên",
+    FULL_NAME: "Tên người dùng",
+    FULL_NAME_PLACEHOLDER: "Nhập tên công ty hoặc tên cá nhân",
     ROLE: "Chức danh",
     ROLE_PLACEHOLDER: "Nhập chức danh",
     PHONE_NUMBER: "Số điện thoại",

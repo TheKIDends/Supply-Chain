@@ -36,20 +36,19 @@ const RegisterDialog = ({ onClose, onSwitch }) => {
         },
       });
 
+      let jsonResponse = await response.json();
+      const dataResponse = jsonResponse.data;
+      const messageResponse = jsonResponse.message;
+
       if (response.ok) {
-        toast.success(MESSAGE.REGISTRATION_SUCCESS)
-        handleSwitchToOtherDialog(DIALOGS.LOGIN)
+        toast.success(messageResponse);
+        handleSwitchToOtherDialog(DIALOGS.LOGIN);
       } else {
-        // Đăng ký thất bại, có thể hiển thị thông báo lỗi
-        response.text().then(data => {
-          console.log(data);
-          // Hiển thị thông báo lỗi hoặc xử lý lỗi ở đây
-          const errorText = document.querySelector(".text-danger.error-text.password-register-error");
-          errorText.innerHTML = data;
-        });
+        // Đăng ký thất bại
+        toast.success(messageResponse);
       }
     } catch (error) {
-      // Xử lý lỗi khi gửi yêu cầu đăng ký
+      toast.error(MESSAGE.GENERIC_ERROR);
       console.error(error.message);
     }
   };
@@ -95,13 +94,14 @@ const RegisterDialog = ({ onClose, onSwitch }) => {
                     >
                       <option value="" disabled>{REGISTER.ROLE_PLACEHOLDER}</option>
                       <option value="Doanh nghiệp">Doanh nghiệp</option>
+                      <option value="Đơn vị vận chuyển">Đơn vị vận chuyển</option>
                       <option value="Khách hàng">Khách hàng</option>
                     </select>
                   </div>
 
                   <div className="input-wrap">
                     <label className="title">{REGISTER.PHONE_NUMBER}</label>
-                    <input id="phone-register" name="phone-number" type="text"
+                    <input id="phone-register" name="username" type="text"
                            placeholder={REGISTER.PHONE_NUMBER_PLACEHOLDER}
                            required
                            value={phoneNumber}
@@ -122,10 +122,10 @@ const RegisterDialog = ({ onClose, onSwitch }) => {
 
                   <div className="input-wrap input-password-wrap">
                     <label className="title">{REGISTER.CONFIRM_PASSWORD}</label>
-                    <input id="password-register" name="password" className="input-password" type="password"
+                    <input id="password-register-confirm" name="password" className="input-password" type="password"
                            minLength={6}
                            placeholder={REGISTER.CONFIRM_PASSWORD_PLACEHOLDER} aria-autocomplete="list" required
-                           onChange={(e) => setPassword(e.target.value)}
+                           onChange={(e) => setConfirmPassword(e.target.value)}
                     />
                   </div>
 

@@ -4,7 +4,8 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://192.168.0.106:8761/eureka
+      defaultZone: http://localhost:8761/eureka
+#      defaultZone: http://172.22.171.50:8761/eureka
 
 spring:
   application:
@@ -13,13 +14,13 @@ spring:
     gateway:
       routes:
         - id: productservice
-          uri: http://192.168.0.106:9000
+          uri: http://localhost:9000
           predicates:
             - Path=/api/product/**
 #          filters:
 #            - AuthFilter
         - id: userservice
-          uri: http://192.168.0.106:9001
+          uri: http://localhost:9001
           predicates:
             - Path=/api/user/**
 #          filters:

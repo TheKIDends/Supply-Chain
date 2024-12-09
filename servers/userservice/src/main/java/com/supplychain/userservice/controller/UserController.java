@@ -6,13 +6,11 @@ import com.supplychain.userservice.service.UserService;
 import com.supplychain.userservice.enumeration.UserRole;
 import com.supplychain.userservice.enumeration.Designation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -24,12 +22,19 @@ public class UserController {
     UserService userService;
 
     @GetMapping("${endpoint.list-user}")
-    public List<User> getAllUser() {
-        return userService.getAllUser();
+    public ResponseEntity<Map<String, Object>> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    @GetMapping("${endpoint.get-user-by-token}")
+    public ResponseEntity<Map<String, Object>> getUserByToken(@RequestHeader("Authorization") String authorizationHeader) {
+        String accessToken = authorizationHeader.replace("Bearer ", "");
+        System.out.println(accessToken);
+        return userService.getUserByToken(accessToken);
     }
 
     @PostMapping("${endpoint.register}")
-    public UserDTO register(@RequestBody UserDTO dto) {
+    public ResponseEntity<Map<String, Object>> register(@RequestBody UserDTO dto) {
         if (Objects.equals(dto.getRole(), UserRole.BUSINESS))
             dto.setDesignation(Designation.MANAGER);
 
@@ -41,7 +46,7 @@ public class UserController {
     }
 
     @PostMapping("${endpoint.login}")
-    public UserDTO login(@RequestBody UserDTO dto) {
+    public ResponseEntity<Map<String, Object>> login(@RequestBody UserDTO dto) {
         return userService.login(dto.getPhoneNumber(), dto.getPassword());
     }
 }

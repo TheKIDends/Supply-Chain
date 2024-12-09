@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import {useCookies} from "react-cookie";
+import {Cookies, useCookies} from "react-cookie";
 import { Link } from "react-router-dom";
 import './style.scss';
 
@@ -11,8 +11,12 @@ import ForgotPasswordDialog from "@Components/dialogs/ForgotPasswordDialog/Forgo
 
 import {API, DIALOGS, HEADER, IMAGE_URL, MESSAGE} from "@Const";
 import ProfileMenu from "./components/ProfileMenu/ProfileMenu";
+import {toast} from "react-toastify";
 
 const Header = () => {
+    const [cookies] = useCookies(['access_token']);
+    const accessToken = cookies.access_token;
+
     const [menuItems, setMenuItems] = useState([{}])
     const cartContext = useContext(CartContext);
 
@@ -34,28 +38,48 @@ const Header = () => {
         closeModal();
     };
 
-    const [cookies] = useCookies(['access_token']);
-    const accessToken = cookies.access_token;
-
     const fetchData = async () => {
-        // try {
-        //     const response = await fetch(API.PUBLIC.GET_ALL_CATEGORIES_ENDPOINT, {
-        //         method: 'GET',
-        //     });
-        //
-        //     if (response.ok) {
-        //         const data = await response.json();
-        //         // console.log(data);
-        //         setMenuItems(data);
-        //     } else {
-        //         const data = await response.json();
-        //         console.log(data.message);
-        //     }
-        // } catch (error) {
-        //     console.log(error);
-        //     toast.error(MESSAGE.DB_CONNECTION_ERROR);
-        // } finally {
-        // }
+        const apiUrl = "http://192.168.0.106:8000/api/user/get-user-by-token";
+        try {
+            const response = await fetch(apiUrl, {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${accessToken}`
+                },
+            });
+ 
+            let jsonResponse = await response.json();
+            const dataResponse = jsonResponse.data;
+            const messageResponse = jsonResponse.message;
+
+            if (response.ok) {
+                let accessToken = dataResponse.accessToken;
+                let refreshToken = dataResponse.refreshToken;
+
+                if (accessToken == null || refreshToken == null) {
+                    toast.error(messageResponse);
+                    return;
+                }
+
+                const cookies = new Cookies();
+                if (!cookies['access_token']) {
+                    cookies.set('access_token', accessToken, { path: '/' });
+                }
+
+                if (!cookies['refresh_token']) {
+                    cookies.set('refresh_token', refreshToken, { path: '/' });
+                }
+
+                window.location.reload();
+            } else {
+
+                toast.error(messageResponse);
+            }
+        } catch (error) {
+            toast.error(MESSAGE.GENERIC_ERROR);
+            console.log(error);
+        } finally {
+        }
     };
 
     useEffect(() => {
@@ -121,8 +145,7 @@ const Header = () => {
                                     <div className="d-flex justify-content-end align-items-center h-100">
                                         <div className="cart-drop position-relative d-flex justify-content-end">
                                             <Link to="/cart">
-                                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-                                                     xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
                                                 <path
                                                         d="M16.25 0H3.75C2.375 0 1.25 1.125 1.25 2.5V19.375C1.25 19.75
                                                         1.5 20 1.875 20H18.125C18.5 20 18.75 19.75 18.75 19.375V2.5C18.75

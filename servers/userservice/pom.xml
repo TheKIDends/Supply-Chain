@@ -169,6 +169,7 @@
 			<groupId>com.supplychain</groupId>
 			<artifactId>commonservice</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
 		</dependency>
 
 
