@@ -12,6 +12,5 @@ import lombok.experimental.SuperBuilder;
 public class BusinessResponseCommonModel extends UserResponseCommonModel {
     private String address;
     private String businessLicenseNumber;
-    private String directorName;
-    private String directorIDNumber;
+    private String managerName;
 }

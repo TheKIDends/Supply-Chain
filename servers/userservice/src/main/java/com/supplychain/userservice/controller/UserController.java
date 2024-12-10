@@ -22,20 +22,29 @@ public class UserController {
     UserService userService;
 
     @GetMapping("${endpoint.list-user}")
-    public ResponseEntity<Map<String, Object>> getAllUsers() {
-        return userService.getAllUsers();
+    public ResponseEntity<Map<String, Object>> getAllUsers(@RequestHeader("Authorization") String authorizationHeader) {
+        String accessToken = authorizationHeader.replace("Bearer ", "");
+        return userService.getAllUsers(accessToken);
     }
 
     @GetMapping("${endpoint.get-user-by-token}")
     public ResponseEntity<Map<String, Object>> getUserByToken(@RequestHeader("Authorization") String authorizationHeader) {
         String accessToken = authorizationHeader.replace("Bearer ", "");
-        System.out.println(accessToken);
         return userService.getUserByToken(accessToken);
+    }
+
+    @GetMapping("${endpoint.get-user-by-id}/{userId}")
+    public ResponseEntity<Map<String, Object>> getUserById(@RequestHeader("Authorization") String authorizationHeader, @PathVariable String userId) {
+        String accessToken = authorizationHeader.replace("Bearer ", "");
+        return userService.getUserById(accessToken, userId);
     }
 
     @PostMapping("${endpoint.register}")
     public ResponseEntity<Map<String, Object>> register(@RequestBody UserDTO dto) {
         if (Objects.equals(dto.getRole(), UserRole.BUSINESS))
+            dto.setDesignation(Designation.MANAGER);
+
+        if (Objects.equals(dto.getRole(), UserRole.CARRIER))
             dto.setDesignation(Designation.MANAGER);
 
         dto.setId(UUID.randomUUID().toString());
@@ -48,5 +57,11 @@ public class UserController {
     @PostMapping("${endpoint.login}")
     public ResponseEntity<Map<String, Object>> login(@RequestBody UserDTO dto) {
         return userService.login(dto.getPhoneNumber(), dto.getPassword());
+    }
+
+    @PostMapping("${endpoint.edit-user}")
+    public ResponseEntity<Map<String, Object>> editUser(@RequestHeader("Authorization") String authorizationHeader, @RequestBody UserDTO dto) {
+        String accessToken = authorizationHeader.replace("Bearer ", "");
+        return userService.editUser(accessToken, dto);
     }
 }

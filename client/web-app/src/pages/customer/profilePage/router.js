@@ -1,12 +1,17 @@
 import {Route, Routes} from "react-router-dom";
 import {ROUTERS} from "./util/router";
 import ProfileOrdersPage from "./profileOrdersPage";
+import ProfilePersonalInformation from "./profilePersonalInformation";
 
 const renderCustom = () => {
     const routers =  [
         {
             path: ROUTERS.USER.ORDERS_PAGE,
             component: <ProfileOrdersPage />
+        },
+        {
+            path: ROUTERS.USER.PERSONAL_INFORMATION,
+            component: <ProfilePersonalInformation />
         },
         // {
         //     path: ROUTERS.USER.ADDRESS,
@@ -24,10 +29,7 @@ const renderCustom = () => {
         //     path: ROUTERS.USER.CHANGE_PASSWORD,
         //     component: <ProfileChangePassword />
         // },
-        // {
-        //     path: ROUTERS.USER.PERSONAL_INFORMATION,
-        //     component: <ProfilePersonalInformation />
-        // }
+
     ]
 
     return (

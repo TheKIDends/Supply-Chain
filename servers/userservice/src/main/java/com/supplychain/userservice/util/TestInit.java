@@ -51,8 +51,7 @@ public class TestInit implements CommandLineRunner {
 //                    .address("144 Xuân Thủy, Cầu Giấy, Hà Nội")
 //                    .phoneNumber("0912345678")
 //                    .businessLicenseNumber("9876543210")
-//                    .directorName("Nguyễn Châu Khanh")
-//                    .directorIDNumber("0123456789")
+//                    .managerName("Nguyễn Châu Khanh")
 //                    .build();
 //            businessRepository.save(business1);
 //

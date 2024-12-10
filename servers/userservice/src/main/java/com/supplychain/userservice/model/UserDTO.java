@@ -19,36 +19,13 @@ public class UserDTO {
     private String fullName;
     private boolean enabled;
     private String role;
-    private String designation; 
+    private String designation;
 
     private String accessToken;
     private String refreshToken;
 
+    private String address;
+    private String businessLicenseNumber;
+    private String managerName;
 
-//    public static UserDTO entityToDTO(User user){
-//        return UserDTO.builder()
-//                .id(user.getId())
-//                .username(user.getUsername())
-//                .password(user.getPassword())
-//                .email(user.getEmail())
-//                .phoneNumber(user.getPhoneNumber())
-//                .fullName(user.getFullName())
-//                .enabled(user.isEnabled())
-//                .role(user.getRole())
-//                .designation(user.getDesignation())
-//                .build();
-//    }
-//    public static User dtoToEntity(UserDTO dto){
-//        return User.builder()
-//                .id(dto.getId())
-//                .username(dto.getUsername())
-//                .password(dto.getPassword())
-//                .email(dto.getEmail())
-//                .phoneNumber(dto.getPhoneNumber())
-//                .fullName(dto.getFullName())
-//                .enabled(dto.isEnabled())
-//                .role(dto.getRole())
-//                .designation(dto.getDesignation())
-//                .build();
-//    }
 }
