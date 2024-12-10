@@ -2,6 +2,7 @@ import {Route, Routes} from "react-router-dom";
 import {ROUTERS} from "./util/router";
 import ProfileOrdersPage from "./profileOrdersPage";
 import ProfilePersonalInformation from "./profilePersonalInformation";
+import NotFoundPage from "../error/notFoundPage";
 
 const renderCustom = () => {
     const routers =  [
@@ -39,7 +40,7 @@ const renderCustom = () => {
                     <Route key={key} path={item.path} element={item.component} />
                 ))
             }
-            {/*<Route path='*' element={<NotFoundPage />} />*/}
+            <Route path='*' element={<NotFoundPage />} />
         </Routes>
     )
 }

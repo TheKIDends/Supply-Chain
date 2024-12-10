@@ -6,11 +6,12 @@ import {useCookies} from "react-cookie";
 import {USER_ROLE} from "./util/const";
 
 import LoadingPage from "./pages/loading/loadingPage";
-import HomePage from "./pages/customer/homePage";
-import ProfilePage from "./pages/customer/profilePage";
-import MarketplacePage from "./pages/customer/marketplacePage";
-import ManagementPage from "./pages/business/managementPage";
+import HomePage from "./pages/homePage";
+import MarketplacePage from "./pages/marketplacePage";
 import MasterLayout from "./theme/masterLayout";
+import ManagementPage from "./pages/managementPage";
+import ProfilePage from "./pages/profilePage";
+import NotFoundPage from "./pages/error/notFoundPage";
 // import NotFoundPage from "./pages/error/notFoundPage";
 // import DoNotHavePermissionPage from "./pages/error/doNotHavePermissionPage";
 
@@ -128,7 +129,7 @@ const renderBusinessCustom = () => {
                     ))
                 }
                 {/*<Route path='/admin/*' element={<DoNotHavePermissionPage />} />*/}
-                {/*<Route path='*' element={<NotFoundPage />} />*/}
+                <Route path='*' element={<NotFoundPage />} />
             </Routes>
         </MasterLayout>
     )
@@ -144,7 +145,7 @@ const renderCarrierCustom = () => {
                     ))
                 }
                 {/*<Route path='/admin/*' element={<DoNotHavePermissionPage />} />*/}
-                {/*<Route path='*' element={<NotFoundPage />} />*/}
+                <Route path='*' element={<NotFoundPage />} />
             </Routes>
         </MasterLayout>
     )
@@ -159,6 +160,11 @@ const RouterCustom = () => {
 
     const fetchData = async () => {
         const apiUrl = "http://localhost:8000/api/user/get-user-by-token";
+        if (accessToken == null) {
+            setIsLoading(false);
+            return;
+        }
+
         try {
             const response = await fetch(apiUrl, {
                 method: "GET",
@@ -187,10 +193,10 @@ const RouterCustom = () => {
         fetchData().then(r => {});
     }, []);
 
-    return !isLoading ? ((user.role === USER_ROLE.ADMIN && renderAdminCustom()) ||
-                         (user.role === USER_ROLE.CUSTOMER && renderCustomerCustom()) ||
-                         (user.role === USER_ROLE.BUSINESS && renderBusinessCustom()) ||
-                         (user.role === USER_ROLE.CARRIER && renderCarrierCustom()))
+    return !isLoading ? ((user && user.role === USER_ROLE.ADMIN && renderAdminCustom()) ||
+                         (user && user.role === USER_ROLE.CARRIER && renderCarrierCustom()) ||
+                         (user && user.role === USER_ROLE.BUSINESS && renderBusinessCustom()) ||
+                         (renderCustomerCustom()))
             : <LoadingPage />;
 }
 

@@ -41,11 +41,12 @@ public class UserController {
 
     @PostMapping("${endpoint.register}")
     public ResponseEntity<Map<String, Object>> register(@RequestBody UserDTO dto) {
-        if (Objects.equals(dto.getRole(), UserRole.BUSINESS))
+        if (Objects.equals(dto.getRole(), UserRole.BUSINESS)) {
             dto.setDesignation(Designation.MANAGER);
-
-        if (Objects.equals(dto.getRole(), UserRole.CARRIER))
+        } else
+        if (Objects.equals(dto.getRole(), UserRole.CARRIER)) {
             dto.setDesignation(Designation.MANAGER);
+        }
 
         dto.setId(UUID.randomUUID().toString());
         dto.setEnabled(true);

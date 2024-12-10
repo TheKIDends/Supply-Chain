@@ -45,7 +45,7 @@ const RegisterDialog = ({ onClose, onSwitch }) => {
         handleSwitchToOtherDialog(DIALOGS.LOGIN);
       } else {
         // Đăng ký thất bại
-        toast.success(messageResponse);
+        toast.error(messageResponse);
       }
     } catch (error) {
       toast.error(MESSAGE.GENERIC_ERROR);

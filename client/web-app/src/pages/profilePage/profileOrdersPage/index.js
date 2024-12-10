@@ -9,7 +9,7 @@ import {ConfigProvider, Popconfirm, Tooltip} from "antd";
 
 import {API, TOOLTIP, IMAGE_URL, POPCONFIRM, PROFILE_PAGE, TAB_LIST_ITEMS, TAB_LIST_TEXT} from "@Const";
 import {formatter, convertDateTimeFormat, isSubstringIgnoreCaseAndAccents} from "@Util/util";
-import LoadingPage from "../../../loading/loadingPage";
+import LoadingPage from "../../loading/loadingPage";
 
 const ordersData = [
   {

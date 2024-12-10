@@ -112,6 +112,12 @@ public class UserService {
                 user =  customerRepository.findCustomerById(userId);
             }
 
+            if (user == null) {
+                response.put("message", "Người dùng không tồn tại");
+                response.put("data", null);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+            }
+
             String userName = null;
             try {
                 userName = TokenUtils.getUsernameFromToken(accessToken);
@@ -154,7 +160,6 @@ public class UserService {
             }
 
             User user = userRepository.findUserById(userDTO.getId());
-            System.out.println(user);
 
             if (user == null) {
                 response.put("message", "Người dùng không tồn tại");

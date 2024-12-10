@@ -65,7 +65,7 @@ const Menu = () => {
   const [user, setUser] = useState();
 
   const fetchData = async () => {
-    const apiUrl = "http://localhost:8000/api/user/get-user-by-token";
+    const apiUrl = "http://localhost:8000/api/user/get-user-by-id/" + userID;
     try {
       const response = await fetch(apiUrl, {
         method: "GET",

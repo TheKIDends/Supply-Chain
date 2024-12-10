@@ -40,16 +40,16 @@ public class Config {
     public static final String CA_ORG3_ADMIN_IDENTITY_ID = "org3CaAdmin";
     public static final String CA_ORG4_ADMIN_IDENTITY_ID = "org4CaAdmin";
 
-    public static final String CA_ORG1_PEM_FILE = "../../fabric/test-network/organizations/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem";
+    public static final String CA_ORG1_PEM_FILE = "../fabric/test-network/organizations/peerOrganizations/org1.example.com/ca/ca.org1.example.com-cert.pem";
     public static final String CA_ORG1_URL = "https://localhost:7054";
 
-    public static final String CA_ORG2_PEM_FILE = "../../fabric/test-network/organizations/peerOrganizations/org2.example.com/ca/ca.org2.example.com-cert.pem";
+    public static final String CA_ORG2_PEM_FILE = "../fabric/test-network/organizations/peerOrganizations/org2.example.com/ca/ca.org2.example.com-cert.pem";
     public static final String CA_ORG2_URL = "https://localhost:8054";
 
-    public static final String CA_ORG3_PEM_FILE = "../../fabric/test-network/organizations/peerOrganizations/org3.example.com/ca/ca.org3.example.com-cert.pem";
+    public static final String CA_ORG3_PEM_FILE = "../fabric/test-network/organizations/peerOrganizations/org3.example.com/ca/ca.org3.example.com-cert.pem";
     public static final String CA_ORG3_URL = "https://localhost:11054";
 
-    public static final String CA_ORG4_PEM_FILE = "../../fabric/test-network/organizations/peerOrganizations/org4.example.com/ca/ca.org4.example.com-cert.pem";
+    public static final String CA_ORG4_PEM_FILE = "../fabric/test-network/organizations/peerOrganizations/org4.example.com/ca/ca.org4.example.com-cert.pem";
     public static final String CA_ORG4_URL = "https://localhost:13054";
 
     public static final String ORG1_ADMIN_USERNAME = "admin";
@@ -66,9 +66,9 @@ public class Config {
 
     public static final String CHAINCODE_NAME = "chaincode"; 
 
-    public static final String ORG1_CONNECTION_PROFILE_PATH = "../../fabric/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json";
-    public static final String ORG2_CONNECTION_PROFILE_PATH = "../../fabric/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json";
-    public static final String ORG3_CONNECTION_PROFILE_PATH = "../../fabric/test-network/organizations/peerOrganizations/org3.example.com/connection-org3.json";
-    public static final String ORG4_CONNECTION_PROFILE_PATH = "../../fabric/test-network/organizations/peerOrganizations/org4.example.com/connection-org4.json";
+    public static final String ORG1_CONNECTION_PROFILE_PATH = "../fabric/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.json";
+    public static final String ORG2_CONNECTION_PROFILE_PATH = "../fabric/test-network/organizations/peerOrganizations/org2.example.com/connection-org2.json";
+    public static final String ORG3_CONNECTION_PROFILE_PATH = "../fabric/test-network/organizations/peerOrganizations/org3.example.com/connection-org3.json";
+    public static final String ORG4_CONNECTION_PROFILE_PATH = "../fabric/test-network/organizations/peerOrganizations/org4.example.com/connection-org4.json";
 
 }

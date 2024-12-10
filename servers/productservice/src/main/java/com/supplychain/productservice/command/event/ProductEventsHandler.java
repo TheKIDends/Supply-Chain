@@ -41,15 +41,16 @@ public class ProductEventsHandler {
         Product product = new Product();
         BeanUtils.copyProperties(event, product);
 
-        GetDetailsUserQuery getDetailsUserQuery  = new GetDetailsUserQuery(event.getCreatorId());
+        GetDetailsUserQuery getDetailsUserQuery  = new GetDetailsUserQuery(event.getCreatorId(), null);
 
-        UserResponseCommonModel model =
+        UserResponseCommonModel userModel =
                 queryGateway.query(getDetailsUserQuery, ResponseTypes.instanceOf(UserResponseCommonModel.class)).join();
 
-        
-        if (Objects.equals(model.getRole(), UserRole.BUSINESS)) {
+        if (Objects.equals(userModel.getRole(), UserRole.BUSINESS)) {
             Business business = new Business();
-            BeanUtils.copyProperties(model, business);
+            BeanUtils.copyProperties(userModel, business);
+
+            product.setCreatorId(userModel.getId());
 
             Genson genson = new Genson();
             String productStr = genson.serialize(product);
@@ -67,8 +68,6 @@ public class ProductEventsHandler {
             }
 
         }
-
-        //        productRepository.save(product);
     }
 
     private void addProduct() {

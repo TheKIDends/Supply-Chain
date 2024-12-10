@@ -10,9 +10,14 @@ export const FORGOT_PASSWORD_DIALOG = {
 
 export const USER_ROLE = {
     ADMIN: "Quản trị viên",
-    CUSTOMER: "Khách hàng",
     BUSINESS: "Doanh nghiệp",
-    CARRIER: "Đơn vị vận chuyển"
+    CARRIER: "Đơn vị vận chuyển",
+    CUSTOMER: "Khách hàng"
+}
+
+export const NOT_FOUND_PAGE = {
+    ERROR_OCCURRED: "Ôi, có lỗi xảy ra rồi....",
+    PLEASE_TRY_AGAIN: "Bạn vui lòng thử lại nhé!"
 }
 
 export const LOGIN = {
@@ -329,6 +334,13 @@ export const MANAGEMENT_PAGE = {
         SUB: {
             PRODUCT_LIST: "Danh sách sản phẩm",
             ADD_PRODUCT: "Thêm sản phẩm",
+        },
+    },
+    CATEGORY_MANAGEMENT: {
+        KEY: "category-management",
+        LABEL: "Quản lý danh mục",
+        SUB: {
+            CATEGORY_LIST: "Danh sách danh mục",
         },
     },
     // SHOP_MANAGEMENT: {

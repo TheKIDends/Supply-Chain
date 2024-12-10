@@ -19,6 +19,12 @@ const ProfileMenu = ({openModal}) => {
 
     const fetchData = async () => {
         const apiUrl = "http://localhost:8000/api/user/get-user-by-token";
+
+        if (accessToken == null) {
+            setIsLoading(false);
+            return;
+        }
+
         try {
             const response = await fetch(apiUrl, {
                 method: "GET",

@@ -8,4 +8,5 @@ import lombok.*;
 @NoArgsConstructor
 public class GetDetailsUserQuery {
     private String id;
+    private String userName;
 }
