@@ -13,4 +13,5 @@ public class CategoryCreatedEvent {
     private String categoryId;
     private String categoryName;
     private String categoryStatus;
+    private String creatorId;
 }

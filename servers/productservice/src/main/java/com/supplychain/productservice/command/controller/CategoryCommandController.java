@@ -4,26 +4,29 @@ import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.supplychain.commonservice.model.UserResponseCommonModel;
 import com.supplychain.commonservice.query.GetDetailsUserQuery;
 import com.supplychain.productservice.command.command.CreateCategoryCommand;
+import com.supplychain.productservice.command.data.Category;
 import com.supplychain.productservice.command.model.CategoryRequestModel;
+import com.supplychain.productservice.command.repository.CategoryRepository;
 import com.supplychain.productservice.enumeration.Status;
 import com.supplychain.userservice.enumeration.UserRole;
 import com.supplychain.userservice.util.TokenUtils;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @RequestMapping("${api.base-path}")
 public class CategoryCommandController {
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Autowired
     private CommandGateway commandGateway;
@@ -57,17 +60,35 @@ public class CategoryCommandController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
 
-        CreateCategoryCommand command =
-                new CreateCategoryCommand(UUID.randomUUID().toString(), model.getCategoryName(), Status.ENABLED);
-        try {
-            commandGateway.sendAndWait(command);
+        Category category = new Category();
+        BeanUtils.copyProperties(model, category);
+        category.setCategoryId(UUID.randomUUID().toString());
+        category.setCategoryStatus(Status.ENABLED);
+
+        Category existingCategory = categoryRepository.findByCategoryName(category.getCategoryName());
+
+        if (existingCategory == null) {
+            categoryRepository.save(category);
             response.put("message", "Thêm danh mục thành công");
             response.put("data", model);
             return ResponseEntity.ok(response);
-        } catch (Exception e) {
-            response.put("message", "Có lỗi xảy ra! Vui lòng thử lại");
+        } else {
+            response.put("message", "Tên danh mục đã tồn tại");
             response.put("data", null);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
+
+////        CreateCategoryCommand command =
+////                new CreateCategoryCommand(UUID.randomUUID().toString(), model.getCategoryName(), Status.ENABLED, model.getCreatorId());
+//        try {
+////            commandGateway.sendAndWait(command);
+//            response.put("message", "Thêm danh mục thành công");
+//            response.put("data", model);
+//            return ResponseEntity.ok(response);
+//        } catch (Exception e) {
+//            response.put("message", "Có lỗi xảy ra! Vui lòng thử lại");
+//            response.put("data", null);
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+//        }
     }
 }

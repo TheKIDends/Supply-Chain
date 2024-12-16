@@ -22,6 +22,10 @@ public class Product {
     private String productName;
 
     @Property()
+    @JsonProperty("licenseId")
+    private String licenseId;
+
+    @Property()
     @JsonProperty("productPrice")
     private String productPrice;
 

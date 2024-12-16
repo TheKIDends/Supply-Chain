@@ -5,34 +5,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="721cb581-cafd-4f85-8890-9806a1434cbc" name="Changes" comment="Add OrderRequest and PaymentRequest to chaincode">
-      <change afterPath="$PROJECT_DIR$/../../servers/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../servers/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../servers/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../servers/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../servers/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../servers/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../servers/src/main/java/org/example/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../servers/userservice/src/main/java/com/supplychain/userservice/util/TokenUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../servers/wallet/0944252111.id" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/web-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/web-app/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../client/web-app/src/pages/managementPage/categoryManagament/components/dialogs/AddCategoryDialog/AddCategoryDialog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../client/web-app/src/pages/managementPage/categoryManagament/components/dialogs/AddCategoryDialog/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../client/web-app/src/pages/managementPage/categoryManagament/components/dialogs/EditCategoryDialog/EditCategoryDialog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../client/web-app/src/pages/managementPage/categoryManagament/components/dialogs/EditCategoryDialog/style.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hyperledger/fabric/supplychain/entity/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../servers/orderservice/src/main/java/com/supplychain/orderservice/command/data/OrderItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../wallet/0888888888.id" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../client/web-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/web-app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/web-app/src/components/dialogs/LoginDialog/LoginDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/web-app/src/components/dialogs/LoginDialog/LoginDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/web-app/src/components/dialogs/RegisterDialog/RegisterDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/web-app/src/components/dialogs/RegisterDialog/RegisterDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/web-app/src/setupProxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/web-app/src/setupProxy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../client/web-app/src/theme/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/web-app/src/theme/header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../client/web-app/src/pages/managementPage/categoryManagament/categoryListPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/web-app/src/pages/managementPage/categoryManagament/categoryListPage/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../client/web-app/src/pages/managementPage/categoryManagament/categoryListPage/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/web-app/src/pages/managementPage/categoryManagament/categoryListPage/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../client/web-app/src/pages/managementPage/productManagement/productListPage/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/web-app/src/pages/managementPage/productManagement/productListPage/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../client/web-app/src/pages/managementPage/productManagement/productListPage/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/web-app/src/pages/managementPage/productManagement/productListPage/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../client/web-app/src/pages/profilePage/components/Menu/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/web-app/src/pages/profilePage/components/Menu/Menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../client/web-app/src/theme/header/components/ProfileMenu/ProfileMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/web-app/src/theme/header/components/ProfileMenu/ProfileMenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../client/web-app/src/util/const.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/web-app/src/util/const.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../client/web-app/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../client/web-app/yarn.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../servers/apigateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/apigateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../servers/commonservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/commonservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../servers/commonservice/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../servers/commonservice/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/commonservice/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../servers/orderservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/orderservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../servers/productservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/productservice/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../servers/userservice/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/userservice/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hyperledger/fabric/supplychain/contract/SupplyChainContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hyperledger/fabric/supplychain/contract/SupplyChainContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hyperledger/fabric/supplychain/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hyperledger/fabric/supplychain/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hyperledger/fabric/supplychain/enumeration/ContractErrors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hyperledger/fabric/supplychain/enumeration/ContractErrors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-network/addOrg3/fabric-ca/org3/IssuerPublicKey" beforeDir="false" afterPath="$PROJECT_DIR$/../test-network/addOrg3/fabric-ca/org3/IssuerPublicKey" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-network/addOrg3/fabric-ca/org3/IssuerRevocationPublicKey" beforeDir="false" afterPath="$PROJECT_DIR$/../test-network/addOrg3/fabric-ca/org3/IssuerRevocationPublicKey" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-network/addOrg3/fabric-ca/org3/ca-cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/../test-network/addOrg3/fabric-ca/org3/ca-cert.pem" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-network/addOrg3/fabric-ca/org3/fabric-ca-server.db" beforeDir="false" afterPath="$PROJECT_DIR$/../test-network/addOrg3/fabric-ca/org3/fabric-ca-server.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-network/addOrg3/fabric-ca/org3/msp/keystore/IssuerRevocationPrivateKey" beforeDir="false" afterPath="$PROJECT_DIR$/../test-network/addOrg3/fabric-ca/org3/msp/keystore/IssuerRevocationPrivateKey" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-network/addOrg3/fabric-ca/org3/msp/keystore/IssuerSecretKey" beforeDir="false" afterPath="$PROJECT_DIR$/../test-network/addOrg3/fabric-ca/org3/msp/keystore/IssuerSecretKey" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-network/addOrg3/fabric-ca/org3/tls-cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/../test-network/addOrg3/fabric-ca/org3/tls-cert.pem" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-network/addOrg4/fabric-ca/org4/IssuerPublicKey" beforeDir="false" afterPath="$PROJECT_DIR$/../test-network/addOrg4/fabric-ca/org4/IssuerPublicKey" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-network/addOrg4/fabric-ca/org4/IssuerRevocationPublicKey" beforeDir="false" afterPath="$PROJECT_DIR$/../test-network/addOrg4/fabric-ca/org4/IssuerRevocationPublicKey" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-network/addOrg4/fabric-ca/org4/ca-cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/../test-network/addOrg4/fabric-ca/org4/ca-cert.pem" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-network/addOrg4/fabric-ca/org4/fabric-ca-server.db" beforeDir="false" afterPath="$PROJECT_DIR$/../test-network/addOrg4/fabric-ca/org4/fabric-ca-server.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-network/addOrg4/fabric-ca/org4/msp/keystore/IssuerRevocationPrivateKey" beforeDir="false" afterPath="$PROJECT_DIR$/../test-network/addOrg4/fabric-ca/org4/msp/keystore/IssuerRevocationPrivateKey" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-network/addOrg4/fabric-ca/org4/msp/keystore/IssuerSecretKey" beforeDir="false" afterPath="$PROJECT_DIR$/../test-network/addOrg4/fabric-ca/org4/msp/keystore/IssuerSecretKey" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-network/addOrg4/fabric-ca/org4/tls-cert.pem" beforeDir="false" afterPath="$PROJECT_DIR$/../test-network/addOrg4/fabric-ca/org4/tls-cert.pem" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servers/orderservice/src/main/java/com/supplychain/orderservice/command/controller/OrderCommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/orderservice/src/main/java/com/supplychain/orderservice/command/controller/OrderCommandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/command/aggregate/CategoryAggregate.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/command/aggregate/CategoryAggregate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/command/command/CreateCategoryCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/command/command/CreateCategoryCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/command/controller/CategoryCommandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/command/controller/CategoryCommandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/command/event/CategoryCreatedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/command/event/CategoryCreatedEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/command/event/CategoryEventsHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/command/event/CategoryEventsHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/command/model/CategoryRequestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/command/model/CategoryRequestModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/command/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/command/repository/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/query/controller/CategoryQueryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/query/controller/CategoryQueryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/service/HyperledgerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/productservice/src/main/java/com/supplychain/productservice/service/HyperledgerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servers/productservice/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/productservice/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../servers/userservice/src/main/java/com/supplychain/userservice/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/userservice/src/main/java/com/supplychain/userservice/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../servers/userservice/src/main/java/com/supplychain/userservice/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/userservice/src/main/java/com/supplychain/userservice/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../servers/userservice/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../servers/userservice/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servers/wallet/0944252111.id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servers/wallet/0944252967.id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../servers/wallet/org2CaAdmin.id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../wallet/0123456789.id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../wallet/0944252222.id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../wallet/0987654321.id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../wallet/0999999999.id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../wallet/org1CaAdmin.id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../wallet/org2CaAdmin.id" beforeDir="false" afterPath="$PROJECT_DIR$/../../wallet/org2CaAdmin.id" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../wallet/org4CaAdmin.id" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,10 +120,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="jrt:///usr/lib/jvm/java-11-openjdk-amd64!/java.base/java/util/List.class" root0="SKIP_INSPECTION" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -120,7 +149,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/thekidends/blockchain/Supply-Chain/servers/commonservice",
+    "last_opened_file_path": "/home/thekidends/blockchain/Supply-Chain/fabric/chaincode",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -148,14 +177,14 @@
       <window_info anchor="bottom" id="TODO" show_stripe_button="false" />
       <window_info anchor="bottom" id="File Transfer" show_stripe_button="false" />
       <window_info anchor="bottom" id="KafkaToolWindow" />
-      <window_info anchor="bottom" id="Find" order="0" sideWeight="0.49939466" side_tool="true" visible="true" weight="0.04058908" />
+      <window_info anchor="bottom" id="Find" order="0" sideWeight="0.49939466" side_tool="true" weight="0.04058908" />
       <window_info anchor="bottom" id="Version Control" order="1" />
       <window_info anchor="bottom" id="Problems" order="2" />
       <window_info anchor="bottom" id="Problems View" order="3" weight="0.33033788" />
-      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.50060534" weight="0.02191092" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="4" sideWeight="0.50060534" visible="true" weight="0.15696838" />
       <window_info anchor="bottom" id="Build" order="5" weight="0.06801471" />
       <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.50041807" visible="true" weight="0.36961207" />
-      <window_info active="true" anchor="bottom" id="Services" order="7" visible="true" weight="0.02191092" />
+      <window_info anchor="bottom" id="Services" order="7" weight="0.036278736" />
       <window_info anchor="right" id="Endpoints" show_stripe_button="false" />
       <window_info anchor="right" id="documentation.v2" show_stripe_button="false" side_tool="true" />
       <window_info anchor="right" id="BigDataToolWindow" />
@@ -299,6 +328,7 @@
       <workItem from="1733675860861" duration="3026000" />
       <workItem from="1733741635559" duration="1179000" />
       <workItem from="1733745025146" duration="2133000" />
+      <workItem from="1733854969773" duration="5643000" />
     </task>
     <task id="LOCAL-00001" summary="Update chaincode scripts &amp; Add getProductLicense and sendProductLicense Functions">
       <option name="closed" value="true" />
@@ -345,17 +375,6 @@
     <MESSAGE value="Update chaincode scripts &amp; Add getItem, setContainerIdForItem and removeContainerIdForItem Functions" />
     <MESSAGE value="Add OrderRequest and PaymentRequest to chaincode" />
     <option name="LAST_COMMIT_MESSAGE" value="Add OrderRequest and PaymentRequest to chaincode" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/hyperledger/fabric/supplychain/contract/SupplyChainContract.java</url>
-          <line>238</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

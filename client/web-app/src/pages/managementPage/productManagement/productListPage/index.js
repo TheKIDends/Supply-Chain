@@ -70,7 +70,7 @@ const ProductListPage  = () => {
                     </div>
                 </div>
                 <div className="container">
-                    <div className="product-list-table" style={{margin: "13px 50px 20px 38px"}}>
+                    <div className="list-table" style={{margin: "13px 50px 20px 38px"}}>
                         <Table loading={loading} dataSource={products}>
                             <Column title="Mã sản phẩm" dataIndex="productId" key="productId"/>
                             <Column title="Tên sản phẩm" dataIndex="productName" key="productName"/>

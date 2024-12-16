@@ -17,6 +17,22 @@ const renderAdminCustom = () => {
             path: ROUTERS.ADMIN.CATEGORY_LIST,
             component: <CategoryListPage />
         },
+        {
+            path: ROUTERS.ADMIN.ORDER_LIST,
+            component: <OrderListPage />
+        },
+        {
+            path: ROUTERS.BUSINESS.ADD_PRODUCT,
+            component: <AddProductPage />
+        },
+        {
+            path: ROUTERS.BUSINESS.ORDER_LIST,
+            component: <OrderListPage />
+        },
+        {
+            path: ROUTERS.BUSINESS.PRODUCT_LIST,
+            component: <ProductListPage />
+        },
     ]
 
     return (

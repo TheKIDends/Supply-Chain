@@ -18,6 +18,7 @@ public class CategoryAggregate {
 
     private String categoryName;
     private String categoryStatus;
+    private String creatorId;
 
     public CategoryAggregate() {
     }
@@ -34,6 +35,6 @@ public class CategoryAggregate {
         this.categoryId = event.getCategoryId();
         this.categoryName = event.getCategoryName();
         this.categoryStatus = event.getCategoryStatus();
-
+        this.creatorId = event.getCreatorId();
     }
 }

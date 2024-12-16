@@ -16,4 +16,5 @@ public class CreateCategoryCommand {
 
     private String categoryName;
     private String categoryStatus;
+    private String creatorId;
 }

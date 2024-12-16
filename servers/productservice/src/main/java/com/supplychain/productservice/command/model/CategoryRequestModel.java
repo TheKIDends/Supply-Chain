@@ -12,4 +12,5 @@ import lombok.*;
 public class CategoryRequestModel {
     private String categoryName;
     private String categoryStatus;
+    private String creatorId;
 }

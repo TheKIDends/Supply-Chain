@@ -10,8 +10,105 @@ import CategorySection from "./categorySection/CategorySection";
 
 const data = [
     {
+        "categoryId": 14,
+        "categoryName": "Thực phẩm",
+        "products": [
+            {
+                "productID": 66,
+                "productName": "Táo Juliet Pháp [1kg]",
+                "productPrice": 249000,
+                "productDescription": "Táo Juliet là dòng táo hữu cơ, nhập khẩu trực tiếp từ Pháp nên có giá thành nhỉnh hơn những dòng táo thường. Tuy vậy, nhiều gia đình vẫn chọn loại táo này vì giá trị dinh dưỡng và hương vị thơm ngon, giòn ngọt và tươi mát.",
+                "productImages": [
+                    {
+                        "imageID": 306,
+                        "productID": 66,
+                        "imagePath": "https://cdn.tgdd.vn/2024/09/CookRecipe/CookTipsNote/tong-hop-cac-loai-tao-pho-bien-va-nhung-mon-an-ngon-tu-tao-tipsnote-800x500-5.jpg"
+                    },
+                ],
+            },
+            {
+                "productID": 67,
+                "productName": "Táo Granny Smith [1kg]",
+                "productPrice": 319000,
+                "productDescription": "Trong các dòng táo đỏ thì táo Cameo là có màu sắc khác biệt nhất. Màu chủ đạo của loại táo này hơi ngả vàng còn những vệt sọc màu đỏ chỉ là chi tiết điểm xuyến. Tuy kích thước trái táo Cameo không lớn nhưng lại cực kỳ chắc thịt, ít khi bị xốp nên dành được khá nhiều thiện cảm của các chị em nội trợ.",
+                "productImages": [
+                    {
+                        "imageID": 309,
+                        "productID": 67,
+                        "imagePath": "https://cdn.tgdd.vn/2024/09/CookRecipe/CookTipsNote/tong-hop-cac-loai-tao-pho-bien-va-nhung-mon-an-ngon-tu-tao-tipsnote-800x500-12.jpg"
+                    },
+                ],
+            },
+            {
+                "productID": 67,
+                "productName": "Táo Cameo [1kg]",
+                "productPrice": 219000,
+                "productDescription": "Trong các dòng táo đỏ thì táo Cameo là có màu sắc khác biệt nhất. Màu chủ đạo của loại táo này hơi ngả vàng còn những vệt sọc màu đỏ chỉ là chi tiết điểm xuyến. Tuy kích thước trái táo Cameo không lớn nhưng lại cực kỳ chắc thịt, ít khi bị xốp nên dành được khá nhiều thiện cảm của các chị em nội trợ.",
+                "productImages": [
+                    {
+                        "imageID": 309,
+                        "productID": 67,
+                        "imagePath": "https://cdn.tgdd.vn/2024/09/CookRecipe/CookTipsNote/tong-hop-cac-loai-tao-pho-bien-va-nhung-mon-an-ngon-tu-tao-tipsnote-800x500-7.jpg"
+                    },
+                ],
+            },
+            {
+                "productID": 68,
+                "productName": "Bưởi Luận Văn",
+                "productPrice": 39000,
+                "productDescription": "",
+                "productImages": [
+                    {
+                        "imageID": 315,
+                        "productID": 68,
+                        "imagePath": "https://vinfruits.com/wp-content/uploads/2023/02/buoi-luan-van.png"
+                    },
+                ],
+            },
+            {
+                "productID": 78,
+                "productName": "Chuối tiêu",
+                "productPrice": 39000,
+                "productDescription": "",
+                "productImages": [
+                    {
+                        "imageID": 315,
+                        "productID": 68,
+                        "imagePath": "https://cdn.tgdd.vn/2022/09/CookRecipe/CookTipsNote/cach-phan-biet-cac-loai-bot-lam-banh-cuc-ki-don-gian-tipsnote-800x450-19.jpg"
+                    },
+                ],
+            },
+            {
+                "productID": 78,
+                "productName": "Bưởi Thanh Trà",
+                "productPrice": 39000,
+                "productDescription": "",
+                "productImages": [
+                    {
+                        "imageID": 315,
+                        "productID": 68,
+                        "imagePath": "https://vinfruits.com/wp-content/uploads/2023/02/buoi-thanh-tra.png"
+                    },
+                ],
+            },
+            {"productID": 95,
+                "productName": "Bưởi Năm Roi",
+                "productPrice": 499000,
+                "productDescription": "",
+                "productImages": [
+                    {
+                        "imageID": 461,
+                        "productID": 95,
+                        "imagePath": "https://vinfruits.com/wp-content/uploads/2023/02/buoi-nam-roi.png"
+                    },
+
+                ],
+            },
+        ]
+    },
+    {
         "categoryId": 15,
-        "categoryName": "Quần áo",
+        "categoryName": "Trang Phục",
         "products": [
             {
                 "productID": 66,
@@ -148,72 +245,33 @@ const data = [
     },
     {
         "categoryId": 15,
-        "categoryName": "Phụ Kiện",
+        "categoryName": "Vật liệu cơ khí",
         "products": [
             {
                 "productId": 109,
-                "productName": "Tất Nam, Kháng Khuẩn, Khử Mùi ",
+                "productName": "Đồng thau",
                 "productPrice": 19000,
                 "productDescription": "Tất Nam sử dụng chất liệu Cotton mềm mại, thấm hút mồ tốt, sản phẩm giữ cho đôi chân luôn thoáng mát nên rất phù hợp với những ai thường mang giày cả ngày. Sản phẩm được dệt bo tròn cổ đảm bảo không bị tụt trong suốt quá trình vận động, đi lại.",
                 "productImages": [
                     {
                         "imageId": 545,
                         "productId": 109,
-                        "imagePath": "https://iili.io/JRQ9dtS.jpg"
+                        "imagePath": "https://inoxkimvinhphu.com/wp-content/uploads/2023/01/dong-768x576.jpg"
                     },
-                    {
-                        "imageId": 546,
-                        "productId": 109,
-                        "imagePath": "https://iili.io/JRQ93o7.jpg"
-                    },
-                    {
-                        "imageId": 547,
-                        "productId": 109,
-                        "imagePath": "https://iili.io/JRQ9KPe.jpg"
-                    },
-                    {
-                        "imageId": 548,
-                        "productId": 109,
-                        "imagePath": "https://iili.io/JRQ9qKu.jpg"
-                    },
-                    {
-                        "imageId": 549,
-                        "productId": 109,
-                        "imagePath": "https://iili.io/JRQ9Bcb.jpg"
-                    }
                 ],
             },
             {
                 "productId": 110,
-                "productName": "Tất Nam 1, Kháng Khuẩn, Khử Mùi ",
+                "productName": "Austenitic – ferritic",
                 "productPrice": 19000,
                 "productDescription": "Tất Nam sử dụng chất liệu Cotton mềm mại, thấm hút mồ tốt, sản phẩm giữ cho đôi chân luôn thoáng mát nên rất phù hợp với những ai thường mang giày cả ngày. Sản phẩm được dệt bo tròn cổ đảm bảo không bị tụt trong suốt quá trình vận động, đi lại.",
                 "productImages": [
                     {
                         "imageId": 545,
                         "productId": 109,
-                        "imagePath": "https://iili.io/JRQ9dtS.jpg"
+                        "imagePath": "https://inoxkimvinhphu.com/wp-content/uploads/2022/09/thep-khong-gi-768x576.jpg"
                     },
-                    {
-                        "imageId": 546,
-                        "productId": 109,
-                        "imagePath": "https://iili.io/JRQ93o7.jpg"
-                    },
-                    {
-                        "imageId": 547,
-                        "productId": 109,
-                        "imagePath": "https://iili.io/JRQ9KPe.jpg"
-                    },
-                    {
-                        "imageId": 548,
-                        "productId": 109,
-                        "imagePath": "https://iili.io/JRQ9qKu.jpg"
-                    },
-                    {
-                        "imageId": 549,
-                        "productId": 109,
-                        "imagePath": "https://iili.io/JRQ9Bcb.jpg"
-                    }
+
                 ],
             }
         ]

@@ -86,12 +86,12 @@ const ProfileMenu = ({openModal}) => {
                             <li>
                                 <a href={`/profile/personal-information?userID=${userID}`}>{HEADER.PROFILE_MENU.PERSONAL_INFO}</a>
                             </li>
-                            <li>
-                                <a href={`/profile/address?userID=${userID}`}>{HEADER.PROFILE_MENU.ADDRESS_BOOK}</a>
-                            </li>
-                            <li>
-                                <a href={`/profile/change-password?userID=${userID}`}>{HEADER.PROFILE_MENU.CHANGE_PASSWORD}</a>
-                            </li>
+                            {/*<li>*/}
+                            {/*    <a href={`/profile/address?userID=${userID}`}>{HEADER.PROFILE_MENU.ADDRESS_BOOK}</a>*/}
+                            {/*</li>*/}
+                            {/*<li>*/}
+                            {/*    <a href={`/profile/change-password?userID=${userID}`}>{HEADER.PROFILE_MENU.CHANGE_PASSWORD}</a>*/}
+                            {/*</li>*/}
                             <li className="logout">
                                 <a onClick={() => {logout().then(r => {})}}>{HEADER.PROFILE_MENU.LOGOUT}</a>
                             </li>

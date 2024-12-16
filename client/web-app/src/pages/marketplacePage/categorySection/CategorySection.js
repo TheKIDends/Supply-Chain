@@ -10,15 +10,15 @@ const categoriesData =
     [
         {
             "categoryID": 2,
-            "categoryName": "Áo Thun",
+            "categoryName": "Thực phẩm",
             "parentCategoryID": 1,
-            "imagePath": "https://iili.io/J5HXHIj.webp",
+            "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd75uteFCsyLDsVTabrLue_m_RGCeS29sOeSF-tgXIVsLzff7ifwdpzuopj5fm35O4H8E&usqp=CAU",
             "products": null,
             "subCategories": null
         },
         {
             "categoryID": 3,
-            "categoryName": "Áo Khoác",
+            "categoryName": "Trang Phục",
             "parentCategoryID": 1,
             "imagePath": "https://iili.io/J5HXFEB.webp",
             "products": null,
@@ -26,76 +26,94 @@ const categoriesData =
         },
         {
             "categoryID": 4,
-            "categoryName": "Áo Polo",
+            "categoryName": "Y tế",
             "parentCategoryID": 1,
-            "imagePath": "https://iili.io/J5HXq21.webp",
+            "imagePath": "https://e1.pngegg.com/pngimages/479/347/png-clipart-icones-de-voyage-trousses-de-premiers-soins-soins-de-sante-medecine-urgence-medicale-medecin-trousse-de-premiers-soins-d-urgence-reanimation-cardiopulmonaire-thumbnail.png",
             "products": null,
             "subCategories": null
         },
         {
             "categoryID": 2,
-            "categoryName": "Áo Thun",
+            "categoryName": "Vật liệu",
             "parentCategoryID": 1,
-            "imagePath": "https://iili.io/J5HXHIj.webp",
+            "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQywL1rhkhC0fIgdEGYIrkY11wL2TxmP-dLeA&s",
             "products": null,
             "subCategories": null
         },
-        {
-            "categoryID": 3,
-            "categoryName": "Áo Khoác",
-            "parentCategoryID": 1,
-            "imagePath": "https://iili.io/J5HXFEB.webp",
-            "products": null,
-            "subCategories": null
-        },
-        {
-            "categoryID": 4,
-            "categoryName": "Áo Polo",
-            "parentCategoryID": 1,
-            "imagePath": "https://iili.io/J5HXq21.webp",
-            "products": null,
-            "subCategories": null
-        },
-        {
-            "categoryID": 2,
-            "categoryName": "Áo Thun",
-            "parentCategoryID": 1,
-            "imagePath": "https://iili.io/J5HXHIj.webp",
-            "products": null,
-            "subCategories": null
-        },
-        {
-            "categoryID": 3,
-            "categoryName": "Áo Khoác",
-            "parentCategoryID": 1,
-            "imagePath": "https://iili.io/J5HXFEB.webp",
-            "products": null,
-            "subCategories": null
-        },
-        {
-            "categoryID": 4,
-            "categoryName": "Áo Polo",
-            "parentCategoryID": 1,
-            "imagePath": "https://iili.io/J5HXq21.webp",
-            "products": null,
-            "subCategories": null
-        },
-        {
-            "categoryID": 2,
-            "categoryName": "Áo Thun",
-            "parentCategoryID": 1,
-            "imagePath": "https://iili.io/J5HXHIj.webp",
-            "products": null,
-            "subCategories": null
-        },
-        {
-            "categoryID": 3,
-            "categoryName": "Áo Khoác",
-            "parentCategoryID": 1,
-            "imagePath": "https://iili.io/J5HXFEB.webp",
-            "products": null,
-            "subCategories": null
-        },
+
+      {
+        "categoryID": 2,
+        "categoryName": "Thực phẩm",
+        "parentCategoryID": 1,
+        "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd75uteFCsyLDsVTabrLue_m_RGCeS29sOeSF-tgXIVsLzff7ifwdpzuopj5fm35O4H8E&usqp=CAU",
+        "products": null,
+        "subCategories": null
+      },
+      {
+        "categoryID": 3,
+        "categoryName": "Trang Phục",
+        "parentCategoryID": 1,
+        "imagePath": "https://iili.io/J5HXFEB.webp",
+        "products": null,
+        "subCategories": null
+      },
+      {
+        "categoryID": 4,
+        "categoryName": "Y tế",
+        "parentCategoryID": 1,
+        "imagePath": "https://e1.pngegg.com/pngimages/479/347/png-clipart-icones-de-voyage-trousses-de-premiers-soins-soins-de-sante-medecine-urgence-medicale-medecin-trousse-de-premiers-soins-d-urgence-reanimation-cardiopulmonaire-thumbnail.png",
+        "products": null,
+        "subCategories": null
+      },
+      {
+        "categoryID": 2,
+        "categoryName": "Vật liệu",
+        "parentCategoryID": 1,
+        "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQywL1rhkhC0fIgdEGYIrkY11wL2TxmP-dLeA&s",
+        "products": null,
+        "subCategories": null
+      },
+      {
+        "categoryID": 2,
+        "categoryName": "Thực phẩm",
+        "parentCategoryID": 1,
+        "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd75uteFCsyLDsVTabrLue_m_RGCeS29sOeSF-tgXIVsLzff7ifwdpzuopj5fm35O4H8E&usqp=CAU",
+        "products": null,
+        "subCategories": null
+      },
+
+      {
+        "categoryID": 3,
+        "categoryName": "Trang Phục",
+        "parentCategoryID": 1,
+        "imagePath": "https://iili.io/J5HXFEB.webp",
+        "products": null,
+        "subCategories": null
+      },
+      {
+        "categoryID": 4,
+        "categoryName": "Y tế",
+        "parentCategoryID": 1,
+        "imagePath": "https://e1.pngegg.com/pngimages/479/347/png-clipart-icones-de-voyage-trousses-de-premiers-soins-soins-de-sante-medecine-urgence-medicale-medecin-trousse-de-premiers-soins-d-urgence-reanimation-cardiopulmonaire-thumbnail.png",
+        "products": null,
+        "subCategories": null
+      },
+      {
+        "categoryID": 2,
+        "categoryName": "Vật liệu",
+        "parentCategoryID": 1,
+        "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQywL1rhkhC0fIgdEGYIrkY11wL2TxmP-dLeA&s",
+        "products": null,
+        "subCategories": null
+      },
+      {
+        "categoryID": 2,
+        "categoryName": "Thực phẩm",
+        "parentCategoryID": 1,
+        "imagePath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd75uteFCsyLDsVTabrLue_m_RGCeS29sOeSF-tgXIVsLzff7ifwdpzuopj5fm35O4H8E&usqp=CAU",
+        "products": null,
+        "subCategories": null
+      },
 
 
     ];

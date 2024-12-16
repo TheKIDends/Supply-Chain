@@ -202,7 +202,7 @@ public class UserService {
             if (savedAdmin != null && savedAdmin.getId() != null) {
 
                 try {
-                    RegisterUserHyperledger.enrollOrgAppUsers(admin.getPhoneNumber(), Config.ORG1, admin.getId());
+//                    RegisterUserHyperledger.enrollOrgAppUsers(admin.getPhoneNumber(), Config.ORG1, admin.getId());
 
                 } catch (Exception exception) {
 

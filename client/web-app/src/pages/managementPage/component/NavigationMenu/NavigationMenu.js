@@ -25,13 +25,21 @@ function getItem(label, key, icon, children, type) {
 const NavigationMenu = ({userRole}) => {
   const items = userRole === USER_ROLE.ADMIN ?
     [
+      getItem(MANAGEMENT_PAGE.PRODUCT_MANAGEMENT.LABEL, MANAGEMENT_PAGE.PRODUCT_MANAGEMENT.KEY, <TbShoppingBag style={{fontSize:"20px", marginBottom:"1px"}}/>, [
+        getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.PRODUCT_MANAGEMENT.SUB.PRODUCT_LIST}</span>, ROUTERS.BUSINESS.PRODUCT_LIST),
+        getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.PRODUCT_MANAGEMENT.SUB.ADD_PRODUCT}</span>, ROUTERS.BUSINESS.ADD_PRODUCT),
+      ]),
+      getItem(MANAGEMENT_PAGE.SALES_MANAGEMENT.LABEL, MANAGEMENT_PAGE.SALES_MANAGEMENT.KEY, <RiShoppingCart2Line style={{fontSize:"20px", marginBottom:"1px"}}/>, [
+        getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.SALES_MANAGEMENT.SUB.ORDER_LIST}</span>,  ROUTERS.BUSINESS.ORDER_LIST),
+      ]),
       getItem(MANAGEMENT_PAGE.CATEGORY_MANAGEMENT.LABEL, MANAGEMENT_PAGE.CATEGORY_MANAGEMENT.KEY, <MdMenu style={{fontSize:"20px", marginBottom:"1px"}}/>, [
         getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.CATEGORY_MANAGEMENT.SUB.CATEGORY_LIST}</span>, ROUTERS.ADMIN.CATEGORY_LIST),
       ]),
-      getItem(MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.LABEL, MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.KEY, <FaRegUser style={{fontSize:"18px", marginBottom:"1px"}}/>, [
-        getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.SUB.ACCOUNT_LIST}</span>,  ROUTERS.ADMIN.ACCOUNT_LIST),
-        getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.SUB.ADD_ACCOUNT}</span>,  ROUTERS.ADMIN.ADD_ACCOUNT),
-      ]),
+      // getItem(MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.LABEL, MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.KEY, <FaRegUser style={{fontSize:"18px", marginBottom:"1px"}}/>, [
+      //   getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.SUB.ACCOUNT_LIST}</span>,  ROUTERS.ADMIN.ACCOUNT_LIST),
+      //   getItem(<span style={{margin: "0 7px 0 7px"}}>{MANAGEMENT_PAGE.ACCOUNT_MANAGEMENT.SUB.ADD_ACCOUNT}</span>,  ROUTERS.ADMIN.ADD_ACCOUNT),
+      // ]),
+
 
     ]
     : (userRole === USER_ROLE.BUSINESS ?

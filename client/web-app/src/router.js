@@ -12,6 +12,7 @@ import MasterLayout from "./theme/masterLayout";
 import ManagementPage from "./pages/managementPage";
 import ProfilePage from "./pages/profilePage";
 import NotFoundPage from "./pages/error/notFoundPage";
+import ProductDetailPage from "./pages/productDetailPage";
 // import NotFoundPage from "./pages/error/notFoundPage";
 // import DoNotHavePermissionPage from "./pages/error/doNotHavePermissionPage";
 
@@ -32,6 +33,10 @@ const adminRouters = [
         path: ROUTERS.ADMIN.MANAGEMENT,
         component: <ManagementPage />
     },
+    {
+        path: ROUTERS.CUSTOMER.PRODUCT,
+        component: <ProductDetailPage />
+    },
 ];
 
 const customerRouters = [
@@ -46,6 +51,10 @@ const customerRouters = [
     {
         path: ROUTERS.CUSTOMER.MARKET,
         component: <MarketplacePage />
+    },
+    {
+        path: ROUTERS.CUSTOMER.PRODUCT,
+        component: <ProductDetailPage />
     },
 ];
 
@@ -66,6 +75,10 @@ const businessRouters = [
         path: ROUTERS.ADMIN.MANAGEMENT,
         component: <ManagementPage />
     },
+    {
+        path: ROUTERS.CUSTOMER.PRODUCT,
+        component: <ProductDetailPage />
+    },
 ];
 
 const carrierRouters = [
@@ -84,6 +97,10 @@ const carrierRouters = [
     {
         path: ROUTERS.ADMIN.MANAGEMENT,
         component: <ManagementPage />
+    },
+    {
+        path: ROUTERS.CUSTOMER.PRODUCT,
+        component: <ProductDetailPage />
     },
 ];
 

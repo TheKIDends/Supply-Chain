@@ -38,14 +38,14 @@ public class ProductCommandController {
 
         Map<String, Object> response = new HashMap<>();
 
-        String userName = null;
-        try {
-            userName = TokenUtils.getUsernameFromToken(accessToken);
-        } catch (JWTVerificationException e) {
-            response.put("message", "Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại");
-            response.put("data", null);
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
-        }
+//        String userName = null;
+//        try {
+//            userName = TokenUtils.getUsernameFromToken(accessToken);
+//        } catch (JWTVerificationException e) {
+//            response.put("message", "Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại");
+//            response.put("data", null);
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+//        }
 
         GetDetailsUserQuery getDetailsUserQuery  = new GetDetailsUserQuery(model.getCreatorId(), null);
         UserResponseCommonModel userModel =
@@ -57,11 +57,11 @@ public class ProductCommandController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
 
-        if (!Objects.equals(userModel.getUsername(), userName)) {
-            response.put("message", "Không có quyền truy cập");
-            response.put("data", null);
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
-        }
+//        if (!Objects.equals(userModel.getUsername(), userName)) {
+//            response.put("message", "Không có quyền truy cập");
+//            response.put("data", null);
+//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+//        }
 
         if (!Objects.equals(userModel.getRole(), UserRole.BUSINESS)) {
             response.put("message", "Chỉ tài khoản doanh nghiệp mới có thể thêm sản phẩm");

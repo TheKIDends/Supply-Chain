@@ -8,6 +8,10 @@ import org.hyperledger.fabric.contract.annotation.*;
 import org.hyperledger.fabric.shim.ChaincodeException;
 import org.hyperledger.fabric.shim.ChaincodeStub;
 import org.hyperledger.fabric.shim.ledger.CompositeKey;
+import org.hyperledger.fabric.shim.ledger.KeyModification;
+import org.hyperledger.fabric.shim.ledger.KeyValue;
+import org.hyperledger.fabric.shim.ledger.QueryResultsIterator;
+import org.hyperledger.fabric.supplychain.entity.Category;
 import org.hyperledger.fabric.supplychain.entity.OrderItem;
 import org.hyperledger.fabric.supplychain.entity.ProductItem;
 import org.hyperledger.fabric.supplychain.entity.Product;
@@ -18,6 +22,7 @@ import org.hyperledger.fabric.supplychain.enumeration.ContractErrors;
 import org.hyperledger.fabric.supplychain.enumeration.OrderRequestStatus;
 import org.hyperledger.fabric.supplychain.enumeration.ProductItemType;
 import org.hyperledger.fabric.supplychain.enumeration.RequestStatus;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.*;
@@ -121,27 +126,27 @@ public class SupplyChainContract implements ContractInterface {
 //    }
 
 
-//    private boolean isProductLicenseAccepted(Context ctx, String productId) {
-//        if (ctx == null) return false;
-//        if (!isEntityExists(ctx, Product.class.getSimpleName(), productId)) return  false;
-//
-//        CompositeKey productCompositeKey = ctx.getStub().createCompositeKey(Product.class.getSimpleName(), productId);
-//        String productDBKey = productCompositeKey.toString();
-//        byte [] productResult = ctx.getStub().getState(productDBKey);
-//        Product product = genson.deserialize(productResult, Product.class);
-//
-//
-//        String licenseId = product.getLicenseId();
-//
-//        if (!isEntityExists(ctx, ProductLicense.class.getSimpleName(), licenseId)) return false;
-//
-//        CompositeKey licenseCompositeKey = ctx.getStub().createCompositeKey(ProductLicense.class.getSimpleName(), licenseId);
-//        String licenseDBKey = licenseCompositeKey.toString();
-//        byte [] licenseResult = ctx.getStub().getState(licenseDBKey);
-//        ProductLicense license = genson.deserialize(licenseResult, ProductLicense.class);
-//
-//        return Objects.equals(license.getRequestStatus(), RequestStatus.ACCEPTED);
-//    }
+    private boolean isProductLicenseAccepted(Context ctx, String productId) {
+        if (ctx == null) return false;
+        if (!isEntityExists(ctx, Product.class.getSimpleName(), productId)) return  false;
+
+        CompositeKey productCompositeKey = ctx.getStub().createCompositeKey(Product.class.getSimpleName(), productId);
+        String productDBKey = productCompositeKey.toString();
+        byte [] productResult = ctx.getStub().getState(productDBKey);
+        Product product = genson.deserialize(productResult, Product.class);
+
+
+        String licenseId = product.getLicenseId();
+
+        if (!isEntityExists(ctx, ProductLicense.class.getSimpleName(), licenseId)) return false;
+
+        CompositeKey licenseCompositeKey = ctx.getStub().createCompositeKey(ProductLicense.class.getSimpleName(), licenseId);
+        String licenseDBKey = licenseCompositeKey.toString();
+        byte [] licenseResult = ctx.getStub().getState(licenseDBKey);
+        ProductLicense license = genson.deserialize(licenseResult, ProductLicense.class);
+
+        return Objects.equals(license.getRequestStatus(), RequestStatus.ACCEPTED);
+    }
 
     private boolean isEntityExists(Context ctx, String classSimpleName, String entityId) {
         if (ctx == null) return false;
@@ -189,6 +194,161 @@ public class SupplyChainContract implements ContractInterface {
         }
 
         return false;
+    }
+
+    @Transaction(intent = Transaction.TYPE.EVALUATE)
+    public String getAllCategories(Context ctx) {
+        String startKey = Category.class.getSimpleName() + "_";
+        String endKey = Category.class.getSimpleName() + "_\u9999";
+
+        // Truy vấn tất cả các key có tiền tố "Category"
+        Iterator<KeyValue> iterator = ctx.getStub().getStateByRange(startKey, endKey).iterator();
+
+        List<Category> categories = new ArrayList<>();
+        while (iterator.hasNext()) {
+            KeyValue kv = iterator.next();
+            String categoryStr = kv.getStringValue();
+            Category category = genson.deserialize(categoryStr, Category.class);
+            categories.add(category);
+        }
+
+        return genson.serialize(categories);
+    }
+
+    @Transaction(intent = Transaction.TYPE.SUBMIT)
+    public String setCategory(Context ctx, String jsonStr) {
+        JSONObject jsonObject = new JSONObject(jsonStr);
+        String categoryId = jsonObject.getString("categoryId");
+        String categoryName = jsonObject.getString("categoryName");
+        String categoryStatus = jsonObject.getString("categoryStatus");
+
+        if (!isEntityExists(ctx, Category.class.getSimpleName(), categoryId)) {
+            String errorMessage = String.format("Category %s does not exist.", categoryId);
+            System.out.println(errorMessage);
+            throw new ChaincodeException(errorMessage, ContractErrors.CATEGORY_NOT_FOUND);
+        }
+
+        CompositeKey compositeKey = ctx.getStub().createCompositeKey(Category.class.getSimpleName(), categoryId);
+
+        String dbKey = compositeKey.toString();
+        byte [] result = ctx.getStub().getState(dbKey);
+        Category category = genson.deserialize(result, Category.class);
+
+        category.setCategoryName(categoryName);
+        category.setCategoryStatus(categoryStatus);
+
+        String categoryStr = genson.serialize(category);
+        ctx.getStub().putStringState(dbKey, categoryStr);
+        System.out.println("setCategory: " + categoryStr);
+        return categoryStr;
+    }
+
+    @Transaction(intent = Transaction.TYPE.SUBMIT)
+    public String addCategory(Context ctx, String jsonStr) {
+        JSONObject jsonObject = new JSONObject(jsonStr);
+
+        String categoryId = ctx.getStub().getTxId();
+        String categoryName = jsonObject.getString("categoryName");
+        String categoryStatus = jsonObject.getString("categoryStatus");
+
+        CompositeKey compositeKey = ctx.getStub().createCompositeKey(Category.class.getSimpleName(), categoryId);
+        String dbKey = compositeKey.toString();
+
+        Category category = Category
+                .builder()
+                .categoryId(categoryId)
+                .categoryName(categoryName)
+                .categoryStatus(categoryStatus)
+                .build();
+
+        String categoryStr = genson.serialize(category);
+        ctx.getStub().putStringState(dbKey, categoryStr);
+        System.out.println("addCategory: " + categoryStr);
+        return categoryStr;
+    }
+
+
+    @Transaction(intent = Transaction.TYPE.EVALUATE)
+    public String getAllProductLicenses(Context ctx) {
+        String startKey = ProductLicense.class.getSimpleName() + "_";
+        String endKey = ProductLicense.class.getSimpleName() + "_\u9999";
+
+        Iterator<KeyValue> iterator = ctx.getStub().getStateByRange(startKey, endKey).iterator();
+
+        List<ProductLicense> productLicenses = new ArrayList<>();
+        while (iterator.hasNext()) {
+            KeyValue kv = iterator.next();
+            String str = kv.getStringValue();
+            ProductLicense productLicense = genson.deserialize(str, ProductLicense.class);
+            productLicenses.add(productLicense);
+        }
+
+        return genson.serialize(productLicenses);
+    }
+
+    @Transaction(intent = Transaction.TYPE.EVALUATE)
+    public String getAllProduct(Context ctx) {
+        String startKey = Product.class.getSimpleName() + "_";
+        String endKey = Product.class.getSimpleName() + "_\u9999";
+
+        Iterator<KeyValue> iterator = ctx.getStub().getStateByRange(startKey, endKey).iterator();
+
+        List<Product> products = new ArrayList<>();
+        while (iterator.hasNext()) {
+            KeyValue kv = iterator.next();
+            String str = kv.getStringValue();
+            Product product = genson.deserialize(str, Product.class);
+            products.add(product);
+        }
+
+        return genson.serialize(products);
+    }
+
+    @Transaction(intent = Transaction.TYPE.EVALUATE)
+    public String getHistoryOfProductItem(Context ctx, String jsonStr) {
+        JSONObject jsonObject = new JSONObject(jsonStr);
+        String productItemId = jsonObject.getString("productItemId");
+        QueryResultsIterator<KeyModification> historyIterator = ctx.getStub().getHistoryForKey("ProductItem_" + productItemId);
+
+        JSONArray historyArray = new JSONArray();
+
+        // Duyệt qua các thay đổi trong lịch sử và thêm chúng vào mảng
+        for (KeyModification keyModification : historyIterator) {
+            JSONObject historyRecord = new JSONObject();
+
+            // Lấy thông tin về mỗi thay đổi
+            String txId = keyModification.getTxId();  // ID của giao dịch
+            String value = keyModification.getStringValue();  // Giá trị của bản ghi
+            String timestamp = keyModification.getTimestamp().toString();  // Thời gian thay đổi
+
+            // Thêm các thông tin vào đối tượng JSON
+            historyRecord.put("TransactionID", txId);
+            historyRecord.put("Timestamp", timestamp);
+            historyRecord.put("Value", value);
+
+            historyArray.put(historyRecord);
+        }
+
+        return historyArray.toString();
+    }
+
+
+    @Transaction(intent = Transaction.TYPE.EVALUATE)
+    public String getAllProductItem(Context ctx) {
+        String startKey = ProductItem.class.getSimpleName() + "_";
+        String endKey = ProductItem.class.getSimpleName() + "_\u9999";
+
+        Iterator<KeyValue> iterator = ctx.getStub().getStateByRange(startKey, endKey).iterator();
+
+        List<ProductItem> productItems = new ArrayList<>();
+        while (iterator.hasNext()) {
+            KeyValue kv = iterator.next();
+            String str = kv.getStringValue();
+            ProductItem productItem = genson.deserialize(str, ProductItem.class);
+            productItems.add(productItem);
+        }
+
+        return genson.serialize(productItems);
     }
 
     @Transaction(intent = Transaction.TYPE.SUBMIT)
@@ -303,6 +463,7 @@ public class SupplyChainContract implements ContractInterface {
                 .productId(productId)
                 .productName(productName)
                 .productPrice(productPrice)
+                .licenseId(null)
                 .categoryId(categoryId)
                 .creatorId(creatorId)
                 .dateCreated(dateCreated)
@@ -383,14 +544,11 @@ public class SupplyChainContract implements ContractInterface {
             throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_NOT_FOUND);
         }
 
-
-        ///
-
-//        if (!isProductLicenseAccepted(ctx, productId)) {
-//            String errorMessage = String.format("Product license %s is not accepted.", productId);
-//            System.out.println(errorMessage);
-//            throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_LICENSE_IS_NOT_ACCEPTED);
-//        }
+        if (!isProductLicenseAccepted(ctx, productId)) {
+            String errorMessage = String.format("Product license %s is not accepted.", productId);
+            System.out.println(errorMessage);
+            throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_LICENSE_IS_NOT_ACCEPTED);
+        }
 
         if (containerId != null) {
             if (!isEntityExists(ctx, ProductItem.class.getSimpleName(), containerId)) {
@@ -534,93 +692,93 @@ public class SupplyChainContract implements ContractInterface {
         return productItemStr;
     }
 
-    @Transaction(intent = Transaction.TYPE.SUBMIT)
-    public String sendOrderRequest(Context ctx, String jsonStr) {
-        int totalAmount = 0;
-
-        JSONObject jsonObject = new JSONObject(jsonStr);
-
-        String requestId = ctx.getStub().getTxId();
-        String senderId = jsonObject.getString("senderId");
-        String recipientId = jsonObject.getString("recipientId");
-        String dateCreated = jsonObject.getString("dateCreated");
-        String dateModified = dateCreated;
-        String requestStatus = OrderRequestStatus.PENDING_PAYMENT;
-
-        String details = jsonObject.getString("details");
-
-        String orderItemsStr = jsonObject.getString("orderItems");
-        List <OrderItem> orderItems = genson.deserialize(orderItemsStr, new GenericType<List<OrderItem>>() {});
-
-        for (OrderItem item : orderItems) {
-            String productId = item.getProductId();
-            if (!isEntityExists(ctx, Product.class.getSimpleName(), productId)) {
-                String errorMessage = String.format("Product %s does not exist.", productId);
-                System.out.println(errorMessage);
-                throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_NOT_FOUND);
-            }
-
+//    @Transaction(intent = Transaction.TYPE.SUBMIT)
+//    public String sendOrderRequest(Context ctx, String jsonStr) {
+//        int totalAmount = 0;
+//
+//        JSONObject jsonObject = new JSONObject(jsonStr);
+//
+//        String requestId = ctx.getStub().getTxId();
+//        String senderId = jsonObject.getString("senderId");
+//        String recipientId = jsonObject.getString("recipientId");
+//        String dateCreated = jsonObject.getString("dateCreated");
+//        String dateModified = dateCreated;
+//        String requestStatus = OrderRequestStatus.PENDING_PAYMENT;
+//
+//        String details = jsonObject.getString("details");
+//
+//        String orderItemsStr = jsonObject.getString("orderItems");
+//        List <OrderItem> orderItems = genson.deserialize(orderItemsStr, new GenericType<List<OrderItem>>() {});
+//
+//        for (OrderItem item : orderItems) {
+//            String productId = item.getProductId();
+//            if (!isEntityExists(ctx, Product.class.getSimpleName(), productId)) {
+//                String errorMessage = String.format("Product %s does not exist.", productId);
+//                System.out.println(errorMessage);
+//                throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_NOT_FOUND);
+//            }
+//
 //            if (!isProductLicenseAccepted(ctx, productId)) {
 //                String errorMessage = String.format("Product license %s is not accepted.", productId);
 //                System.out.println(errorMessage);
 //                throw new ChaincodeException(errorMessage, ContractErrors.PRODUCT_LICENSE_IS_NOT_ACCEPTED);
 //            }
-        }
-
-        for (OrderItem item : orderItems) {
-            CompositeKey compositeKey = ctx.getStub().createCompositeKey(OrderItem.class.getSimpleName(), requestId);
-            String dbKey = compositeKey.toString();
-
-            String orderItemStr = genson.serialize(item);
-            ctx.getStub().putStringState(dbKey, orderItemStr);
-        }
-
-        CompositeKey compositeKey = ctx.getStub().createCompositeKey(OrderRequest.class.getSimpleName(), requestId);
-        String dbKey = compositeKey.toString();
-
-        OrderRequest orderRequest = OrderRequest
-                .builder()
-                .requestId(requestId)
-                .senderId(senderId)
-                .recipientId(recipientId)
-                .dateCreated(dateCreated)
-                .dateModified(dateModified)
-                .requestStatus(requestStatus)
-                .details(details)
-                .build();
-
-        String orderRequestStr = genson.serialize(orderRequest);
-        ctx.getStub().putStringState(dbKey, orderRequestStr);
-        System.out.println("sendOrderRequest: " + orderRequestStr);
-        return orderRequestStr;
-    }
-
-    @Transaction(intent = Transaction.TYPE.SUBMIT)
-    public String setOrderRequestStatus(Context ctx, String jsonStr) {
-        JSONObject jsonObject = new JSONObject(jsonStr);
-        String requestId = jsonObject.getString("requestId");
-        String requestStatus = jsonObject.getString("requestStatus");
-        String dateModified = jsonObject.getString("dateModified");
-
-        if (!isEntityExists(ctx, OrderRequest.class.getSimpleName(), requestId)) {
-            String errorMessage = String.format("Order request %s does not exist.", requestId);
-            System.out.println(errorMessage);
-            throw new ChaincodeException(errorMessage, ContractErrors.REQUEST_NOT_FOUND);
-        }
-
-        CompositeKey compositeKey = ctx.getStub().createCompositeKey(OrderRequest.class.getSimpleName(), requestId);
-        String dbKey = compositeKey.toString();
-        byte [] result = ctx.getStub().getState(dbKey);
-        OrderRequest orderRequest = genson.deserialize(result, OrderRequest.class);
-
-        orderRequest.setRequestStatus(requestStatus);
-        orderRequest.setDateModified(dateModified);
-
-        String orderRequestStr = genson.serialize(orderRequest);
-        ctx.getStub().putStringState(dbKey, orderRequestStr);
-        System.out.println("setOrderRequestStatus: " + orderRequestStr);
-        return orderRequestStr;
-    }
+//        }
+//
+//        for (OrderItem item : orderItems) {
+//            CompositeKey compositeKey = ctx.getStub().createCompositeKey(OrderItem.class.getSimpleName(), requestId);
+//            String dbKey = compositeKey.toString();
+//
+//            String orderItemStr = genson.serialize(item);
+//            ctx.getStub().putStringState(dbKey, orderItemStr);
+//        }
+//
+//        CompositeKey compositeKey = ctx.getStub().createCompositeKey(OrderRequest.class.getSimpleName(), requestId);
+//        String dbKey = compositeKey.toString();
+//
+//        OrderRequest orderRequest = OrderRequest
+//                .builder()
+//                .requestId(requestId)
+//                .senderId(senderId)
+//                .recipientId(recipientId)
+//                .dateCreated(dateCreated)
+//                .dateModified(dateModified)
+//                .requestStatus(requestStatus)
+//                .details(details)
+//                .build();
+//
+//        String orderRequestStr = genson.serialize(orderRequest);
+//        ctx.getStub().putStringState(dbKey, orderRequestStr);
+//        System.out.println("sendOrderRequest: " + orderRequestStr);
+//        return orderRequestStr;
+//    }
+//
+//    @Transaction(intent = Transaction.TYPE.SUBMIT)
+//    public String setOrderRequestStatus(Context ctx, String jsonStr) {
+//        JSONObject jsonObject = new JSONObject(jsonStr);
+//        String requestId = jsonObject.getString("requestId");
+//        String requestStatus = jsonObject.getString("requestStatus");
+//        String dateModified = jsonObject.getString("dateModified");
+//
+//        if (!isEntityExists(ctx, OrderRequest.class.getSimpleName(), requestId)) {
+//            String errorMessage = String.format("Order request %s does not exist.", requestId);
+//            System.out.println(errorMessage);
+//            throw new ChaincodeException(errorMessage, ContractErrors.REQUEST_NOT_FOUND);
+//        }
+//
+//        CompositeKey compositeKey = ctx.getStub().createCompositeKey(OrderRequest.class.getSimpleName(), requestId);
+//        String dbKey = compositeKey.toString();
+//        byte [] result = ctx.getStub().getState(dbKey);
+//        OrderRequest orderRequest = genson.deserialize(result, OrderRequest.class);
+//
+//        orderRequest.setRequestStatus(requestStatus);
+//        orderRequest.setDateModified(dateModified);
+//
+//        String orderRequestStr = genson.serialize(orderRequest);
+//        ctx.getStub().putStringState(dbKey, orderRequestStr);
+//        System.out.println("setOrderRequestStatus: " + orderRequestStr);
+//        return orderRequestStr;
+//    }
 
 
 //    @Transaction(intent = Transaction.TYPE.SUBMIT)

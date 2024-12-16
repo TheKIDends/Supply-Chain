@@ -5,7 +5,9 @@ import com.supplychain.productservice.chaincode.Config;
 import com.supplychain.productservice.chaincode.client.RegisterUserHyperledger;
 import com.supplychain.productservice.chaincode.util.ConnectionParamsUtil;
 import com.supplychain.productservice.chaincode.util.WalletUtil;
+import com.supplychain.productservice.command.data.Category;
 import com.supplychain.productservice.command.data.Product;
+import com.supplychain.productservice.command.data.request.ProductLicense;
 import com.supplychain.userservice.data.User;
 
 import lombok.SneakyThrows;
@@ -98,65 +100,105 @@ public class HyperledgerService {
         return Config.ORG1;
     }
 
-//    public ProductLicense sendProductLicense(User user, JSONObject jsonObject) throws Exception {
-//        ProductLicense productLicense = null;
-//        try {
-//            Contract contract = getContract(user);
-//
-//            byte[] result = contract.submitTransaction(
-//                    "sendProductLicense",
-//                    jsonObject.toString()
-//            );
-//
-//            String appointmentRequestStr = new String(result);
-//            productLicense = genson.deserialize(appointmentRequestStr, ProductLicense.class);
-//            LOG.info("sendProductLicense: " + productLicense);
-//        } catch (Exception e) {
-//            formatExceptionMessage(e);
-//        }
-//        return productLicense;
-//    }
-//
-//    public ProductLicense getProductLicense(User user, JSONObject jsonObject) throws Exception {
-//        ProductLicense productLicense = new ProductLicense();
-//        try {
-//            Contract contract = getContract(user);
-//
-//            byte[] result = contract.evaluateTransaction(
-//                    "getProductLicense",
-//                    jsonObject.toString()
-//            );
-//
-//            String productLicenseStr = new String(result);
-//            productLicense = genson.deserialize(productLicenseStr, ProductLicense.class);
-//
-//            LOG.info("getProductLicense: " + productLicense);
-//        } catch (Exception e) {
-//            formatExceptionMessage(e);
-//        }
-//        return productLicense;
-//    }
-//
-//    public ProductLicense setProductLicenseStatus(User user, JSONObject jsonObject) throws Exception {
-//        ProductLicense productLicense = new ProductLicense();
-//        try {
-//            Contract contract = getContract(user);
-//
-//            byte[] result = contract.submitTransaction(
-//                    "setProductLicenseStatus",
-//                    jsonObject.toString()
-//            );
-//
-//            String productLicenseStr = new String(result);
-//            productLicense = genson.deserialize(productLicenseStr, ProductLicense.class);
-//
-//            LOG.info("setProductLicenseStatus: " + productLicense);
-//        } catch (Exception e) {
-//            formatExceptionMessage(e);
-//        }
-//        return productLicense;
-//    }
-//
+    public ProductLicense sendProductLicense(User user, JSONObject jsonObject) throws Exception {
+        ProductLicense productLicense = null;
+        try {
+            Contract contract = getContract(user);
+
+            byte[] result = contract.submitTransaction(
+                    "sendProductLicense",
+                    jsonObject.toString()
+            );
+
+            String appointmentRequestStr = new String(result);
+            productLicense = genson.deserialize(appointmentRequestStr, ProductLicense.class);
+            LOG.info("sendProductLicense: " + productLicense);
+        } catch (Exception e) {
+            formatExceptionMessage(e);
+        }
+        return productLicense;
+    }
+
+    public ProductLicense getProductLicense(User user, JSONObject jsonObject) throws Exception {
+        ProductLicense productLicense = new ProductLicense();
+        try {
+            Contract contract = getContract(user);
+
+            byte[] result = contract.evaluateTransaction(
+                    "getProductLicense",
+                    jsonObject.toString()
+            );
+
+            String productLicenseStr = new String(result);
+            productLicense = genson.deserialize(productLicenseStr, ProductLicense.class);
+
+            LOG.info("getProductLicense: " + productLicense);
+        } catch (Exception e) {
+            formatExceptionMessage(e);
+        }
+        return productLicense;
+    }
+
+    public ProductLicense setProductLicenseStatus(User user, JSONObject jsonObject) throws Exception {
+        ProductLicense productLicense = new ProductLicense();
+        try {
+            Contract contract = getContract(user);
+
+            byte[] result = contract.submitTransaction(
+                    "setProductLicenseStatus",
+                    jsonObject.toString()
+            );
+
+            String productLicenseStr = new String(result);
+            productLicense = genson.deserialize(productLicenseStr, ProductLicense.class);
+
+            LOG.info("setProductLicenseStatus: " + productLicense);
+        } catch (Exception e) {
+            formatExceptionMessage(e);
+        }
+        return productLicense;
+    }
+
+    public Category addCategory(User user, JSONObject jsonObject) throws Exception {
+        Category category = null;
+        try {
+            Contract contract = getContract(user);
+
+            byte[] result = contract.submitTransaction(
+                    "addCategory",
+                    jsonObject.toString()
+            );
+
+            String categoryStr = new String(result);
+            category = genson.deserialize(categoryStr, Category.class);
+
+            LOG.info("addCategory: " + category);
+        } catch (Exception e) {
+            formatExceptionMessage(e);
+        }
+        return category;
+    }
+
+    public Category setCategory(User user, JSONObject jsonObject) throws Exception {
+            Category category = new Category();
+        try {
+            Contract contract = getContract(user);
+
+            byte[] result = contract.submitTransaction(
+                    "setCategory",
+                    jsonObject.toString()
+            );
+
+            String categoryStr = new String(result);
+            category = genson.deserialize(categoryStr, Category.class);
+
+            LOG.info("setCategory: " + category);
+        } catch (Exception e) {
+            formatExceptionMessage(e);
+        }
+        return category;
+    }
+
     public Product addProduct(User user, JSONObject jsonObject) throws Exception {
         Product product = null;
         try {

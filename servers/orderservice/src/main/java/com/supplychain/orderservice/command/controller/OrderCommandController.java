@@ -27,4 +27,14 @@ public class OrderCommandController {
         commandGateway.sendAndWait(command);
         return "addOrder";
     }
+
+//    @PostMapping("${endpoint.edit-order}")
+//    public String editOrder(@RequestBody OrderRequestModel model) {
+//        CreateOrderCommand command =
+//                new CreateOrderCommand(UUID.randomUUID().toString(), model.getSenderId(), model.getRecipientId(),
+//                        model.getDateCreated(), model.getDateModified(), model.getRequestType(), model.getRequestStatus(),
+//                        model.getEntityName(), model.getDetails());
+//        commandGateway.sendAndWait(command);
+//        return "addOrder";
+//    }
 }

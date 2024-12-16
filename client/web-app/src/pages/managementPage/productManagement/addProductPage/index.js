@@ -52,13 +52,21 @@ const AddProductPage = () => {
       return;
     }
 
+    const data1 = {
+      "productName":"Bột cao lanh [1Kg]",
+      "productPrice":"200000",
+      "categoryId":"categoryId",
+      "creatorId":"2918e6aa-8493-49ac-89f8-3fbf537cd9a2",
+      "details":"Bột cao lanh"
+    };
+
     const apiUrl = "http://localhost:8000/api/product/add-product";
     try {
       const response = await fetch(apiUrl, {
         method: "POST",
-        body: JSON.stringify(informationProduct),
+        body: JSON.stringify(data1),
         headers: {
-          "Authorization": `Bearer ${refreshToken}`,
+          // "Authorization": `Bearer ${accessToken}`,
           "Content-Type": "application/json"
         },
       });

@@ -8,6 +8,17 @@ export const FORGOT_PASSWORD_DIALOG = {
     LOGIN: "Đăng nhập"
 }
 
+export const PRODUCT_DETAIL_PAGE = {
+    SIZE: "Kích thước",
+    SOLD_QUANTITY: "Đã bán",
+    QUANTITY: "Số lượng",
+    ADD_TO_CART: "Thêm vào giỏ hàng",
+    BUY_NOW: "Mua ngay",
+    PRODUCT_DESCRIPTION: "Mô tả sản phẩm",
+    CATEGORY_1: "Danh mục 1",
+    CATEGORY_2: "Danh mục 2",
+}
+
 export const USER_ROLE = {
     ADMIN: "Quản trị viên",
     BUSINESS: "Doanh nghiệp",
@@ -326,6 +337,21 @@ export const BREADCRUMB = {
     EDIT_PRODUCT: "Chỉnh sửa thông tin sản phẩm",
     USER_ACCOUNT: "Tài khoản người dùng",
 }
+
+export const ADD_CATEGORY_DIALOG = {
+    ADD_CATEGORY: "Thêm danh mục",
+    ADD_BTN: "Thêm",
+    CANCEL_BTN: "Hủy",
+    CATEGORY_NAME_PLACEHOLDER: "Nhập tên danh mục"
+}
+
+export const EDIT_CATEGORY_DIALOG = {
+    EDIT_CATEGORY: "Chỉnh sửa danh mục",
+    SAVE_BTN: "Lưu",
+    CANCEL_BTN: "Hủy",
+    CATEGORY_NAME_PLACEHOLDER: "Nhập tên danh mục"
+}
+
 
 export const MANAGEMENT_PAGE = {
     PRODUCT_MANAGEMENT: {

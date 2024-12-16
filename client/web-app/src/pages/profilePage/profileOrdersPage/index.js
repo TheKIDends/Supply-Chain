@@ -18,7 +18,7 @@ const ordersData = [
     "totalAmount": 249000,
     "orderStatus": "Đã xác nhận",
     "userID": 4,
-    "recipientName": "Bùi Minh Hoạt",
+    "recipientName": "Admin",
     "recipientPhone": "0912345678",
     "addressDetails": "144 Xuân Thuỷ, Cầu Giấy, Hà Nội",
     "orderDetails": [
@@ -26,15 +26,15 @@ const ordersData = [
         "orderDetailID": 32,
         "orderID": 19,
         "productID": 63,
-        "productName": "Áo Thun Dài Tay Nam, Mềm Mịn, Thoáng Khí",
-        "imagePath": "https://iili.io/JR4LT5G.jpg",
+        "productName": "Táo gala [1Kg]",
+        "imagePath": "https://login.medlatec.vn//ImagePath/images/20221028/20221028_qua-tao-3.png",
         "sizeName": "M",
         "productPrice": 249000,
         "quantity": 1,
         "totalPrice": 249000
       }
     ],
-    "fullName": "Bùi Minh Hoạt",
+    "fullName": "Admin",
     "avatarPath": "https://iili.io/J5HNvHP.jpg"
   },
   {
@@ -43,7 +43,7 @@ const ordersData = [
     "totalAmount": 1187000,
     "orderStatus": "Chờ xác nhận",
     "userID": 4,
-    "recipientName": "Bùi Minh Hoạt",
+    "recipientName": "Admin",
     "recipientPhone": "0912345678",
     "addressDetails": "144 Xuân Thuỷ, Cầu Giấy, Hà Nội",
     "orderDetails": [
@@ -70,7 +70,7 @@ const ordersData = [
         "totalPrice": 938000
       }
     ],
-    "fullName": "Bùi Minh Hoạt",
+    "fullName": "Admin",
     "avatarPath": "https://iili.io/J5HNvHP.jpg"
   },
   {
@@ -79,7 +79,7 @@ const ordersData = [
     "totalAmount": 799000,
     "orderStatus": "Hoàn thành",
     "userID": 4,
-    "recipientName": "Bùi Minh Hoạt",
+    "recipientName": "Admin",
     "recipientPhone": "0912345678",
     "addressDetails": "144 Xuân Thuỷ, Cầu Giấy, Hà Nội",
     "orderDetails": [
@@ -95,7 +95,7 @@ const ordersData = [
         "totalPrice": 799000
       }
     ],
-    "fullName": "Bùi Minh Hoạt",
+    "fullName": "Admin",
     "avatarPath": "https://iili.io/J5HNvHP.jpg"
   },
   {
@@ -104,7 +104,7 @@ const ordersData = [
     "totalAmount": 2596000,
     "orderStatus": "Chờ xác nhận",
     "userID": 4,
-    "recipientName": "Bùi Minh Hoạt",
+    "recipientName": "Admin",
     "recipientPhone": "0912345678",
     "addressDetails": "144 Xuân Thuỷ, Cầu Giấy, Hà Nội",
     "orderDetails": [
@@ -120,7 +120,7 @@ const ordersData = [
         "totalPrice": 2596000
       }
     ],
-    "fullName": "Bùi Minh Hoạt",
+    "fullName": "Admin",
     "avatarPath": "https://iili.io/J5HNvHP.jpg"
   },
   {
@@ -129,7 +129,7 @@ const ordersData = [
     "totalAmount": 3386000,
     "orderStatus": "Đang giao hàng",
     "userID": 4,
-    "recipientName": "Bùi Minh Hoạt",
+    "recipientName": "Admin",
     "recipientPhone": "0912345678",
     "addressDetails": "144 Xuân Thuỷ, Cầu Giấy, Hà Nội",
     "orderDetails": [
@@ -167,7 +167,7 @@ const ordersData = [
         "totalPrice": 1798000
       }
     ],
-    "fullName": "Bùi Minh Hoạt",
+    "fullName": "Admin",
     "avatarPath": "https://iili.io/J5HNvHP.jpg"
   }
 ];

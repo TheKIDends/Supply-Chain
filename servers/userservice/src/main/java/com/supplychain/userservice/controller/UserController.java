@@ -46,7 +46,7 @@ public class UserController {
         } else
         if (Objects.equals(dto.getRole(), UserRole.CARRIER)) {
             dto.setDesignation(Designation.MANAGER);
-        }
+        } 
 
         dto.setId(UUID.randomUUID().toString());
         dto.setEnabled(true);

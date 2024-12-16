@@ -44,16 +44,16 @@ const Menu = () => {
       text: PROFILE_PAGE.MENU_ITEMS.EDIT_PROFILE,
       link: "/profile" + ROUTERS.USER.PERSONAL_INFORMATION + "?userID=" + userID,
     },
-    {
-      icon: iconAddress,
-      text: PROFILE_PAGE.MENU_ITEMS.ADDRESS_BOOK,
-      link: "/profile" + ROUTERS.USER.ADDRESS + "?userID=" + userID,
-    },
-    {
-      icon: iconUnlocked,
-      text: PROFILE_PAGE.MENU_ITEMS.CHANGE_PASSWORD,
-      link: "/profile" + ROUTERS.USER.CHANGE_PASSWORD + "?userID=" + userID,
-    },
+    // {
+    //   icon: iconAddress,
+    //   text: PROFILE_PAGE.MENU_ITEMS.ADDRESS_BOOK,
+    //   link: "/profile" + ROUTERS.USER.ADDRESS + "?userID=" + userID,
+    // },
+    // {
+    //   icon: iconUnlocked,
+    //   text: PROFILE_PAGE.MENU_ITEMS.CHANGE_PASSWORD,
+    //   link: "/profile" + ROUTERS.USER.CHANGE_PASSWORD + "?userID=" + userID,
+    // },
     {
       icon: iconLogout,
       text: PROFILE_PAGE.MENU_ITEMS.LOGOUT,
@@ -101,12 +101,14 @@ const Menu = () => {
         </div>
         <div>
           <div className="text navigate-text pointer-cursor"
-               onClick={() => {
-                 if (menuItem.text !== PROFILE_PAGE.MENU_ITEMS.LOGOUT) {
-                   navigate(menuItem.link, {
-                     state: { scrolling: SCROLLING.SMOOTH },
-                   });
+               onClick = {() => {
+                 if (menuItem.text === PROFILE_PAGE.MENU_ITEMS.LOGOUT) {
+                   logout().then(r => {});
+                   return;
                  }
+                 navigate(menuItem.link, {
+                   state: { scrolling: SCROLLING.SMOOTH },
+                 });
                }}
           >
             {menuItem.text}
